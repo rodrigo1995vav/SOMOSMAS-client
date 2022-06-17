@@ -19,24 +19,13 @@ const Carousel = ( { imgSlides ,imgHeight } ) =>{
   
 
 
-const customCarouselButtonStyle = {
-  height:"1rem",
-  width: "1rem",
-  padding: ".7%",
-  margin: ".8rem",
-  borderTop: "none",
-  borderBottom: "none",
-  borderRadius: "20px",
-  opacity: "1",
-  boxShadow: "0px 0.4rem 0.7rem 0px #000000",
-}
 
 return (
 <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel" >
   <div className="carousel-indicators">
 
   {imgSlides.map((img,index)=>(<button type="button" 
-                                        style={customCarouselButtonStyle}
+                                      
                                         key={img.imageUrl}
                                         data-bs-target="#carouselExampleIndicators" 
                                         data-bs-slide-to={index}
@@ -61,11 +50,10 @@ return (
 </div>
 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
   <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-  <span className="visually-hidden">Previous</span>
+
 </button>
 <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
   <span className="carousel-control-next-icon" aria-hidden="true"></span>
-  <span className="visually-hidden">Next</span>
 </button>
 </div>)
 }
