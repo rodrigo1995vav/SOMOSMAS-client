@@ -1,7 +1,5 @@
-
-@import './base/override';
+@import "./base/override";
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
-
-@import './base/base';
-
+@import "./base/base";
+@import "./Navbar/navbar.scss";
