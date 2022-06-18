@@ -73,7 +73,7 @@ export const Signup = () => {
               placeholder="Confirmar Contraseña"
               type="password"
             />
-            <button className="btn btn-dark mt-3 btn-reg mx-auto" type="submit">
+            <button className="btn bg-primary mt-3 btn-reg mx-auto p-2" type="submit">
               Registrarse
             </button>
           </Form>
