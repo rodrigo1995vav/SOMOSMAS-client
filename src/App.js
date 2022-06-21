@@ -1,9 +1,12 @@
-
+import { useNavigate, Route, Routes, Link } from 'react-router-dom'
+import Home from './pages/home/Home';
 
 function App() {
   return (
     <div>
-      <h1 className="fw-bolder">Hola! Bienvenido</h1>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </div>
   );
 }
