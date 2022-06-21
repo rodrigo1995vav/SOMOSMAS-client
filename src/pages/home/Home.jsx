@@ -7,13 +7,16 @@ function Home() {
     //Hardcoded variables
     const hcWelcomeMessage = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est ipsum placeat natus! A quam porro possimus. Optio harum cupiditate rem dolore itaque. Tempora quae dignissimos excepturi sunt nostrum sint accusantium."
     const hcFeatures = [{ title: "feature 0", body: "feature 0 body" }, { title: "feature 1", body: "feature 1 body" }, { title: "feature 2", body: "feature 2 body" }, { title: "feature 3", body: "feature 3 body" }, { title: "feature 4", body: "feature 4 body" }]
+    const hcImage = 'Manos 10.jpg'
 
     const [welcomeMessage, setWelcomeMessage] = useState("");
     const [features, setFeatures] = useState([])
+    const [image, setImage] = useState("")
 
     useEffect(() => {
         setWelcomeMessage(hcWelcomeMessage)
-        setFeatures(hcFeatures.slice(hcFeatures.length-4).reverse())
+        setFeatures(hcFeatures.slice(hcFeatures.length - 4).reverse())
+        setImage(hcImage)
     }, []);
 
     return (
@@ -27,7 +30,7 @@ function Home() {
                     <button className="btn">Contactanos</button>
                 </div>
                 <div className="welcomeImage">
-                    <img src='Manos 10.jpg' alt="" />
+                    <img src={image} alt="" />
                 </div>
             </div>
             <div className="slider">
