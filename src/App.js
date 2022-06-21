@@ -1,9 +1,11 @@
 
+import Layout from "./components/EditHome/Layout";
+
 
 function App() {
   return (
     <div>
-      <h1 className="fw-bolder">Hola! Bienvenido</h1>
+      <Layout/>
     </div>
   );
 }
