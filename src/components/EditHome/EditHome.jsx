@@ -5,7 +5,7 @@ import * as Yup from "yup";
 const Formulario = () => {
   const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
   const validate = Yup.object({
-    text: Yup.string().min(15, "Must be 15 characters or less"),
+    text: Yup.string().min(20, "El texto de bienvenida debe contener al menos 20 caracteres"),
   });
 
   return (
@@ -33,7 +33,7 @@ const Formulario = () => {
 
               <button  type="submit" className="btn btn-dark mt-3 mb-3 btn-reg mx-auto">Modificar</button>
               {formularioEnviado && (
-                <p className="exito">Formulario enviado con exito!</p>
+                <p className="exito">Actualizado con éxito!</p>
               )}
             </Form>
           </div>

@@ -5,7 +5,7 @@ import EditSlides from "./EditSlides";
 const Layout = () => {
   return (
     <div className="container">
-      <h1 className="text-center m-4">Editar elementos pagina Home</h1>
+      <h1 className="text-center m-5">Editar elementos pagina Home</h1>
       <div className="row">
         <div className="col-sm">
           <Formulario />
