@@ -1,0 +1,36 @@
+.textArea-field_324af{
+  height: 17rem;
+  position: relative;
+
+  span{
+    position: absolute;
+    top: 90%;
+    left: 2%;
+    color: $primary;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+}
+
+.text-area_324af{
+  border-radius: 6px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  display: block;
+  font-size: 1.2rem;
+  width: 75%;
+  height: 15rem;
+  padding: 1.2rem;
+  resize: none;
+
+  &:focus{
+    outline: none;
+  }
+
+  &::placeholder{
+    font-size: 1.2rem;
+  }
+
+  @media all and (min-width: 600px){
+    width: 65%;
+  }
+}
