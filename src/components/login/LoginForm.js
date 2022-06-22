@@ -1,7 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import React, {useContext, useState} from 'react'
-import { Link } from 'react-router-dom';
-
+import React, { useState} from 'react'
 
 export const LoginForm = () => {
 
@@ -9,13 +7,6 @@ export const LoginForm = () => {
 
     const handleClickShowPassword = () => {
         setIsShowPassword(!isShowPassword)
-        if (isShowPassword) {
-          document.querySelectorAll('.floatingPassword').forEach(input => { input.type = 'text' })
-          document.querySelectorAll('.show-password').forEach(p => { p.textContent = 'Ocultar' })
-          return
-        }
-        document.querySelectorAll('.floatingPassword').forEach(input => { input.type = 'password' })
-        document.querySelectorAll('.show-password').forEach(p => { p.textContent = 'Mostrar' })
       }
 
   return (
@@ -66,7 +57,7 @@ export const LoginForm = () => {
                         id="password"
                         name='password'
                         className='form-control floatingPassword'
-                        type="password"
+                        type={isShowPassword ? 'text': "password"}
                     />
                     <label htmlFor="password">Contraseña</label>
                     <ErrorMessage name="password" component={ ()=>
