@@ -10,7 +10,10 @@
 //    ...
 //  ]
 
+// pass text : null for an image without darkening
+
 // imgHeight = "someCssUnit" ex: '40rem'  (the carousel always takes the max-width of its container)
+
 
 
 
