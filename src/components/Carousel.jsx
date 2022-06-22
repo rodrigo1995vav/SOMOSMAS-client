@@ -42,7 +42,10 @@ return (
         <div key={img.imageUrl} className={index===0?"carousel-item active": "carousel-item"}>
 
         <img className="d-block w-100"  style={{objectFit:'cover',objectPosition:'centered',overflow:'hidden',height:`${imgHeight}`}} src={img.imageUrl} alt={img.text}/>
-
+        {img.text&& <div class="carousel-caption d-none d-md-block">
+              <h1>{img.text}</h1>
+      </div>}
+  
     </div>
     ))}
 
