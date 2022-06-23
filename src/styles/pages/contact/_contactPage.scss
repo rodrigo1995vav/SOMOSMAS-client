@@ -1,0 +1,14 @@
+.layout_324af{
+  background-color: white;
+  height: 100vh;
+  padding: 2rem;
+  // padding: 2rem auto;
+
+  @media all and (min-width: 900px){
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+  }
+
+}
