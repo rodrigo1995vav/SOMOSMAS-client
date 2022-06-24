@@ -1,3 +1,11 @@
+// breakpoints
+$small: 576px;
+$medium: 768px;
+$large: 992px;
+$extra-large: 1200px;
+$extra-extra-large: 1400px;
+$extra-4k: 2560px;
+
 // Colors will be referenced as primary, secondary and light
 // Ex: bg-primary
 
@@ -11,3 +19,8 @@ $light: #9AC9FB;
 $font-weight-lighter: 200;
 $font-weight-bold: 500;
 $font-weight-bolder: 600;
+
+//Carousel-variables
+
+$carousel-control-opacity:          1;
+$carousel-control-hover-opacity:    .7;
