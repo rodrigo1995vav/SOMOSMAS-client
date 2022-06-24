@@ -6,18 +6,17 @@ import * as Yup from "yup";
 export const Signup = () => {
   const validate = Yup.object({
     firstName: Yup.string()
-      .max(15, "Su nombre no debe exceder los 15 caracteres")
       .required("Ingrese su nombre")
       .matches(/^[aA-zZ\s]+$/, "Solo se permiten letras en este campo"),
     lastName: Yup.string()
-      .max(20, "Su apellido no debe superar los 20 caracteres")
       .required("Ingrese su apellido")
       .matches(/^[aA-zZ\s]+$/, "Solo se permiten letras en este campo "),
     email: Yup.string().email("Email no valido").required("Email requerido"),
     password: Yup.string()
       .min(6, "Su contraseña debe tener un minimo de 6 caracteres")
       .required("Ingrese una contraseña"),
-    //.matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/, "Must include uppercase and lowercase letters, a number and a special character.")
+      //If necessary next line of code will ensure the user types a safe password 
+      //.matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/, "Must include uppercase and lowercase letters, a number and a special character.")
     confirmPassword: Yup.string()
       .oneOf([Yup.ref("password"), null], "La contraseña debe ser igual")
       .required("Campo requerido"),
@@ -35,6 +34,7 @@ export const Signup = () => {
       onSubmit={(values) => {
         console.log("Successfully registered")
         console.log(values);
+        //TODO navigate to Login page 
       }}
     >
       {(formik) => (
