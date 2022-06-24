@@ -1,0 +1,39 @@
+.newsForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    padding: 20px;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: -330px;
+    margin-top: 20px;
+}
+
+.inputs label{
+    font-size: 200%;
+}
+
+.inputs input{
+    width: 200px;
+    font-size: 150%;
+}
+
+.newsInput{
+    display: flex;
+    gap: 5px;
+}
+
+.ck-editor__editable{
+    height: 400px;
+}
+
+.btn {
+    width: 200px;
+    height: 40px;
+    font-size: 200%;
+}

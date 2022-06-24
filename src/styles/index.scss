@@ -1,13 +1,16 @@
-
-@import './base/override';
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
-
 @import './base/base';
-@import './SignUp/signUp.scss';
+@import './components/signUp.scss';
+@import './base/override';
+@import './base/mixins';
 
+//pages
+@import '../pages/login/loginPage.module';
+//components
+@import '../components/login/loginForm.module';
+@import './components/carousel';
 @import './componentes/textArea';
 @import './componentes/textInput';
 
 @import './pages/contact/contactPage';
-
