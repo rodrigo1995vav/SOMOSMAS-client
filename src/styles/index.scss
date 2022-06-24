@@ -1,5 +1,15 @@
 @import "./base/override";
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
+
 @import "./base/base";
 @import "./Navbar/navbar.scss";
+
+
+@import './base/base';
+
+@import './componentes/textArea';
+@import './componentes/textInput';
+
+@import './pages/contact/contactPage';
+
