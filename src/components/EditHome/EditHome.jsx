@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-const Formulario = () => {
+const EditHome = () => {
   const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
   const validate = Yup.object({
     text: Yup.string().min(20, "El texto de bienvenida debe contener al menos 20 caracteres"),
@@ -43,4 +43,4 @@ const Formulario = () => {
   );
 };
 
-export default Formulario;
+export default EditHome;
