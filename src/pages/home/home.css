@@ -5,7 +5,7 @@
     padding: 100px;
 }
 
-.welcomeMessage{
+.welcomeMessage {
     display: flex;
     gap: 10px;
     flex-direction: column;
@@ -34,7 +34,7 @@ img {
     line-height: 30px;
 }
 
-.btn {
+.welcomeMessage .btn {
     width: 242px;
     height: 70px;
     background: #FF0000;
@@ -44,19 +44,58 @@ img {
     color: #fff;
 }
 
+.news {
+    display: flex;
+    gap: 10px;
+    margin-left: 20px;
+
+}
+
+.lastNewsh1{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 72px;
+}
+
 .singleFeature {
     display: flex;
     align-items: center;
-    flex-direction: column;
-    gap: 3px;
+    flex-direction: row;
+    gap: 10px;
     margin-top: 8px;
+    height: 233px;
+    width: 448px;
+    left: 142px;
+    top: 1430px;
+    border-radius: 20px;
+    background:  #7E9AFD;
+    border: 1px solid #0038FF;
+    padding: 10px;
 }
 
-.singleFeature h1 {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 40px;
-    line-height: 72px;
+.singleFeature img {
+    height: 201px;
+    width: 196px;
+    left: 158px;
+    top: 1446px;
+    border-radius: 20px;
+
+}
+
+.singleFeature button {
+    height: 38px;
+    width: 196px;
+    left: 378px;
+    top: 1606px;
+    border-radius: 8px;
+    padding: 10px;
+    background: #0038FF;
+    color: #fff;
+
 }
 
 .singleFeature p {

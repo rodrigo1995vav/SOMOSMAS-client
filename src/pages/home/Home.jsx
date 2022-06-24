@@ -1,3 +1,4 @@
+import Carousel from '../../components/Carousel'
 import { useEffect, useState } from 'react'
 import '../../styles/index.scss'
 import './home.css'
@@ -6,11 +7,12 @@ function Home() {
 
     //Hardcoded variables
     const hcWelcomeMessage = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est ipsum placeat natus! A quam porro possimus. Optio harum cupiditate rem dolore itaque. Tempora quae dignissimos excepturi sunt nostrum sint accusantium."
-    const hcFeatures = [{ title: "feature 0", body: "feature 0 body" }, { title: "feature 1", body: "feature 1 body" }, { title: "feature 2", body: "feature 2 body" }, { title: "feature 3", body: "feature 3 body" }, { title: "feature 4", body: "feature 4 body" }]
+    const hcFeatures = [{ title: "feature 0", content: "feature 0 body", image: 'Manos 10.jpg' }, { title: "feature 1", content: "feature 1 body", image: 'Manos 10.jpg' }, { title: "feature 2", content: "feature 2 body", image: 'Manos 10.jpg' }, { title: "feature 3", content: "feature 3 body", image: 'Manos 10.jpg' }, { title: "feature 4", content: "feature 4 body", image: 'Manos 10.jpg' }]
     const hcImage = 'Manos 10.jpg'
+    const arrayImg = [hcImage]
 
     const [welcomeMessage, setWelcomeMessage] = useState("");
-    const [features, setFeatures] = useState([])
+    const [news, setFeatures] = useState([])
     const [image, setImage] = useState("")
 
     useEffect(() => {
@@ -34,14 +36,19 @@ function Home() {
                 </div>
             </div>
             <div className="slider">
-                slider component
+                {arrayImg && <Carousel imgSlides={arrayImg} />}
             </div>
-            <div className="features">
-                {features.map(feature => {
+            <h1 className='lastNewsh1'>Últimas Novedades</h1>
+            <div className="news">
+                {news.map(singleNews => {
                     return (
                         <div className="singleFeature">
-                            <h1>{feature.title}</h1>
-                            <p>{feature.body}</p>
+                            <img src={singleNews.image} alt="" />
+                            <div className="content">
+                                <p>{singleNews.content}</p>
+                                <button className="btn btn.primary">Ver Novedad</button>
+                            </div>
+
                         </div>
                     )
                 })}
