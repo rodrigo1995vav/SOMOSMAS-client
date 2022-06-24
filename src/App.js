@@ -1,10 +1,12 @@
 import React from "react";
 import Footer from "./components/Footer";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <div>
-      <h1 className="fw-bolder">hola</h1>
+      <Navbar />
+      <h1 className="fw-bolder"></h1>
       <Footer />
     </div>
   );
