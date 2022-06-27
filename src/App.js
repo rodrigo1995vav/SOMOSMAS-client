@@ -7,7 +7,7 @@ function App() {
     <div>
       <h1 className="fw-bolder">hola</h1>
         <AppRouter/>
-      <Footer />
+    {/*   <Footer /> */}
     </div>
   );
 }
