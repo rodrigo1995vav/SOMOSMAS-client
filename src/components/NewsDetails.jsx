@@ -27,10 +27,10 @@ const NewsDetails = ({imgHeight = '40rem'}) => {
 
 
  useEffect(()=>{
-   // fetch(`/novedades/${id}`)
-   fetch('https://62b537e4530b26da4ccae284.mockapi.io/api/somosmas/news/2')
+  // Future change: Use fetch service to fetch with token.
+   fetch(`/novedades/${id}`)
     .then(res=>res.json())
-    .then(res=>{setError(true);setLoading(false)})
+    .then(res=>{setError(false);setLoading(false)})
     .catch(err=>{setError(true);setLoading(false)})
  },[id])
 
