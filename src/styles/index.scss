@@ -1,11 +1,14 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 @import './base/base';
+@import './components/signUp.scss';
 @import './base/override';
 @import './base/mixins';
 
 //pages
 @import '../pages/login/loginPage.module';
+@import '../pages/backOffice/backOffice.module';
+
 //components
 @import '../components/login/loginForm.module';
 @import './components/carousel';
@@ -13,3 +16,5 @@
 @import './componentes/textInput';
 
 @import './pages/contact/contactPage';
+
+@import './components/AlertStyles.scss'
