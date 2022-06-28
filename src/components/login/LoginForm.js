@@ -1,5 +1,8 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React, { useState} from 'react'
+import Alert from '../../services/AlertService';
+import { login } from '../../services/user/userServices';
+
 
 export const LoginForm = () => {
 
@@ -33,10 +36,26 @@ export const LoginForm = () => {
 
                 return errors;
             }}
-            onSubmit={(values,{resetForm})=>{
+            onSubmit={async (values,{resetForm})=>{
 
-                console.log(values)
-                // resetForm()
+                
+                console.log('valores del login',values)
+                const log=await login(values)
+                switch (log.err){
+                    case 'Incorrect password':
+                        Alert.error({title:'Ups...', message:'Email or password incorrect'})
+                        break;
+                    case 'User not found':
+                        Alert.error({title:'Sorry...', message:'User not found'})
+                        break;
+                    default:
+                        break;
+                }
+
+                if (!log.err){
+                    resetForm()
+                    Alert.success({title:'Hurra!!!',message:'Login success'})
+                }
             }}
         >{({errors}) => (
             <Form className='form' >
