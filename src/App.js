@@ -1,10 +1,6 @@
 import React from "react";
 import Footer from "./components/Footer";
 
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 function App() {
   return (
     <div>
