@@ -14,6 +14,21 @@ async function login (credentials) {
     return await res.json()
   }
 
+  async function create (data){
+    const URL = `${URL_BASE}/auth/register`
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      mode: 'cors'
+    }
+    const res = await fetch(URL, options)
+    return await res.json()
+  }
+
   export {
-    login
+    login,
+    create
   }
