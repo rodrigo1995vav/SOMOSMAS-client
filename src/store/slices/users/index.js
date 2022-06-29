@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 export const userSlice = createSlice({
-  name: "login", //con este name me voy a referir en los estados
+  name: "userLogged", //con este name me voy a referir en los estados
   initialState: {
     user: null, //mi usuario al no estar logeado esta en null, luego del pedido a a api lo voy a tener con data
   },
