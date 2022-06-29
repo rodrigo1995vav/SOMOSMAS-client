@@ -1,13 +1,13 @@
-export default function Menu({ section }) {
-  return (
-    <li className="nav-item">
-      <a
-        href=""
-        className="nav-link text-dark mx-3"
-        style={{ transform: "scale(1.2)" }}
-      >
-        {section}
-      </a>
-    </li>
-  );
+import { Link } from 'react-router-dom'
+export default function Menu({ text, link }) {
+    return (
+        <li className="nav-item">
+            <Link to={link}
+                className="nav-link text-dark mx-3"
+                style={{ transform: "scale(1.2)" }}
+            >
+                {text}
+            </Link>
+        </li>
+    );
 }

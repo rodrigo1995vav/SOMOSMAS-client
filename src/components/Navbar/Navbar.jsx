@@ -6,12 +6,30 @@ export default function Navbar() {
     const menu = {
         route: "",
         menu: [
-            "Inicio",
-            "Nosotros",
-            "Novedades",
-            "Testimonios",
-            "Contacto",
-            "Contribuye",
+            {
+                text: "Inicio",
+                link: '/'
+            },
+            {
+                text: "Nosotros",
+                link: '/us'
+            },
+            {
+                text: "Novedades",
+                link: '/news'
+            },
+            {
+                text: "Testimonios",
+                link: '/testimonials'
+            },
+            {
+                text: "Contacto",
+                link: 'contact'
+            },
+            {
+                text: "Contribuye",
+                link: '/contribute'
+            }
         ]
     };
     return (
