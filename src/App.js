@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "./components/Footer";
+import Navbar from "./components/Navbar/Navbar";
 import AppRouter from "./router/AppRouter";
 //redux
 import { Provider } from "react-redux";
