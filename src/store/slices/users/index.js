@@ -10,7 +10,12 @@ export const userSlice = createSlice({
     setUserLogged: (state, action) => {
       //en el action me viene la data de la api y lo igualo al estado asi actualizo ese estado con al nueva data
       state.user = action.payload;
+    }, 
+    deleteUserLogged: (state) =>{
+
+      state = {...state, user: null }
     },
+    
   }, //podemos tener muchos reducers
 });
 
@@ -36,3 +41,11 @@ export const login = ({ email, password }) => {
       .catch((err) => console.log(err));
   };
 };
+
+export const { deleteUserLogged } = userSlice.actions;
+
+export const logout = () =>{
+  //token name may change in future versions, unsafe name.
+    localStorage.removeItem("token")
+    return (dispatch) => dispatch(deleteUserLogged())
+}
