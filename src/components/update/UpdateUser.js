@@ -38,7 +38,7 @@ export default function UpdateUser() {
                 }}
             >{({errors}) => (
                 <Form className='form' >
-                    <h1>Editar Perfil</h1>
+                    <h1>Editar mi perfil</h1>
 
                     <div className='separator'/>
 
@@ -47,9 +47,34 @@ export default function UpdateUser() {
                         <Field
                             placeholder="tucorreo@mail.com"
                             className='form-control'
+                            name='firstName'
+                            type="text"
+                        />
+                        <label htmlFor="firstName">Nombre: </label>
+                        <ErrorMessage name='firstName' component={ ()=>
+                            <div className='error'>{errors.firstName}</div>
+                        } className='error-message' />
+                    </div>
+                    <div className='form-floating mb-3'>                
+                        <Field
+                            placeholder="tucorreo@mail.com"
+                            className='form-control'
+                            name='lasttName'
+                            type="text"
+                        />
+                        <label htmlFor="lasttName">Apellido</label>
+                        <ErrorMessage name='lasttName' component={ ()=>
+                            <div className='error'>{errors.lasttName}</div>
+                        } className='error-message' />
+                    </div>
+                    <div className='form-floating mb-3'>                
+                        <Field
+                            placeholder="tucorreo@mail.com"
+                            className='form-control'
                             name='email'
                             type="email"
                         />
+                        <label htmlFor="email">Correo Electrónico</label>
                         <ErrorMessage name='email' component={ ()=>
                             <div className='error'>{errors.email}</div>
                         } className='error-message' />
@@ -67,7 +92,7 @@ export default function UpdateUser() {
                             <div className='error'>{errors.password}</div>
                         } className='error' />
                     </div>
-                    <button type="submit" className='buttonColor'>Iniciar sesión</button>
+                    <button type="submit" className='buttonColor'>Moficar información</button>
                 </Form>
             )}
             </Formik>
