@@ -1,18 +1,21 @@
 import React from "react";
-import { Signup } from "./components/SignUp/SignUp";
-// import { LoginPage } from "./pages/login/LoginPage";
-// import Footer from "./components/Footer";
-// import AppRouter from "./router/AppRouter";
+import Footer from "./components/Footer";
+import AppRouter from "./router/AppRouter";
+
+//redux
+import { Provider } from "react-redux";
+import store from "./store";
 
 function App() {
-  return (
-    <div>
-      <h1 className="fw-bolder">hola</h1>
-      <Signup />
-        {/* <AppRouter/>
-      <Footer /> */}
-    </div>
-  );
+    return (
+        <Provider store={store}>
+            <div>
+                <AppRouter />
+
+                <Footer />
+            </div>
+        </Provider>
+    );
 }
 
 export default App;

@@ -41,6 +41,7 @@ export const LoginForm = () => {
                 
                 console.log('valores del login',values)
                 const log=await login(values)
+                console.log('log',log)
                 switch (log.err){
                     case 'Incorrect password':
                         Alert.error({title:'Ups...', message:'Email or password incorrect'})
@@ -49,6 +50,7 @@ export const LoginForm = () => {
                         Alert.error({title:'Sorry...', message:'User not found'})
                         break;
                     default:
+                        Alert.error({title:'Sorry...', message:'Something is wrong'})
                         break;
                 }
 

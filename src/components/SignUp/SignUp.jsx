@@ -35,15 +35,19 @@ export const Signup = () => {
         confirmPassword: "",
       }}
       validationSchema={validate}
-      onSubmit={(values) => {
+      onSubmit={async(values) => {
         try{
-          const user=create(values)
+          const user=await create(values)
+         
+          console.log('user',user)
           if (user.status===200) {
             Alert.success({title:'Welcome!!!',message:'User created successfully'})
             setTimeout(() =>{
               return <Navigate to='/login' />
             }, 2000)
 
+          } else if(user.error){
+            Alert.error({title:'Sorry...', message:'something went wrong, try again'})
           } else{
             Alert.error({title:'Sorry...', message:'Wrong data try again'})
             setTimeout(() =>{
