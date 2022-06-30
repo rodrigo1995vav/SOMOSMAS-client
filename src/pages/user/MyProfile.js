@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const MyProfile = () => {
 
-    const [user, setUser] = useState(null);
+    // TODO: Once we have the endpoint ready to bring the user we can execute this request to list it here
+    // const [user, setUser] = useState(null);
 
-    useEffect(() => {
+    /*useEffect(() => {
         const getUser = () => {
-            fetch("/api/user/me", {
+            fetch("/api/user", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -18,10 +20,10 @@ const MyProfile = () => {
                 .then(res => setUser(res));
         }
         getUser();
-    }, []);
+    }, []);*/
 
     const handleDelete = (id) => {
-        fetch('/api/user/me/delete/' + id, {
+        fetch('/api/user/delete/' + id, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -30,30 +32,39 @@ const MyProfile = () => {
         }).then(res => res.text());
     }
 
+    //Testing variable
+    const user = {
+        id: 1,
+        firstName: "Juan",
+        lastName: "Perez",
+        image: 'https://www.tooltyp.com/wp-content/uploads/2014/10/1900x920-8-beneficios-de-usar-imagenes-en-nuestros-sitios-web.jpg',
+        email: "juanpere@gmail.com",
+        phone: "+54123456789",
+        address: "Calle falsa 123",
+        password: "123456"
+    }
+
     return (
-        <div className="container">
-            <h1 className="title">My Profile</h1>
-            <div className="row">
-                <div className="col-md-6">
-                    <img src={user.image} alt="avatar" className="img-fluid img-thumbnail" />
+        <div className="container mt-5" style={{ fontSize: 2 + 'rem', height: 600 }}>
+            <h1 className="title text-center">Panel de administración</h1>
+            <div className="row mt-5">
+                <div className="col-12 col-md-4 mt-5">
+                    <img src={user.image} alt="avatar" className="img-fluid image" style={{ width: 400, borderRadius: 20 }} />
                 </div>
-                <div className="col-md-6">
-                    <div className="card">
-                        <div className="card-body">
-                            <h5 className="card-title">{user.firstName} {user.lastName}</h5>
-                            <p className="card-text">{user.email}</p>
-                            <p className="card-text">{user.phone}</p>
-                            <p className="card-text">{user.address}</p>
-                            <div className="mb-2">
-                                <button className="btn btn-primary">Editar</button>
-                            </div>
-                            <div className="mb-2">
-                                <button onClick={() => handleDelete(user.id)} className="btn btn-danger">Eliminar</button>
-                            </div>
-                        </div>
-                        <div className="card-footer">
-                            <small className="text-muted">Last updated: {user.updatedAd}</small>
-                        </div>
+                <div className="col-12 col-md-8 mt-5">
+                    <h2 className="subtitle mb-5">Bienvenido Usuario:</h2>
+                    <p className="card-text mb-4">Nombre:  {user.firstName}  {user.lastName}</p>
+                    <p className="card-text mb-4">Email:  {user.email}</p>
+                    <p className="card-text mb-4">Teléfono:  {user.phone}</p>
+                    <p className="card-text mb-4">Dirección:  {user.address}</p>
+                    <div className="mb-2">
+                        <Link to={`edit/${user.id}`} className="btn btn-primary mb-2 fs-3" style={{ width: 110, borderRadius: 30}}>Editar</Link>
+                    </div>
+                    <div className="mb-4">
+                        <button onClick={() => handleDelete(user.id)} className="btn btn-dark fs-3" style={{width: 110, borderRadius: 30}}>Eliminar</button>
+                    </div>
+                    <div>
+                        <small className="text-muted">Última actualización del perfil: Hace 11 minutos</small>
                     </div>
                 </div>
             </div>
