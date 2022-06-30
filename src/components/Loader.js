@@ -12,14 +12,14 @@ export const Loader = ({
   height=80, 
   width=80, 
   className='',
-  style=''
+  style={}
 }) => {
   return (
     <div className={ className } style={ style }>
       <ThreeDots 
         color="#DB5752" 
         height={ height } 
-        width={width} 
+        width={ width } 
       />
     </div>
   )
