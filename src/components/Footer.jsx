@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from "./LOGO-SOMOS MAS.png";
+// import logo from "./LOGO-SOMOS MAS.png";
 
 
 function Footer() {
@@ -15,7 +15,7 @@ function Footer() {
                  <img
                       className="img-fluid"
                       style={{ width: 200, height: 200, marginTop: -100 }}  
-                      src={logo}
+                      src={'logo'}
                     /> 
                      
                   </div>
