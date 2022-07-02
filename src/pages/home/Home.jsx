@@ -1,7 +1,8 @@
 import Carousel from '../../components/Carousel'
 import { useEffect, useState } from 'react'
+import { Loader } from '../../components/Loader'
 import '../../styles/index.scss'
-import './home.css'
+
 
 function Home() {
 
@@ -36,7 +37,7 @@ function Home() {
                 </div>
             </div>
             <div className="slider">
-                {arrayImg && <Carousel imgSlides={arrayImg} />}
+                {arrayImg ? <Loader className='d-flex justify-content-center align-self-center'></Loader> :<Carousel imgSlides={arrayImg} />}
             </div>
             <h1 className='lastNewsh1'>Últimas Novedades</h1>
             <div className="news">

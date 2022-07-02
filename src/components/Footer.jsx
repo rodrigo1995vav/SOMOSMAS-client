@@ -4,7 +4,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div style={{ backgroundColor: "#c0c0c0" }} className="fixed-bottom">
+    <div style={{ backgroundColor: "#c0c0c0" }} className="mt-5">
       <div className="container-fluid">
         <div className="row">
           <div className="col-xl-12 col-md-8 ml-auto mr-auto">
@@ -93,7 +93,7 @@ function Footer() {
                 </div>
               </div>
 
-              <div className="container-fluid" style={{ height: 300 }}>
+              <div className="container-fluid" >
                 <div className="row pb-5">
                   <div className="col-lg-12">
                     <h4 className="text-center text-black">

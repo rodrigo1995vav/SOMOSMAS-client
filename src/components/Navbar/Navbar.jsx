@@ -53,7 +53,7 @@ export default function Navbar() {
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                     >
-                        <span className="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon "></span>
                     </button>
                     <div
                         className="collapse navbar-collapse  justify-content-end"
@@ -61,8 +61,8 @@ export default function Navbar() {
                     >
                         <div className="">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
-                                {menu.length > 0 &&
-                                    menu.map((section) => <Menu section={section} />)}
+                                {menu.menu.length > 0 &&
+                                    menu.menu.map((section) => <Menu {...section} />)}
                             </ul>
                         </div>
                         <div className="justify-content-end">

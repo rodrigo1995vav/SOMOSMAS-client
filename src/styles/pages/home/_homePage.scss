@@ -11,30 +11,30 @@
     flex-direction: column;
 }
 
-img {
+.homePage {img {
     height: 500px;
     width: 563px;
     border-radius: 15px;
     left: 735px;
     top: 120px;
-}
+}}
 
-.welcomeMessage h1 {
+.welcomeMessage {h1 {
     font-style: normal;
     font-weight: 600;
     font-size: 48px;
     line-height: 72px;
-}
+}}
 
-.welcomeMessage p {
+.welcomeMessage {p {
     font-family: 'Mulish';
     font-style: normal;
     font-weight: 300;
     font-size: 24px;
     line-height: 30px;
-}
+}}
 
-.welcomeMessage .btn {
+.welcomeMessage {.btn {
     width: 242px;
     height: 70px;
     background: #FF0000;
@@ -42,7 +42,7 @@ img {
     border-radius: 20px;
     font-size: 24px;
     color: #fff;
-}
+}}
 
 .news {
     display: flex;
@@ -77,16 +77,16 @@ img {
     padding: 10px;
 }
 
-.singleFeature img {
+.singleFeature { 
+    img {
     height: 201px;
     width: 196px;
     left: 158px;
     top: 1446px;
     border-radius: 20px;
-
 }
-
-.singleFeature button {
+}
+.singleFeature { button {
     height: 38px;
     width: 196px;
     left: 378px;
@@ -96,12 +96,12 @@ img {
     background: #0038FF;
     color: #fff;
 
-}
+}}
 
-.singleFeature p {
+.singleFeature {p {
     font-family: 'Mulish';
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
     line-height: 30px;
-}
+}}
