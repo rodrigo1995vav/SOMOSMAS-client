@@ -1,8 +1,13 @@
 import React from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import logo from "../../img/Navbar/LOGO-SOMOS-MAS.png";
+import { selectUser } from "../../store/slices/users";
 import Menu from "./Menu";
 export default function Navbar() {
+
+    useSelector(selectUser);
+    const userLogged = useSelector(selectUser);
     const menu = {
         route: "",
         menu: [
@@ -53,7 +58,7 @@ export default function Navbar() {
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                     >
-                        <span className="navbar-toggler-icon "></span>
+                        <span className="navbar-toggler-icon"></span>
                     </button>
                     <div
                         className="collapse navbar-collapse  justify-content-end"
@@ -80,6 +85,16 @@ export default function Navbar() {
                             >
                                 Registrate
                             </button>
+                            {
+                                userLogged &&
+                            <button
+                                className="btn btn-danger mx-3  rounded-pill"
+                                type="submit"
+                                style={{ transform: "scale(1.2)" }}
+                            >
+                                Registrate
+                            </button>
+                            }
                         </div>
                     </div>
                 </div>

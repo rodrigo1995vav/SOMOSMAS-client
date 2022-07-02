@@ -23,36 +23,48 @@ function Home() {
     }, []);
 
     return (
-        <div className='homePage'>
-            <div className="welcomeContainer">
-                <div className="welcomeMessage">
-                    <h1>Hola! Bienvenidx</h1>
-                    <p>
-                        {welcomeMessage}
-                    </p>
-                    <button className="btn">Contactanos</button>
-                </div>
-                <div className="welcomeImage">
-                    <img src={image} alt="" />
-                </div>
-            </div>
-            <div className="slider">
-                {arrayImg ? <Loader className='d-flex justify-content-center align-self-center'></Loader> :<Carousel imgSlides={arrayImg} />}
-            </div>
-            <h1 className='lastNewsh1'>Últimas Novedades</h1>
-            <div className="news">
-                {news.map(singleNews => {
-                    return (
-                        <div className="singleFeature">
-                            <img src={singleNews.image} alt="" />
-                            <div className="content">
-                                <p>{singleNews.content}</p>
-                                <button className="btn btn.primary">Ver Novedad</button>
-                            </div>
+        <div className="container">
+            <div className='homePage'>
+                <div className='row'>
 
+                    <div className='col-sm'>
+                        <div className="welcomeMessage">
+                            <h1>Hola! Bienvenidx</h1>
+                            <p>
+                                {welcomeMessage}
+                            </p>
+                            <button className="btn">Contactanos</button>
                         </div>
-                    )
-                })}
+                    </div>
+                    <div className='col-sm'>
+                        <div className="welcomeImage">
+                            <img src={image} alt="" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className="slider">
+                    {arrayImg ? <Loader className='d-flex justify-content-center align-self-center'></Loader> : <Carousel imgSlides={arrayImg} />}
+                </div>
+                <h1 className='lastNewsh1'>Últimas Novedades</h1>
+                <div className='row'>
+                    <div>
+                            {news.map(singleNews => {
+                                return (
+                                    <div className='col-12 col-md-3'>
+                                    <div className="singleFeature">
+                                        <img src={singleNews.image} alt="" />
+                                        <div className="content">
+                                            <p>{singleNews.content}</p>
+                                            <button className="btn btn.primary">Ver Novedad</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                )
+                            })}
+                    </div>
+                </div>
             </div>
         </div>
     )

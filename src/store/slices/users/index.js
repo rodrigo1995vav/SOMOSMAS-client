@@ -14,6 +14,8 @@ export const userSlice = createSlice({
   }, //podemos tener muchos reducers
 });
 
+export const selectUser = (state) => state.userLogged.user;
+
 export default userSlice.reducer; //exporto del userSlice el reducer , para poder usarlo en la store, porque el reducer de la store esta formado
 // por varios reducer que viene de diferentes slices  que son parte de nuestro estado
 
