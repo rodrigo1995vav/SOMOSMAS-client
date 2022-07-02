@@ -30,7 +30,6 @@ const AppRouter = () => {
                             <BackofficeRoutes />
                        </RequireAuthRole>
                     } />
-
                 </Routes>
             </div>
         </Router>
