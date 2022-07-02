@@ -10,7 +10,10 @@ function Home() {
     const hcWelcomeMessage = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est ipsum placeat natus! A quam porro possimus. Optio harum cupiditate rem dolore itaque. Tempora quae dignissimos excepturi sunt nostrum sint accusantium."
     const hcFeatures = [{ title: "feature 0", content: "feature 0 body", image: 'Manos 10.jpg' }, { title: "feature 1", content: "feature 1 body", image: 'Manos 10.jpg' }, { title: "feature 2", content: "feature 2 body", image: 'Manos 10.jpg' }, { title: "feature 3", content: "feature 3 body", image: 'Manos 10.jpg' }, { title: "feature 4", content: "feature 4 body", image: 'Manos 10.jpg' }]
     const hcImage = 'Manos 10.jpg'
-    const arrayImg = [hcImage]
+    const arrayImg = [
+        { imageUrl: 'Manos 10.jpg', text: 'text-1' },
+        { imageUrl: 'Manos 10.jpg', text: 'text-2' }
+    ];
 
     const [welcomeMessage, setWelcomeMessage] = useState("");
     const [news, setFeatures] = useState([])
@@ -25,9 +28,9 @@ function Home() {
     return (
         <div className="container">
             <div className='homePage'>
-                <div className='row'>
+                <div className='d-flex flex-column flex-lg-row'>
 
-                    <div className='col-sm'>
+                    <div>
                         <div className="welcomeMessage">
                             <h1>Hola! Bienvenidx</h1>
                             <p>
@@ -36,7 +39,7 @@ function Home() {
                             <button className="btn">Contactanos</button>
                         </div>
                     </div>
-                    <div className='col-sm'>
+                    <div>
                         <div className="welcomeImage">
                             <img src={image} alt="" />
                         </div>
@@ -44,22 +47,21 @@ function Home() {
 
                 </div>
 
-                <div className="slider">
-                    {arrayImg ? <Loader className='d-flex justify-content-center align-self-center'></Loader> : <Carousel imgSlides={arrayImg} />}
+                <div className="slider mt-5">
+                    {!arrayImg ? <Loader className='d-flex justify-content-center align-self-center'></Loader> : <Carousel imgSlides={arrayImg} />}
                 </div>
                 <h1 className='lastNewsh1'>Últimas Novedades</h1>
-                <div className='row'>
-                    <div>
+                <div>
+                    <div className='d-flex flex-column flex-lg-row'>
                             {news.map(singleNews => {
                                 return (
-                                    <div className='col-12 col-md-3'>
+                                    
                                     <div className="singleFeature">
                                         <img src={singleNews.image} alt="" />
                                         <div className="content">
                                             <p>{singleNews.content}</p>
                                             <button className="btn btn.primary">Ver Novedad</button>
                                         </div>
-                                    </div>
                                     </div>
                                 )
                             })}
