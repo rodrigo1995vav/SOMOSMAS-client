@@ -4,6 +4,12 @@ import PublicRoutes from "../routes/PublicRoutes";
 import PrivateRoutes from "../routes/PrivateRoutes";
 import DashboardRoutes from "../routes/DashboardRoutes";
 import BackofficeRoutes from "../routes/BackofficeRoutes";
+import RequireAuthRole from "../routes/RequireAuthRole";
+
+const ROLES = {
+    'User': 2,
+    'Admin': 1,
+  };
 
 const AppRouter = () => {
 
@@ -19,11 +25,10 @@ const AppRouter = () => {
                             <DashboardRoutes />
                         </PrivateRoutes>
                     } />
-                    <Route path="/backoffice/*" element={
-                      /*   <PrivateRoutes> */ //no esta envuelt oya que esta private router solo dice si es usuario, no si es adminitrador
-                      // se deberia crear un componente que verifica eso y envuelva a el componente BackofficeRoutes
+                    <Route path="/backoffice/*" element={ 
+                       <RequireAuthRole allowedRoles={[ROLES.Admin]}>
                             <BackofficeRoutes />
-                       /*  </PrivateRoutes> */
+                       </RequireAuthRole>
                     } />
 
                 </Routes>
