@@ -16,7 +16,7 @@ const TestimonialsList = ({testimonials}) =>{
                 </div>
                 <div className="w-100 mh-100 overflow-auto "  >
                 <ul className="list-group  overflow-hidden text-wrap ">            
-                {testimonials.map((testimonial) => (<TestimonialsListItem key={testimonial.id} testimonial={testimonial}></TestimonialsListItem>))}
+                {testimonials.map((testimonial) => (<TestimonialsListItem  testimonial={testimonial}></TestimonialsListItem>))}
                 </ul>
                 </div>
                 
