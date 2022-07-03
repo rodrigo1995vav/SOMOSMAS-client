@@ -1,5 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import NewsAdmin from "../pages/Backoffice/News/NewsAdmin"
+import Testimonials from "../pages/testimonials/Testimonials"
+
 
 const BackofficeRoutes = () => {
 
@@ -7,6 +9,7 @@ const BackofficeRoutes = () => {
         <div>
             <Routes>
                 <Route exact path="/news" element={<NewsAdmin />}/>
+                <Route exact path="/testimonials" element={<Testimonials />}/>
             </Routes>
         </div>
     )
