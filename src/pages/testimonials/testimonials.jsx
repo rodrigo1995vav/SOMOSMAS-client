@@ -17,7 +17,7 @@ const arrayTestimonials = [{name:'somepeopledwdawdwdwdwd dawdawdwdw'},
 ]
 
 
-//This component always takes the full width of it's container
+//This component always takes the entire width of its container
 
 const Testimonials = () => {
 
