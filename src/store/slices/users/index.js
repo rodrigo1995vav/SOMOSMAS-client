@@ -13,7 +13,7 @@ export const userSlice = createSlice({
     }, 
     deleteUserLogged: (state) =>{
 
-      state.user = {...state, user: null}
+      state.user = null
     },
     
   }, //podemos tener muchos reducers
