@@ -13,7 +13,7 @@ export default function TableActivities() {
         <div>
 
             <table class="table table-dark">
-                <thead>
+                <thead >
                     <tr>
                         <th scope="col" className="text-center h2">Actividad</th>
                         <th scope="col" className="text-center h2">Acciones</th>
@@ -26,7 +26,7 @@ export default function TableActivities() {
                             (<RowsActivities key={activity.id} name={activity.name} />))
                         }
                     </tbody>
-                ) : <h2 className="text-dark text-center pt-5">No hay actividades</h2>}
+                ) : <th colSpan={2}> <h2 className="text-dark text-center pt-5 " >No hay actividades</h2> </th>}
             </table>
         </div>
     );
