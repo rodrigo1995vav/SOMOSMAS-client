@@ -26,7 +26,7 @@ function Home() {
     }, []);
 
     return (
-        <div className="container">
+        <div className="container mt-5">
             <div className='homePage'>
                 <div className='d-flex flex-column flex-lg-row'>
 
