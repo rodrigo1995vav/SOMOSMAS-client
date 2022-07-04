@@ -9,14 +9,6 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 function App() {
-<<<<<<< HEAD
-  return (
-    <div>
-        <AppRouter/>
-        <Footer />
-    </div>
-  );
-=======
     return (
         <Provider store={store}>
             <div>
@@ -26,7 +18,6 @@ function App() {
             </div>
         </Provider>
     );
->>>>>>> e05615ee741c47b64200fd7027de3a4c2aca2562
 }
 
 export default App;
