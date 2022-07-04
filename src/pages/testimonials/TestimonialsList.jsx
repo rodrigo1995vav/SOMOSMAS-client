@@ -7,7 +7,7 @@ const TestimonialsList = ({testimonials}) =>{
     testimonials.length===0 ? isEmpty = true : isEmpty = false
 
     return ( isEmpty ? 
-            <h1>No hay testimonios</h1> 
+            <h1 className="text-center">No hay testimonios</h1> 
             :     
             <div className="m-100  h-100"   >
                 <div className=" d-flex  p-4 pb-3 justify-content-between align-items-center  h-auto border-bottom">
