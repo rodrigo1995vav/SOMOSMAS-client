@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"
-import { getPublic } from "../../services/apiServices";
+import { getPrivate } from "../../services/apiServices";
 import ErrorSign from "../ErrorSign";
 import { Loader } from '../Loader';
 import NewsDetailCard from "./NewsDetailCard";
@@ -29,12 +29,11 @@ const NewsDetails = ({imgHeight = '40rem'}) => {
 
 
  useEffect(()=>{
-  // Future change: Use fetch service to fetch with token.
-   getPublic(`/novedades/${id}`)
-      .then(res=>res.json())
-      .then(res=> setData(res))
-      .catch(err => setError(err))
-      .finally(setLoading(false))
+   getPrivate(`/news/${id}`)
+   .then(res=>res.json())
+   .then(res=>setData(res))
+   .catch(err=>setError(err))
+   .finally(setLoading(false))
       
  },[id])
 
