@@ -28,7 +28,7 @@ const NewsDetails = ({imgHeight = '40rem'}) => {
 
 
  useEffect(()=>{
-   getPrivate(`/novedades/${id}`)
+   getPrivate(`/news/${id}`)
     .then(res=>res.json())
     .then(res=>setData(res))
     .catch(err=>setError(err))
