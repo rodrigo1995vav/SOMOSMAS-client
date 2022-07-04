@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"
+import { getPrivate } from "../services/apiServices";
 import { Loader } from './Loader';
 
 
@@ -27,11 +28,11 @@ const NewsDetails = ({imgHeight = '40rem'}) => {
 
 
  useEffect(()=>{
-  // Future change: Use fetch service to fetch with token.
-   fetch(`/novedades/${id}`)
+   getPrivate(`/novedades/${id}`)
     .then(res=>res.json())
-    .then(res=>{setError(false);setLoading(false)})
-    .catch(err=>{setError(true);setLoading(false)})
+    .then(res=>setData(res))
+    .catch(err=>setError(err))
+    .finally(setLoading(false))
  },[id])
 
     return (
