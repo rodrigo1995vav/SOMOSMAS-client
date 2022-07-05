@@ -37,12 +37,18 @@ const NewsDetails = ({imgHeight = '40rem'}) => {
       
  },[id])
 
-    return (
+
+ if(loading){
+       return   <main className='container-fluid h-100 p-0 d-flex justify-content-center align-items-center bg-white '>
+                 <Loader></Loader> 
+                </main>
+ }
+
+
+  return (
     <main className='container-fluid h-100 p-0 d-flex justify-content-center align-items-center bg-white '>
 
-        { loading ? <Loader></Loader> 
-
-          : data ?  <NewsDetailCard data={data} imgStyles = {imgStyles}  />
+        {  data ?  <NewsDetailCard data={data} imgStyles = {imgStyles}  />
 
           : error && <ErrorSign error={error} />}
     </main>

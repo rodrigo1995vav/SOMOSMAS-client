@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useEffect } from "react"
-
+import { getPrivate } from "../../services/apiServices"
 import { Loader } from '../../components/Loader'
 import ErrorSign from "../../components/ErrorSign"
 import TestimonialsList from "./TestimonialsList"
@@ -12,8 +12,6 @@ const arrayTestimonials = [{name:'somepeopledwdawdwdwdwd dawdawdwdw'},
 {name:'some people'},{name:'some people'},{name:'some people'},{name:'some people'},
 {name:'some people'},{name:'some people'},{name:'some people'},{name:'some people'},
 {name:'some people'},{name:'some people'},{name:'some people'},{name:'some people'},
-
-
 ]
 
 
@@ -27,17 +25,26 @@ const Testimonials = () => {
 
 
     useEffect(()=>{
-     /*   getPrivate("/testimonials")
+      /* getPrivate("/testimonials")
             .then(res=>res.json())
             .then(res=>setData(res))
             .catch(err => setError(err))
             .finally(setLoading(false)) */
      },[])
 
+
+
+
+    if(loading){
+        return  <main className="w-100 h-auto p-0  justify-content-center align-items-center bg-white">
+                  <Loader></Loader>
+                </main>
+    }
+
+
     return(
     <main className="w-100 h-auto p-0  justify-content-center align-items-center bg-white">
-        { loading ? <Loader></Loader>
-          : data  ? <TestimonialsList testimonials={data} />
+        {  data  ? <TestimonialsList testimonials={data} />
           : error && <ErrorSign error={{message:'Show error content'}} />}
     </main>)
 }
