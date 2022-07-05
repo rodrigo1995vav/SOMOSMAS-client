@@ -1,7 +1,7 @@
 import React from 'react'
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 
-export default function UpdateUser() {
+export default function UpdateUser({user}) {
 
     return (
         <>
@@ -38,8 +38,11 @@ export default function UpdateUser() {
                 }}
             >{({errors}) => (
                 <Form className='form' >
-                    <h1>Editar mi perfil</h1>
-
+                    {
+                        user==='admin'
+                        ? <h1>Editar perfil de usuario</h1>
+                        : <h1>Editar mi perfil</h1>
+                    }
                     <div className='separator'/>
 
 
@@ -92,6 +95,23 @@ export default function UpdateUser() {
                             <div className='error'>{errors.password}</div>
                         } className='error' />
                     </div>
+                    {
+                        user==='admin'
+                        && (
+                             <div className='form-floating mb-3'>
+                                <Field
+                                    id="rol"
+                                    name='rol'
+                                    className='form-control floatingPassword'
+                                    // type={isShowPassword ? 'text': "password"}
+                                />
+                                <label htmlFor="rol">Rol</label>
+                                <ErrorMessage name="rol" component={ ()=>
+                                    <div className='error'>{errors.rol}</div>
+                                } className='error' />
+                            </div>
+                        )
+                    }
                     <button type="submit" className='buttonColor'>Moficar información</button>
                 </Form>
             )}

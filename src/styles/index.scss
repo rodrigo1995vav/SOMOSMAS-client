@@ -7,16 +7,17 @@
 
 
 //pages
-@import '../pages/login/loginPage.module';
+//@import '../pages/login/loginPage.module';
 @import '../pages/backOffice/backOffice.module';
 
 //components
-@import '../components/login/loginForm.module';
+//@import '../components/login/loginForm.module';
 @import './components/carousel';
 @import './componentes/textArea';
 @import './componentes/textInput';
 
 @import './pages/contact/contactPage';
+@import './pages/activityDetail/activityDetailPage';
 
 @import './components/AlertStyles.scss'
 
