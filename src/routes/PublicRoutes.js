@@ -10,14 +10,14 @@ import { NewsDetail } from '../pages/news/NewsDetail';
 const PublicRoutes = () => {
     return (
         <Routes>
-            <Route exact match path='' element={<Home/>} />
-            <Route path='news' element={<News/>} />
-            <Route path='news/:id' element={<NewsDetail/>} />
-            <Route path='testimonials' element={<News/>} />
-          {/*   <Route path='contact' element={<ContactPage/>} /> */}
-          {/*    <Route path='login' element={<LoginPage/>} /> */}
-           
-            <Route path='*' element={<NotFound/>} />
+            <Route exact match path='' element={<Home />} />
+            <Route path='news' element={<News />} />
+            <Route path='news/:id' element={<NewsDetail />} />
+            <Route path='testimonials' element={<News />} />
+            {/*   <Route path='contact' element={<ContactPage/>} /> */}
+            {/*    <Route path='login' element={<LoginPage/>} /> */}
+
+            <Route path='*' element={<NotFound />} />
         </Routes>
     );
 }

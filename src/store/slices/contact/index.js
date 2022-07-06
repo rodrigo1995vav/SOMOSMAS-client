@@ -19,10 +19,10 @@ export default contactSlice.reducer
 export const { sendInformationForContact } = contactSlice.actions
 
 export const contactUs = ({ email, fullName, message }) => {
-    return (dispatch) => {
-        axios.post('http://localhost:3001/contacts', {
+      return (dispatch) => {
+        axios.post(`${process.env.REACT_APP_PUBLIC_URL_API}/contacts`, {
             email,
-            fullName,
+            name :fullName,
             message
         }).then(({ data }) => {
             dispatch(sendInformationForContact(data))
