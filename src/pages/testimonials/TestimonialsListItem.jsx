@@ -13,7 +13,7 @@ const TestimonialsListItem = ({testimonial}) => {
     }
 
     return(
-            <li key={testimonial.id} className=" list-group-item list-group-item-action p-4  d-flex justify-content-between align-items-center">
+            <li  className=" list-group-item list-group-item-action p-4  d-flex justify-content-between align-items-center">
                     <div className="ms-2 me-auto">
                         <div className="fw-bold align-content-center fs-4">
                             {testimonial.name}

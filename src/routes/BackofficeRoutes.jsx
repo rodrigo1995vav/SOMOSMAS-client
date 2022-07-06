@@ -9,7 +9,7 @@ const BackofficeRoutes = () => {
         <div>
             <Routes>
                 <Route exact path="/news" element={<NewsAdmin />}/>
-                <Route exact path="/testimonials" element={<Testimonials />}/>
+                <Route exact path="/testimonios/:page" element={<Testimonials />}/>
             </Routes>
         </div>
     )
