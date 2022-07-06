@@ -7,6 +7,7 @@
 
 
 //pages
+<<<<<<< HEAD
 // @import '../pages/login/loginPage.module';
 // @import '../pages/backOffice/backOffice.module';
 
@@ -17,6 +18,19 @@
 // @import './componentes/textInput';
 
 // @import './pages/contact/contactPage';
+=======
+//@import '../pages/login/loginPage.module';
+@import '../pages/backOffice/backOffice.module';
+
+//components
+//@import '../components/login/loginForm.module';
+@import './components/carousel';
+@import './componentes/textArea';
+@import './componentes/textInput';
+
+@import './pages/contact/contactPage';
+@import './pages/activityDetail/activityDetailPage';
+>>>>>>> 28d592f8ea0da8b368434afe29cd5702825dffb1
 
 // @import './components/AlertStyles.scss'
 
