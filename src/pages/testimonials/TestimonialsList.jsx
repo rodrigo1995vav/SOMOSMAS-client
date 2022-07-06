@@ -25,8 +25,9 @@ const TestimonialsList = ({testimonials ,pages}) =>{
                 {testimonials.map((testimonial) => (<TestimonialsListItem key={testimonial.id} testimonial={testimonial}></TestimonialsListItem>))}
                 </ul>
                 </div>
-                   
-                    <Paginator currentPage={page} pageCount={pages} baseUrl ={"/backoffice/testimonios/"} ></Paginator>
+                   <div className="mw-100">
+                    <Paginator currentPage={page} pageCount={pages} baseUrl ={"/backoffice/testimonios/"} justify={'center'} ></Paginator>
+                    </div>
                    
                
             </div>

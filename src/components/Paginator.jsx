@@ -1,6 +1,6 @@
 
 
-const Paginator = ({pageCount , baseUrl ,currentPage}) => {
+const Paginator = ({pageCount , baseUrl ,currentPage, justify = 'center'}) => {
     
 
 
@@ -31,9 +31,9 @@ const Paginator = ({pageCount , baseUrl ,currentPage}) => {
 
 
 
-    return     pageCount > 0 &&  <div className=" w-100">
-                                        <nav  aria-label="Page navigation example">
-                                        <ul className="pagination pagination-lg">
+    return     pageCount > 0 &&  <div className={`w-100 d-flex justify-content-${justify}`}>
+                                        <nav  aria-label="Page navigation example overflow-hidden">
+                                        <ul className="pagination pagination-lg d-flex flex-wrap  ">
                              
                                          { renderPages() }
 

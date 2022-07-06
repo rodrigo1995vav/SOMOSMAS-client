@@ -8,7 +8,7 @@ import TestimonialsList from "./TestimonialsList"
 
 
 // Hardcoded data
-const arrayTestimonials = {total_testimonials: 400 ,testimonials:[{name:'somepeopledwdawdwdwdwd dawdawdwdw', id:1},
+const arrayTestimonials = {total_testimonials: 40 ,testimonials:[{name:'somepeopledwdawdwdwdwd dawdawdwdw', id:1},
 {name:'some people', id:2},{name:'some people', id:3},{name:'some people', id:4},{name:'some people', id:5},
 {name:'some people', id:6},{name:'some people', id:7},{name:'some people', id:8},{name:'some people', id:9},
 {name:'some people', id:10},
