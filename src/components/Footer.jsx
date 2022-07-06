@@ -1,11 +1,13 @@
-import React from 'react'
+
 import logo from '../assets/logo.png'
-
-
+import useSocialNetworks from '../hooks/useSocialNetworks';
 
 function Footer() {
+
+  const { socialNetworks } = useSocialNetworks();
+
   return (
-    <div className='footer' >
+    <div className='footer'>
       <div>
         <div>
           <div>
@@ -65,26 +67,18 @@ function Footer() {
               <div>
                 <div className="row pt-2">
                   <div className="col-lg-12 text-center ">
-                    <a href="www.facebook.com">
-                      <i
-                        className="bi bi-facebook me-3 footer__social-icons"
-                      ></i>
-                    </a>
-                    <a href="#">
-                      <i
-                        className="bi bi-twitter me-3 footer__social-icons"
-                      ></i>
-                    </a>
-                    <a href="#">
-                      <i
-                        class="bi bi-linkedin me-3 footer__social-icons"
-                      ></i>
-                    </a>
-                    <a href="#">
-                      <i
-                        class="bi bi-instagram me-3 footer__social-icons"
-                      ></i>
-                    </a>
+
+                    {
+                      socialNetworks?.length > 0 && socialNetworks.map( ( social ) => {
+                        const { id, link, bootstrapIconName } = social;
+                        return(
+                          <a href={ link } key={ id } target="_blank">
+                            <i className={ `bi ${ bootstrapIconName } footer__social-icons me-3` } />
+                          </a>
+                        )
+                     })
+                    }
+
                   </div>
                 </div>
               </div>
