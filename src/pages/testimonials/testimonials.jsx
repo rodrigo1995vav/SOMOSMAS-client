@@ -23,7 +23,7 @@ const Testimonials = () => {
 
     //define table rows in request with limit
     const limit = 10
-    const [pages, setPages] =  useState(null)
+    const [pageCount, setPageCount] =  useState(null)
     const [data,setData] = useState(null)
     const [loading,setLoading] = useState(true)
     const [error, setError] = useState(false)
@@ -37,10 +37,10 @@ const Testimonials = () => {
             .finally(setLoading(false)) */
             setData(arrayTestimonials)
             if(data){
-              let pageCount =  Math.trunc(data.total_testimonials / limit) 
-              data.total_testimonials % limit > 0 && ( pageCount += 1 )
+              let pagesAmount =  Math.trunc(data.total_testimonials / limit) 
+              data.total_testimonials % limit > 0 && ( pagesAmount += 1 )
 
-              setPages(pageCount)
+              setPageCount(pagesAmount)
               setLoading(false)
              }
         
@@ -59,7 +59,7 @@ const Testimonials = () => {
 
     return(
     <main className="w-100 h-auto p-0  justify-content-center align-items-center bg-white">
-        {  data  ? <TestimonialsList testimonials={data.testimonials} pageCount={pages} />
+        {  data  ? <TestimonialsList testimonials={data.testimonials} pageCount={pageCount} />
           : error && <ErrorSign error={{message:'Show error content'}} />}
     </main>)
 }
