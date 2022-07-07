@@ -45,7 +45,7 @@ const Testimonials = () => {
              }
         
 
-     },[data])
+     },[])
 
 
 
@@ -59,7 +59,7 @@ const Testimonials = () => {
 
     return(
     <main className="w-100 h-auto p-0  justify-content-center align-items-center bg-white">
-        {  data  ? <TestimonialsList testimonials={data.testimonials} pages={pages} />
+        {  data  ? <TestimonialsList testimonials={data.testimonials} pageCount={pages} />
           : error && <ErrorSign error={{message:'Show error content'}} />}
     </main>)
 }

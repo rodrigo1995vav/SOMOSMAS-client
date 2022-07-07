@@ -4,17 +4,19 @@ import TestimonialsListItem from "./TestimonialsListItem"
 
 
 
-const TestimonialsList = ({testimonials ,pages}) =>{
+const TestimonialsList = ({ testimonials , pageCount }) =>{
 
     const { page } = useParams()
 
-    let isEmpty
-   
-    testimonials.length===0 ? isEmpty = true : isEmpty = false
 
-    return ( isEmpty ? 
-            <h1 className="text-center">No hay testimonios</h1> 
-            :     
+    const isEmpty =  testimonials.length === 0
+   
+    
+    if(isEmpty){
+        return  <h1 className="text-center">No hay testimonios</h1> 
+    }
+
+    return ( 
             <div className="mw-100  h-100"   >
                 <div className=" d-flex  p-4 pb-3 justify-content-between align-items-center  h-auto border-bottom">
                     <h1 className="ms-2">Testimonios</h1>
@@ -26,7 +28,7 @@ const TestimonialsList = ({testimonials ,pages}) =>{
                 </ul>
                 </div>
                    <div className="mw-100">
-                    <Paginator currentPage={page} pageCount={pages} baseUrl ={"/backoffice/testimonios/"} justify={'center'} ></Paginator>
+                    <Paginator currentPage={page} pageCount={pageCount} baseUrl ={"/backoffice/testimonios/"} justify={'center'} ></Paginator>
                     </div>
                    
                
