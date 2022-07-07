@@ -1,6 +1,14 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Loader } from "../../components/Loader";
+import { getPublic } from "../../services/apiServices";
 
 const News = () => {
+
+    const [data,setData] = useState(null)
+    const [error,setError] = useState(false)
+    const [loading,setLoading] = useState(true)
 
     //TODO: Extract the news from the API
     //Test variables
@@ -24,6 +32,19 @@ const News = () => {
             ]
         }
     ]
+
+    useEffect(()=>{
+        getPublic(`/news`)
+        .then(res=>res.json())
+        .then(res=>setData(res))
+        .catch(err=>setError(err))
+        .finally(setLoading(false))
+    },[])
+
+
+    if(loading){
+        return <Loader> </Loader>
+    }
 
     return (
 

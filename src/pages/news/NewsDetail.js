@@ -1,25 +1,40 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Loader } from '../../components/Loader';
+import { getPublic } from "../../services/apiServices";
 
 export const NewsDetail = () => {
 
     //TODO: Extract the news from the API and use useParams to get the news id
     //Test variables
-    const news = [
-        {
-            id: 1,
-            name: "News 1",
-            content: "Content 1",
-            image: [
-                "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-                "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-            ],
-        }
-    ]
+
+        const { id } = useParams()
+
+        const [data,setData] = useState(null)
+        const [error,setError] = useState(false)
+        const [loading,setLoading] = useState(true)
+
+
+
+    useEffect(()=>{
+        getPublic(`/news/${id}`)
+        .then(res=>res.json())
+        .then(res=>setData(res))
+        .catch(err=>setError(err))
+        .finally(setLoading(false))
+    },[id])
+
+
+    if(loading){
+        return <Loader></Loader>
+    }
 
     return (
         <div className="container">
             {
-                news.map(news => (
+                data.map(news => (
                     <div className="card my-5" style={{ borderRadius: 15 }}>
                         <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel" >
                             <div className="carousel-indicators">
