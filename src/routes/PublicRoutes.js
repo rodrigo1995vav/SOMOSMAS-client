@@ -7,7 +7,6 @@ import Activities from '../pages/activities/Activities';
 import ContactPage from '../pages/contact/ContactPage';
 import { NewsDetail } from '../pages/news/NewsDetail';
 
-
 const PublicRoutes = () => {
     return (
         <Routes>
