@@ -1,8 +1,19 @@
+import Alert from "../../../services/AlertService";
+import { putPrivate } from "../../../services/apiServices";
+
 function RowsNew({
+    id,
     name,
     avatar,
     createdAt }) {
 
+
+        const deleteNews = (newsId) =>{
+            const requestDelete = putPrivate('delete endpoint')
+            Alert.confirmRequest({title:`¿Desea eliminar a ${name}?`}, 
+                                 requestDelete, 
+                                ()=> Alert.success({title:'Novedad eliminada'}))
+        }
     return (
         <tr >
             <td className="col-3 text-center h4 " style={{paddingTop:'35px'}}>{name}</td>
