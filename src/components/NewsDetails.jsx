@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"
-import { getPrivate } from "../services/apiServices";
+import { getPrivate, getPublic } from "../services/apiServices";
 import { Loader } from './Loader';
 
 
@@ -28,9 +28,8 @@ const NewsDetails = ({imgHeight = '40rem'}) => {
 
 
  useEffect(()=>{
-   getPrivate(`/news/${id}`)
-    .then(res=>res.json())
-    .then(res=>setData(res))
+   getPublic(`/news/${id}`)
+    .then(res=>setData(res.data.payload))
     .catch(err=>setError(err))
     .finally(setLoading(false))
  },[id])
