@@ -4,7 +4,8 @@ import News from '../pages/news/News';
 import { LoginPage } from '../pages/login/LoginPage';
 import NotFound from '../pages/notfound/NotFound';
 import Activities from '../pages/activities/Activities';
-// import ContactPage from '../pages/contact/ContactPage'
+import ContactPage from '../pages/contact/ContactPage';
+import { NewsDetail } from '../pages/news/NewsDetail';
 
 
 const PublicRoutes = () => {
