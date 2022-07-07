@@ -45,7 +45,7 @@ const Testimonials = () => {
              }
         
 
-     },[])
+     },[page])
 
 
 
