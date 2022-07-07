@@ -13,7 +13,6 @@ const PublicRoutes = () => {
     return (
         <Routes>
             <Route exact match path='' element={<Home/>} />
-            <Route path='/2' element={<NewsAdmin/>} />
             <Route path='novedades' element={<News/>} />
             <Route path='novedades/:id' element={<NewsDetails imgHeight="50rem"/>} />  
             <Route path='testimonials' element={<News/>} />
