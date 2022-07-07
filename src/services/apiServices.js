@@ -55,3 +55,12 @@ export function getPublic(path) {
 export function postPublic(path, body) {
   return axios.post(path, body);
 }
+
+export async function  deletePrivate(path)
+{
+  return axios.delete(path , {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+})
+}

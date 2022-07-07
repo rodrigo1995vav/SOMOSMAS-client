@@ -1,5 +1,5 @@
 import Alert from "../../../services/AlertService";
-import { putPrivate } from "../../../services/apiServices";
+import { deletePrivate } from "../../../services/apiServices";
 
 function RowsNew({
     id,
@@ -8,10 +8,11 @@ function RowsNew({
     createdAt }) {
 
 
-        const deleteNews = (newsId) =>{
-            const requestDelete = putPrivate('delete endpoint')
+        const deleteNews =  (newsId) =>{
+           
+            
             Alert.confirmRequest({title:`¿Desea eliminar a ${name}?`}, 
-                                 requestDelete, 
+                                ()=>deletePrivate(`news/5`), 
                                 ()=> Alert.success({title:'Novedad eliminada'}))
         }
     return (
@@ -24,11 +25,11 @@ function RowsNew({
                 <div className="d-flex d-flex justify-content-center ">
 
                 <button className="btn btn-primary mx-1 display-1 ">
-                    <i class="bi bi-pencil-fill h3"></i>
+                    <i className="bi bi-pencil-fill h3"></i>
                     Editar
                     </button>
-                <button className="btn btn-danger mx-1 display-1">
-                    <i class="bi bi-trash3 h3"></i>
+                <button onClick={()=> deleteNews(id)} className="btn btn-danger mx-1 display-1">
+                    <i className="bi bi-trash3 h3"></i>
                     Eliminar
                     </button>
                 </div>

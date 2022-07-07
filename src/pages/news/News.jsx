@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader";
-import NewsDetails from "../../components/NewsDetails";
 import { getPublic } from "../../services/apiServices";
 
 const News = () => {
