@@ -1,6 +1,6 @@
 import { useState , useEffect } from "react"
 import  { useParams } from 'react-router-dom'
-import { getPrivate } from "../../services/apiServices"
+import { getPublic } from "../../services/apiServices"
 import { Loader } from '../../components/Loader'
 import ErrorSign from "../../components/ErrorSign"
 import TestimonialsList from "./TestimonialsList"
@@ -30,7 +30,7 @@ const Testimonials = () => {
 
 
     useEffect(()=>{
-      /* getPrivate(`/testimonios/${limit}/${page}`)
+      /* getPublic(`/testimonios/${limit}/${page}`)
             .then(res=>res.json())
             .then(res=>setData(res))
             .catch(err => setError(err))
