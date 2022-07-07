@@ -17,23 +17,23 @@ export default function Navbar() {
             },
             {
                 text: "Nosotros",
-                link: '/us'
+                link: '/nosotros'
             },
             {
                 text: "Novedades",
-                link: '/news'
+                link: '/novedades'
             },
             {
                 text: "Testimonios",
-                link: '/testimonials'
+                link: '/testimonios'
             },
             {
                 text: "Contacto",
-                link: 'contact'
+                link: 'contacto'
             },
             {
                 text: "Contribuye",
-                link: '/contribute'
+                link: '/contribuye'
             }
         ]
     };
