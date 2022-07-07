@@ -10,16 +10,24 @@ export const userSlice = createSlice({
     setUserLogged: (state, action) => {
       //en el action me viene la data de la api y lo igualo al estado asi actualizo ese estado con al nueva data
       state.user = action.payload;
+    }, 
+    deleteUserLogged: (state) =>{
+
+      state.user = null
     },
+    
   }, //podemos tener muchos reducers
 });
+
+export const { setUserLogged, deleteUserLogged } = userSlice.actions; //el userSlice siente una propiedad actions que aloja todas nuestras acciones
 
 export default userSlice.reducer; //exporto del userSlice el reducer , para poder usarlo en la store, porque el reducer de la store esta formado
 // por varios reducer que viene de diferentes slices  que son parte de nuestro estado
 
 //exporto la actions para usarla en los pedidos a la api
 
-export const { setUserLogged } = userSlice.actions; //el userSlice siente una propiedad actions que aloja todas nuestras acciones
+export const selectUser = state => state.userLogged.user
+
 
 //api requests
 export const login = ({ email, password }) => {
@@ -36,3 +44,10 @@ export const login = ({ email, password }) => {
       .catch((err) => console.log(err));
   };
 };
+
+export const logout = (dispatch) =>{
+  //token name may change in future version, unsafe name.
+    localStorage.removeItem("token");
+  return  dispatch(deleteUserLogged())
+   
+}

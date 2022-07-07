@@ -28,7 +28,7 @@ export default class Alert {
     }
     
     static error({title,message}){
-        Swal.fire({
+        return Swal.fire({
             title,
             text:message,
             confirmButtonColor: this.buttonConfirmColor,
