@@ -53,7 +53,7 @@ export const login = ({ email, password},OnLogin) => {
 
 export const logout = (dispatch) =>{
   //token name may change in future version, unsafe name.
-    localStorage.removeItem("token");
+  localStorage.removeItem("token");
   return  dispatch(deleteUserLogged())
    
 }
