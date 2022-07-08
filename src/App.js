@@ -9,7 +9,7 @@ function App() {
       <h1 className="fw-bolder"></h1>
         <AppRouter/>
         <Footer />
-      <EditOrganization/>
+        <EditOrganization/>
     </div>
   );
 }
