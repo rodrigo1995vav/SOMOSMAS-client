@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import Alert from "../../../services/AlertService";
+import { postPublic } from "../../../services/apiServices";
 export const userSlice = createSlice({
   name: "userLogged", //con este name me voy a referir en los estados
   initialState: {
@@ -28,15 +28,15 @@ export const { setUserLogged } = userSlice.actions; //el userSlice siente una pr
 export const login = ({ email, password},OnLogin) => {
   //a las actions solo las puede ejecutar un dispatch entonces se lo paso como parámetro a la función
   return (dispatch) => {
-    axios
-      .post("http://localhost:8080/auth/login", {
+   postPublic("http://localhost:8080/auth/login", {
         email,
         password,
       })
       .then(({ data }) => {
         dispatch(setUserLogged(data)); //esto pasa al actions de setUserLogged a la propiedad de payload   
       })
-      .then(() => {
+      .then((res) => {
+        localStorage.setItem("token", res.data.accessToken);
         Alert.success({ title: 'Hurra!!!', message: 'Login success' })
         OnLogin();
       })
