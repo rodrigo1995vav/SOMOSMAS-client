@@ -21,7 +21,7 @@ function Home() {
 
     useEffect(() => {
         setWelcomeMessage(hcWelcomeMessage)
-        setFeatures(hcFeatures.slice(hcFeatures.length - 4).reverse())
+        setFeatures(hcFeatures.slice(hcFeatures.length - 3).reverse())
         setImage(hcImage)
     }, []);
 
