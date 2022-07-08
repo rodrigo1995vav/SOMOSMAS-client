@@ -1,10 +1,15 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import Alert from '../../services/AlertService';
-import { login } from '../../services/user/userServices';
+//import { login } from '../../services/user/userServices';
+import { login } from '../../store/slices/users/index'
+
 
 
 export const LoginForm = () => {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const { user } = useSelector(state => state.userLogged)
     const [isShowPassword, setIsShowPassword] = useState(false)
@@ -31,30 +36,15 @@ export const LoginForm = () => {
                     }
                     if (!values.password) {
                         errors.password = 'El password es requiredo';
-                    } else if (values.password.length < 6) {
+                    } else if (values.password.length < 3) {
                         errors.password = 'El password debe tener al menos 6 caracteres';
                     }
 
                     return errors;
                 }}
                 onSubmit={async (values, { resetForm }) => {
-                    dispatch(login({ email: values.email, password: values.password }))
-                    switch (log.err) {
-                        case 'Incorrect password':
-                            Alert.error({ title: 'Ups...', message: 'Email or password incorrect' })
-                            break;
-                        case 'User not found':
-                            Alert.error({ title: 'Sorry...', message: 'User not found' })
-                            break;
-                        default:
-                            Alert.error({ title: 'Sorry...', message: 'Something is wrong' })
-                            break;
-                    }
-
-                    if (!log.err) {
-                        resetForm()
-                        Alert.success({ title: 'Hurra!!!', message: 'Login success' })
-                    }
+                    dispatch(login({ email: values.email, password: values.password, resetForm, navigate }))
+                    
                 }}
             >{({ errors }) => (
                 <Form className='form' >

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import Alert from "../../../services/AlertService";
 export const userSlice = createSlice({
   name: "userLogged", //con este name me voy a referir en los estados
   initialState: {
@@ -24,17 +25,24 @@ export default userSlice.reducer; //exporto del userSlice el reducer , para pode
 export const { setUserLogged } = userSlice.actions; //el userSlice siente una propiedad actions que aloja todas nuestras acciones
 
 //api requests
-export const login = ({ email, password }) => {
+export const login = ({ email, password, resetForm }) => {
   //a las actions solo las puede ejecutar un dispatch entonces se lo paso como parámetro a la función
   return (dispatch) => {
     axios
-      .post("http://localhost:3001/auth/login", {
+      .post("http://localhost:8080/auth/login", {
         email,
         password,
       })
       .then(({ data }) => {
-        dispatch(setUserLogged(data)); //esto pasa al actions de setUserLogged a la propiedad de payload
+        dispatch(setUserLogged(data)); //esto pasa al actions de setUserLogged a la propiedad de payload   
       })
-      .catch((err) => console.log(err));
+      .then(() => {
+        Alert.success({ title: 'Hurra!!!', message: 'Login success' })
+        resetForm()
+      })
+      .catch((err) => {
+        console.log(err)
+        Alert.error({ title: "Error", message: err.response.data.message })
+      });
   };
 };
