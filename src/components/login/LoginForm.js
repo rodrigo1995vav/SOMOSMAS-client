@@ -43,7 +43,7 @@ export const LoginForm = () => {
                     return errors;
                 }}
                 onSubmit={async (values, { resetForm }) => {
-                    dispatch(login({ email: values.email, password: values.password, resetForm, navigate }))
+                    dispatch(login({ email: values.email, password: values.password }, ()=>{ resetForm();navigate('/')}))
                     
                 }}
             >{({ errors }) => (

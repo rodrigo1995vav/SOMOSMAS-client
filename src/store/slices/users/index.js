@@ -25,7 +25,7 @@ export default userSlice.reducer; //exporto del userSlice el reducer , para pode
 export const { setUserLogged } = userSlice.actions; //el userSlice siente una propiedad actions que aloja todas nuestras acciones
 
 //api requests
-export const login = ({ email, password, resetForm }) => {
+export const login = ({ email, password},OnLogin) => {
   //a las actions solo las puede ejecutar un dispatch entonces se lo paso como parámetro a la función
   return (dispatch) => {
     axios
@@ -38,7 +38,7 @@ export const login = ({ email, password, resetForm }) => {
       })
       .then(() => {
         Alert.success({ title: 'Hurra!!!', message: 'Login success' })
-        resetForm()
+        OnLogin();
       })
       .catch((err) => {
         console.log(err)
