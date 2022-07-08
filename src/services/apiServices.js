@@ -1,5 +1,5 @@
 import axios from "axios";
-import URL_BASE from 'dotenv'
+//import URL_BASE from 'dotenv'
 
 //TODO here we should put the base url from the server side
 axios.defaults.baseURL = "baseurlfromserverside";

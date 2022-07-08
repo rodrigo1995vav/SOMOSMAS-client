@@ -38,9 +38,8 @@ export const login = ({ email, password},OnLogin) => {
       })
       .then(({ data }) => {
         dispatch(setUserLogged(data)); //esto pasa al actions de setUserLogged a la propiedad de payload   
-      })
-      .then((res) => {
-        localStorage.setItem("token", res.data.accessToken);
+        console.log(data)
+        localStorage.setItem("token", data.accessToken);
         Alert.success({ title: 'Hurra!!!', message: 'Login success' })
         OnLogin();
       })
