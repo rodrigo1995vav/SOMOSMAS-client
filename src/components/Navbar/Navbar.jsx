@@ -1,15 +1,16 @@
 import React from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import logo from "../../img/Navbar/LOGO-SOMOS-MAS.png";
-import { selectUser } from "../../store/slices/users";
+import { selectUser, logout } from "../../store/slices/users";
 import Menu from "./Menu";
 export default function Navbar() {
 
     useSelector(selectUser);
     const navigate = useNavigate()
     const userLogged = useSelector(selectUser);
+    const dispatch = useDispatch()
     const menu = {
         route: "",
         menu: [
@@ -80,6 +81,7 @@ export default function Navbar() {
                                         className="btn btn-danger mx-3  rounded-pill"
                                         type="submit"
                                         style={{ transform: "scale(1.2)" }}
+                                        onClick={() => { logout(dispatch) }}
                                     >
                                         Log Out
                                     </button> :
