@@ -1,18 +1,18 @@
 function RowsNew({
     name,
-    avatar,
+    image,
     createdAt }) {
 
     return (
         <tr >
             <td className="col-3 text-center h4 " style={{paddingTop:'35px'}}>{name}</td>
-            <td className="col-3 text-center "><img src={avatar} alt="avatar"  width='80'/></td>
+            <td className="col-3 text-center "><img src={image} alt="avatar"  width='80'/></td>
             <td className="col-3 text-center h4 "  style={{paddingTop:'35px'}}>{createdAt}</td>
 
             <td className="col-3 text-center h4 "  style={{paddingTop:'35px'}}>
                 <div className="d-flex d-flex justify-content-center ">
 
-                <button className="btn btn-primary mx-1 display-1 ">
+                <button className="btn btn-light mx-1 display-1 ">
                     <i class="bi bi-pencil-fill h3"></i>
                     Editar
                     </button>

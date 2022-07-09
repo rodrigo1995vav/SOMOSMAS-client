@@ -8,7 +8,7 @@ const BackofficeRoutes = () => {
     return (
         <div>
             <Routes>
-                <Route exact path="/news" element={<NewsAdmin />}/>
+                <Route exact path="/novedades" element={<NewsAdmin />}/>
                 <Route exact path="/testimonios/:page" element={<Testimonials />}/>
             </Routes>
         </div>

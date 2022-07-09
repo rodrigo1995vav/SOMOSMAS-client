@@ -1,14 +1,24 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import axios from 'axios'
+import Alert from "../../../services/AlertService";
+import { getPublic , deletePrivate} from '../../../services/apiServices'
 import RowsNew from "./RowsNew";
+
 function TableNew() {
     const [news, setNews] = useState([]);
     console.log(news)
     async function getNews() {
-        const { data } = await axios.get('https://reqres.in/api/users?page=1')
-        setNews(data.data)
+        const { data } = await getPublic('/news')
+        setNews(data.entries)
     }
+
+const deleteNews = (id,name) => {
+    deletePrivate(`/news/${id}`)
+    Alert.confirmRequest({title: `¿Desea eliminar la novedad ${name}?`},
+    ()=>deletePrivate(`/news/${id}`),
+    ()=>Alert.success({ title:'La novedad ha sido eliminada'}))
+}
+
     useEffect(() => {
         getNews()
     }, [])
@@ -23,8 +33,8 @@ function TableNew() {
                 </tr>
             </thead>
             <tbody>
-                {news.length > 0 && news.map(({ first_name, avatar, id }) => 
-                (<RowsNew key={id} name={first_name} avatar={avatar} createdAt={'2022-06-27'} />))
+                {news.length > 0 && news.map(({ name, image, id, createdAt }) => 
+                (<RowsNew key={id} name={name} image={image} createdAt={createdAt} delete = {()=>{deleteNews(id,name)}} />))
                 }
             </tbody>
         </table>

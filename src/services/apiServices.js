@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //TODO here we should put the base url from the server side
-axios.defaults.baseURL = "baseurlfromserverside";
+axios.defaults.baseURL = "http://localhost:3001"
 
 axios.defaults.headers.get["Accept"] = "application/json";
 //axios.defaults.headers.post["Accept"] = "application/json";
@@ -54,4 +54,8 @@ export function getPublic(path) {
 
 export function postPublic(path, body) {
   return axios.post(path, body);
+}
+
+export function deletePrivate (path){
+  return axios.delete(path);
 }
