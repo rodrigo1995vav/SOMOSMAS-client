@@ -78,14 +78,14 @@ export default class Alert {
             preConfirm: () => {
               return (request())
                 .then(response => {
-                  if (!response.ok) {
+                  if (!response) {
                     throw new Error(response.statusText)
                   }
-                  return response.json()
+                  return response.data
                 })
-                .catch(error => {
+                .catch(err => {
                   Swal.showValidationMessage(
-                    `No se pudo realizar la solicitud: ${error}`
+                    `No se pudo realizar la solicitud: ${err.response.data.message}`
                   )
                   Swal.getConfirmButton().textContent ='Reintentar'
                 })

@@ -1,7 +1,10 @@
-function RowsNew({
+
+
+const RowsNew = ({
     name,
     image,
-    createdAt }) {
+    createdAt, 
+    deleteNews }) => {
 
     return (
         <tr >
@@ -12,11 +15,11 @@ function RowsNew({
             <td className="col-3 text-center h4 "  style={{paddingTop:'35px'}}>
                 <div className="d-flex d-flex justify-content-center ">
 
-                <button className="btn btn-light mx-1 display-1 ">
+                <button onClick={()=>{console.log('open edit form')}} className="btn btn-light mx-1 display-1 ">
                     <i class="bi bi-pencil-fill h3"></i>
                     Editar
                     </button>
-                <button className="btn btn-danger mx-1 display-1">
+                <button onClick={()=>deleteNews()} className="btn btn-danger mx-1 display-1">
                     <i class="bi bi-trash3 h3"></i>
                     Eliminar
                     </button>
