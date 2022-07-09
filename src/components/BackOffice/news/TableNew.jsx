@@ -1,33 +1,40 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { getPublic } from "../../../services/apiServices";
-
+import Alert from "../../../services/AlertService";
+import { getPublic , deletePrivate} from '../../../services/apiServices'
 import RowsNew from "./RowsNew";
 
 function TableNew() {
-    const [data,setData] = useState(null)
-    const [error,setError] = useState(false)
-    const [loading,setLoading] = useState(true)
-    
+    const [news, setNews] = useState([]);
+    console.log(news)
+    async function getNews() {
+        const { data } = await getPublic('/news')
+        setNews(data.entries)
+    }
+
+const deleteNews = (id,name) => {
+    deletePrivate(`/news/${id}`)
+    Alert.confirmRequest({title: `¿Desea eliminar la novedad ${name}?`},
+    ()=>deletePrivate(`/news/${id}`),
+    ()=>Alert.success({ title:'La novedad ha sido eliminada'}))
+}
+
     useEffect(() => {
-            getPublic(`/news`)
-            .then(res=>setData(res.data))
-            .catch(err=>setError(err))
-            .finally(()=>{setLoading(false)})
+        getNews()
     }, [])
     return (
-        <table className="table table-dark">
+        <table class="table table-dark">
             <thead>
                 <tr>
-                    <th scope="col" className="text-center h2">Título</th>
+                    <th scope="col" className="text-center h2">Nombre</th>
                     <th scope="col" className="text-center h2">Imagen</th>
                     <th scope="col" className="text-center h2">Fecha</th>
                     <th scope="col" className="text-center h2">Opciones</th>
                 </tr>
             </thead>
             <tbody>
-                {data && data.map((news) => 
-                (<RowsNew key={news.id} name={news.name} avatar={news.image} createdAt={news.createdAt} />))
+                {news.length > 0 && news.map(({ name, image, id, createdAt }) => 
+                (<RowsNew key={id} name={name} image={image} createdAt={createdAt} delete = {()=>{deleteNews(id,name)}} />))
                 }
             </tbody>
         </table>
