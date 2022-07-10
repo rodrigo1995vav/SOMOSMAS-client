@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import TableActivities from "../components/BackOffice/activities/TableActivities"
 import NewsAdmin from "../pages/Backoffice/News/NewsAdmin"
-import Testimonials from "../pages/testimonials/Testimonials"
+/* import Testimonials from "../pages/testimonials/Testimonials" */
 
 
 const BackofficeRoutes = () => {
@@ -9,7 +9,7 @@ const BackofficeRoutes = () => {
     return (
             <Routes>
                 <Route exact path="/news" element={<NewsAdmin />}/>
-                <Route exact path="/testimonios/:page" element={<Testimonials />}/>
+            {/*     <Route exact path="/testimonios/:page" element={<Testimonials />}/> */}
             </Routes>
       
     )

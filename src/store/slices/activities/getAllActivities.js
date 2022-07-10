@@ -5,10 +5,7 @@ import { stateLoading } from "../loading/loading";
 export const activitySlice = createSlice({
     name: "allActivities",
     initialState: {
-        activities: {
-            total_activities: null,
-            activities: null
-        }
+        activities: null
     },
     reducers: {
         //actions

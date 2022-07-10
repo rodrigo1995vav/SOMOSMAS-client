@@ -4,7 +4,7 @@ import { getAllActivities } from "../../../store/slices/activities/getAllActivit
 import { Loader } from "../../Loader";
 import RowsActivities from "./RowsActivities";
 export default function TableActivities() {
-    const [{ activities, total_activities }, { loader }] = useSelector((state) => [state.allActivities, state.loader])
+    const [{ activities}, { loader }] = useSelector((state) => [state.allActivities, state.loader])
 
     const dispatch = useDispatch()
     useEffect(() => {
@@ -23,13 +23,14 @@ export default function TableActivities() {
                     </tr>
 
                 </thead>
-                {loader && total_activities.length > 0 && activities != 0 ?
+                {activities &&
+                 (activities.total_activities.length > 0 && activities.activities != 0 ?
                     (<tbody>
                         {activities.activities.map((activity) =>
                             (<RowsActivities key={activity.id} activity={activity} />))
                         }
                     </tbody>
-                    ) : <th colSpan={2}> <h2 className="text-dark text-center pt-5 " >No hay actividades</h2> </th>
+                    ) : <th colSpan={2}> <h2 className="text-dark text-center pt-5 " >No hay actividades</h2> </th>)
                 }
             </table>
 
