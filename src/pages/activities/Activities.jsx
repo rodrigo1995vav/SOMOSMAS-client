@@ -5,7 +5,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from 'axios';
 
 
-export const Activities = ({ patch }) => {
+export const ActivitiesForm = ({ patch }) => {
 
     let { id } = useParams()
     const [name, setName] = useState('')

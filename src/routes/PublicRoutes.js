@@ -3,7 +3,7 @@ import Home from '../pages/home/Home';
 import News from '../pages/news/News';
 import { LoginPage } from '../pages/login/LoginPage';
 import NotFound from '../pages/notfound/NotFound';
-import Activities from '../pages/activities/Activities';
+import ActivitiesForm from '../pages/activities/ActivitiesForm';
 import ContactPage from '../pages/contact/ContactPage';
 import { NewsDetail } from '../pages/news/NewsDetail';
 
@@ -20,8 +20,8 @@ const PublicRoutes = () => {
             <Route path='*' element={<NotFound/>} />
 
             <Route path='activities/'>
-                <Route path=':id' element={<Activities/>} />
-                <Route path='' element={<Activities/>} />
+                <Route path=':id' element={<ActivitiesForm/>} />
+                <Route path='' element={<ActivitiesForm/>} />
             </Route>
         </Routes>
     );
