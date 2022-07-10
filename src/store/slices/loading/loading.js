@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const loadingSlice = createSlice({
-    name : 'loaderState',
+    name: 'loaderState',
     initialState: {
-        loader:false
+        loader: false
     },
-    reducers:{
+    reducers: {
         //actions
-        setStateLoader : (state, action)=>{
+        setStateLoader: (state, action) => {
             state.loader = action.payload
         }
     }
@@ -15,10 +15,10 @@ export const loadingSlice = createSlice({
 
 export default loadingSlice.reducer
 
-export const {setStateLoader} = loadingSlice.actions
+export const { setStateLoader } = loadingSlice.actions
 
-export const stateLoading = (bool)=>{
-    return (dispatch)=>{
+export const stateLoading = (bool) => {
+    return (dispatch) => {
         dispatch(setStateLoader(bool))
-    }      
+    }
 }
