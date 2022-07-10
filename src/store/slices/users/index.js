@@ -29,7 +29,7 @@ export default userSlice.reducer; //exporto del userSlice el reducer , para pode
 export const { setUserLogged, deleteUserLogged } = userSlice.actions; //el userSlice siente una propiedad actions que aloja todas nuestras acciones
 
 //api requests
-export const login = ({ email, password},register,OnLogin) => {
+export const login = ({ email, password, register},OnSuccess) => {
   //a las actions solo las puede ejecutar un dispatch entonces se lo paso como parámetro a la función
   return (dispatch) => {
 
@@ -47,8 +47,7 @@ export const login = ({ email, password},register,OnLogin) => {
         dispatch(setUserLogged(data)); //esto pasa al actions de setUserLogged a la propiedad de payload   
         console.log(data)
         localStorage.setItem("token", data.accessToken);
-        Alert.success({ title: 'Bienvenido!!!'})
-        OnLogin();
+        OnSuccess();
       })
       .catch((err) => {
         console.log(err)

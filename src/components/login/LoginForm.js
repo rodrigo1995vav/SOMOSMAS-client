@@ -43,8 +43,14 @@ export const LoginForm = ({ register }) => {
                     return errors;
                 }}
                 onSubmit={async (values, { resetForm }) => {
+
+                    const onLogin = ()=>{ 
+                        resetForm(); 
+                        Alert.success({ title: 'Bienvenido!!!', message: register ?'Recuerda completar el perfil':''}); 
+                        navigate('/'); 
+                        }
                    
-                        dispatch(login({ email: values.email, password: values.password }, register , ()=>{ resetForm();navigate('/')}))
+                        dispatch( login({ email: values.email, password: values.password, register: register }, onLogin ) )
                     
              
                 }}
