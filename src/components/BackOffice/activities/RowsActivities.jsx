@@ -1,6 +1,6 @@
-export default function RowsActivities({ name }) {
+export default function RowsActivities(activity) {
     return (<tr >
-        <td className="col-3 text-center h4 " style={{ paddingTop: '35px' }}>{name}</td>
+        <td className="col-3 text-center h4 " style={{ paddingTop: '35px' }}>{activity.name}</td>
         <td className="col-3 text-center h4 " style={{ paddingTop: '35px' }}>
             <div className="d-flex d-flex justify-content-center ">
                 <button className="btn btn-primary mx-3 display-1"  >

@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { getPrivate } from "../../../services/apiServices";
+import { stateLoading } from "../loading/loading";
 export const activitySlice = createSlice({
   name: "allActivities", 
   initialState: {
     activities: {
-        total_activities:0,
-        activities:[]
+        total_activities:null,
+        activities:null
     }
   },
   reducers: {
@@ -23,15 +25,13 @@ export const { setStateActivity } = activitySlice.actions;
 
 export const getAllActivities = (page) => {
   return (dispatch) => {
-    axios
-      .get("http://localhost:3001/activity/list",
-      {
-        params: {
-            page: page
-        }
-      })
+   dispatch(stateLoading(true))
+    getPrivate(`http://localhost:3001/activity/list?page=${page}`)
       .then(({ data }) => {
-        dispatch(setStateActivity(data)); //esto pasa al actions de setStateActivity a la propiedad de payload
+        setTimeout(() => {
+            dispatch(setStateActivity(data)); //esto pasa al actions de setStateActivity a la propiedad de payload
+            dispatch(stateLoading(false))
+         }, 3000);
       })
       .catch((err) => console.log(err));
   };
