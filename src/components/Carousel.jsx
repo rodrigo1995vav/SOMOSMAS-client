@@ -44,7 +44,7 @@ return (
   <div className="carousel-inner" >
        {imgSlides.map((img,index)=>(<div key={img.imageUrl} className={index===0?"carousel-item active": "carousel-item"}>
                                                    <img className="d-block w-100"  style={imgStyles} src={img.imageUrl} alt={img.text}/>
-                                       {img.text&& <div class="carousel-caption d-none d-md-block">
+                                       {img.text&& <div className="carousel-caption d-none d-md-block">
                                                        <h1>{img.text}</h1>
                                                    </div>}
                                     </div>

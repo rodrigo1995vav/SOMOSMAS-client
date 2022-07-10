@@ -20,7 +20,7 @@ const PublicRoutes = () => {
                 <Route path='novedades/:id' element={<NewsDetail />} />
                 <Route path='testimonios' element={<News />} />
                 <Route path='contacto' element={<ContactPage />} />
-                <Route path='login' element={<LoginPage />} />
+                <Route path='login' element={<LoginPage register ={false} />} />
                 <Route path='registrarse' element={<LoginPage register={true} />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>

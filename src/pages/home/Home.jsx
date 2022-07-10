@@ -11,8 +11,7 @@ function Home() {
     const hcFeatures = [{ title: "feature 0", content: "feature 0 body", image: 'Manos 10.jpg' }, { title: "feature 1", content: "feature 1 body", image: 'Manos 10.jpg' }, { title: "feature 2", content: "feature 2 body", image: 'Manos 10.jpg' }, { title: "feature 3", content: "feature 3 body", image: 'Manos 10.jpg' }, { title: "feature 4", content: "feature 4 body", image: 'Manos 10.jpg' }]
     const hcImage = 'Manos 10.jpg'
     const arrayImg = [
-        { imageUrl: 'Manos 10.jpg', text: 'text-1' },
-        { imageUrl: 'Manos 10.jpg', text: 'text-2' }
+        { imageUrl: 'Manos 10.jpg', text: 'text-1' }
     ];
 
     const [welcomeMessage, setWelcomeMessage] = useState("");
@@ -46,27 +45,14 @@ function Home() {
                     </div>
 
                 </div>
-
-                <div className="slider mt-5">
+                <div className=' my-5 container-fluid d-flex flex-row justify-content-between align-items-center' >
+                <h1 className=''>Últimas Novedades</h1>
+                <a className='fs-4' href="/novedades">Ver todas</a>
+                </div>
+                <div >
                     {!arrayImg ? <Loader className='d-flex justify-content-center align-self-center'></Loader> : <Carousel imgSlides={arrayImg} />}
                 </div>
-                <h1 className='lastNewsh1'>Últimas Novedades</h1>
-                <div>
-                    <div className='d-flex flex-column flex-lg-row'>
-                            {news.map(singleNews => {
-                                return (
-                                    
-                                    <div className="singleFeature">
-                                        <img src={singleNews.image} alt="" />
-                                        <div className="content">
-                                            <p>{singleNews.content}</p>
-                                            <button className="btn btn.primary">Ver Novedad</button>
-                                        </div>
-                                    </div>
-                                )
-                            })}
-                    </div>
-                </div>
+               
             </div>
         </div>
     )

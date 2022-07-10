@@ -43,12 +43,10 @@ export const LoginForm = ({ register }) => {
                     return errors;
                 }}
                 onSubmit={async (values, { resetForm }) => {
-                    if (register){
-                        dispatch(login({ email: values.email, password: values.password }, ()=>{ resetForm();navigate('/')}))
-                    }
-                    else{
-                        dispatch(login({ email: values.email, password: values.password }, ()=>{ resetForm();navigate('/')}))
-                    }
+                   
+                        dispatch(login({ email: values.email, password: values.password }, register , ()=>{ resetForm();navigate('/')}))
+                    
+             
                 }}
             >{({ errors }) => (
                 <Form className='form' >
@@ -76,7 +74,7 @@ export const LoginForm = ({ register }) => {
                             <div className='error'>{errors.password}</div>
                         } className='error' />
                     </div>
-                    <button type="submit" className='buttonColor'>Iniciar sesión</button>
+                    <button type="submit" className='buttonColor'>{ register? "Registrarse" : "Iniciar sesión" }</button>
                 </Form>
             )}
             </Formik>

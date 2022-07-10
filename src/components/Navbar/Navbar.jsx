@@ -70,7 +70,7 @@ export default function Navbar() {
                         <div className="">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
                                 {menu.menu.length > 0 &&
-                                    menu.menu.map((section) => <Menu {...section} />)}
+                                    menu.menu.map((section) => <Menu key={section.link} {...section} />)}
                             </ul>
                         </div>
                         <div className="justify-content-end">

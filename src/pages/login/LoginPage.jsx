@@ -12,7 +12,7 @@ export const LoginPage = ({register}) => {
                 <div className="col-12 col-lg-6">
                     <header className='login__content-welcome'>
                         <p className='login__content-firstline'>Bienvenido</p>
-                        <h2>Inicia sesión en tu cuenta!</h2>
+                        <h2>Formulario de registro</h2>
                     </header>
                     
                     <section className='login__content-form mt-4'>
@@ -20,8 +20,8 @@ export const LoginPage = ({register}) => {
                     </section>
 
                     <section className='login__content-footer mt-5'>
-                        <p>¿ Ya tienes una cuenta ? 
-                            <a href="/registro" className="link">
+                        <p>¿Ya tienes una cuenta?    
+                            <a href="/login" className="link">
                                 Logueate
                             </a>
                         </p>
@@ -49,9 +49,9 @@ export const LoginPage = ({register}) => {
                     </section>
 
                     <section className='login__content-footer mt-5'>
-                        <p>¿ Ya tienes una cuenta ? 
+                        <p>¿No tienes una cuenta?  
                             <a href="/registro" className="link">
-                                Logueate
+                                Registrate
                             </a>
                         </p>
                     </section>

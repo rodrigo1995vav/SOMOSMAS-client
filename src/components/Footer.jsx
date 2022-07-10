@@ -3,6 +3,20 @@ import React from 'react'
 
 
 function Footer() {
+
+  const footerLinks = [{name:'Inicio', to: '/'},
+                        {name:'Novedades', to: '/novedades'},
+                        {name:'Nosotros', to: '/nosotros'},
+                        {name:'Contacto', to: '/contacto'},
+                        {name:'Contribuye', to: '/contribuye'},]
+  
+  const socialNetworks = [{icon:"bi bi-facebook pe-3" , link:'#' },
+                          {icon:"bi bi-twitter pe-3" , link:'#' },
+                          {icon:"bi bi-linkedin pe-3" , link:'#' },
+                          {icon:"bi bi-instagram pe-3" , link:'#' }]
+
+
+
   return (
     <div style={{ backgroundColor: "#c0c0c0" }} className="mt-5">
       <div className="container-fluid">
@@ -25,37 +39,13 @@ function Footer() {
               <div className="container-fluid">
                 <div className="row  pt-5">
                   <div className="row-lg-12  py-5 ">
-                    <ul class="nav justify-content-center  ">
-                      <li class="nav-item ">
-                        <a class="nav-link fs-3 text-black" href="#">
-                          Inicio
+                    <ul className="nav justify-content-center  ">
+                      {footerLinks.map(link => <li key={`footer/${link.name}`} className="nav-item ">
+                        <a className="nav-link fs-3 text-black" href={link.to}>
+                          {link.name}
                         </a>
-                      </li>
-                      <li class="nav-item ">
-                        <a class="nav-link fs-3 text-black" href="#">
-                          Nosotros
-                        </a>
-                      </li>
-                      <li class="nav-item ">
-                        <a class="nav-link fs-3 text-black" href="#">
-                          Novedades
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link fs-3 text-black" href="#">
-                          Testimonios
-                        </a>
-                      </li>
-                      <li class="nav-item fs-3 ">
-                        <a class="nav-link text-black" href="#">
-                          Contacto
-                        </a>
-                      </li>
-                      <li class="nav-item fs-3 ">
-                        <a class="nav-link text-black" href="#">
-                          Contribuye
-                        </a>
-                      </li>
+                      </li>)}
+                    
                     </ul>
                     </div>
                   </div>
@@ -65,30 +55,12 @@ function Footer() {
               <div className="container-fluid">
                 <div className="row  pt-5">
                   <div className="col-lg-12 text-center ">
-                    <a href="www.facebook.com">
+                    {socialNetworks.map((socialNetwork)=><a key={socialNetwork.link} href={socialNetwork.link}>
                       <i
-                        className="bi bi-facebook pe-3"
+                        className={socialNetwork.icon}
                         style={{ fontSize: 25, color: "black" }}
                       ></i>
-                    </a>
-                    <a href="#">
-                      <i
-                        className="bi bi-twitter pe-3"
-                        style={{ fontSize: 25, color: "black" }}
-                      ></i>
-                    </a>
-                    <a href="#">
-                      <i
-                        class="bi bi-linkedin pe-3"
-                        style={{ fontSize: 25, color: "black" }}
-                      ></i>
-                    </a>
-                    <a href="#">
-                      <i
-                        class="bi bi-instagram pe-3"
-                        style={{ fontSize: 25, color: "black" }}
-                      ></i>
-                    </a>
+                    </a>)}
                   </div>
                 </div>
               </div>
