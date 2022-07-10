@@ -1,8 +1,8 @@
 import axios from "axios";
-//import URL_BASE from 'dotenv'
+
 
 //TODO here we should put the base url from the server side
-axios.defaults.baseURL = "baseurlfromserverside";
+axios.defaults.baseURL = process.env.PUBLIC_URL;
 
 axios.defaults.headers.get["Accept"] = "application/json";
 //axios.defaults.headers.post["Accept"] = "application/json";
