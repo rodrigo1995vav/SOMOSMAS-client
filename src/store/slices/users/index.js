@@ -32,7 +32,7 @@ export const { setUserLogged, deleteUserLogged } = userSlice.actions; //el userS
 export const login = ({ email, password},OnLogin) => {
   //a las actions solo las puede ejecutar un dispatch entonces se lo paso como parámetro a la función
   return (dispatch) => {
-   postPublic("http://localhost:8080/auth/login", {
+   postPublic("http://localhost:3001/auth/login", {
         email,
         password,
       })
