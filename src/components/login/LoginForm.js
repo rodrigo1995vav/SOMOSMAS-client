@@ -8,7 +8,7 @@ import { login } from '../../store/slices/users/index'
 
 
 
-export const LoginForm = () => {
+export const LoginForm = ({ register }) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { user } = useSelector(state => state.userLogged)
@@ -43,8 +43,12 @@ export const LoginForm = () => {
                     return errors;
                 }}
                 onSubmit={async (values, { resetForm }) => {
-                    dispatch(login({ email: values.email, password: values.password }, ()=>{ resetForm();navigate('/')}))
-                    
+                    if (register){
+                        dispatch(login({ email: values.email, password: values.password }, ()=>{ resetForm();navigate('/')}))
+                    }
+                    else{
+                        dispatch(login({ email: values.email, password: values.password }, ()=>{ resetForm();navigate('/')}))
+                    }
                 }}
             >{({ errors }) => (
                 <Form className='form' >

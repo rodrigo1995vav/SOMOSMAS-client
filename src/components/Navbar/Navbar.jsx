@@ -98,6 +98,7 @@ export default function Navbar() {
                                             className="btn btn-danger mx-3  rounded-pill"
                                             type="submit"
                                             style={{ transform: "scale(1.2)" }}
+                                            onClick={() => { navigate('/registrarse') }}
                                         >
                                             Registrate
                                         </button>

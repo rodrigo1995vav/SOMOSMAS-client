@@ -21,6 +21,7 @@ const PublicRoutes = () => {
                 <Route path='testimonios' element={<News />} />
                 <Route path='contacto' element={<ContactPage />} />
                 <Route path='login' element={<LoginPage />} />
+                <Route path='registrarse' element={<LoginPage register={true} />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
             <Footer></Footer>
