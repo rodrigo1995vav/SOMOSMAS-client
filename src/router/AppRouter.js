@@ -4,12 +4,6 @@ import PublicRoutes from "../routes/PublicRoutes";
 import PrivateRoutes from "../routes/PrivateRoutes";
 import DashboardRoutes from "../routes/DashboardRoutes";
 import BackofficeRoutes from "../routes/BackofficeRoutes";
-import RequireAuthRole from "../routes/RequireAuthRole";
-
-const ROLES = {
-    'User': 2,
-    'Admin': 1,
-  };
 
 const AppRouter = () => {
 
@@ -26,10 +20,8 @@ const AppRouter = () => {
                         </PrivateRoutes>
                     } />
                     <Route path="/backoffice/*" element={ 
-                       <RequireAuthRole allowedRoles={[ROLES.Admin]}>
                             <BackofficeRoutes />
-                       </RequireAuthRole>
-                    } />
+                    } />                    
                 </Routes>
             </div>
         </Router>
