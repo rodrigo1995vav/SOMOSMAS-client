@@ -51,7 +51,7 @@ export const login = ({ email, password, register},OnSuccess) => {
       })
       .catch((err) => {
         console.log(err)
-        Alert.error({ title: "Error", message: err.response.data.message })
+        Alert.error({ title:  err.response.data.name, message: err.response.data.message })
       });
   };
 };

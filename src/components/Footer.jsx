@@ -55,7 +55,7 @@ function Footer() {
               <div className="container-fluid">
                 <div className="row  pt-5">
                   <div className="col-lg-12 text-center ">
-                    {socialNetworks.map((socialNetwork)=><a key={socialNetwork.link} href={socialNetwork.link}>
+                    {socialNetworks.map((socialNetwork)=><a key={socialNetwork.icon} href={socialNetwork.link}>
                       <i
                         className={socialNetwork.icon}
                         style={{ fontSize: 25, color: "black" }}
