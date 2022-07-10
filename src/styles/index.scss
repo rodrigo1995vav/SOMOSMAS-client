@@ -1,17 +1,21 @@
+@import './base/override';
+
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 @import './base/base';
 @import './components/signUp.scss';
-@import './base/override';
+
 @import './base/mixins';
 
 
 //pages
 //@import '../pages/login/loginPage.module';
 @import '../pages/backOffice/backOffice.module';
+@import './pages/testimonials/testimonials.scss';
 
 //components
 //@import '../components/login/loginForm.module';
+@import './components/footer';
 @import './components/carousel';
 @import './componentes/textArea';
 @import './componentes/textInput';
