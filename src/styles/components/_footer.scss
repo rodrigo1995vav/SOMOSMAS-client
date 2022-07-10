@@ -1,0 +1,36 @@
+.footer{
+  background-color: #C0C0C0;
+  position: relative;
+
+  &__top-container{
+    height: 9rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__hr-top-basis{
+    flex-basis: 40%;
+  }
+
+  &__logo{
+    height: 20rem;
+    width: 20rem;
+
+    position: absolute;
+    left: 50%;
+    top: -4rem;
+    transform: translateX(-50%);
+  }
+
+  &__social-icons{
+    font-size: 2.5rem;
+    color: black;
+  }
+
+}
+
+
+
+
