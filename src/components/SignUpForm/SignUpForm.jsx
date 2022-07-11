@@ -51,6 +51,7 @@ import { register } from "../../store/slices/users";
           Alert.success({ title: 'Bienvenido!!!', message:'Recuerda completar tu perfil'}); 
           navigate('/'); 
           }
+          delete values.confirmPassword
           dispatch( register( values , onRegister ) )
            
       }}
