@@ -4,16 +4,16 @@ import React from 'react'
 
 function Footer() {
 
-  const footerLinks = [{name:'Inicio', to: '/'},
-                        {name:'Novedades', to: '/novedades'},
-                        {name:'Nosotros', to: '/nosotros'},
-                        {name:'Contacto', to: '/contacto'},
-                        {name:'Contribuye', to: '/contribuye'},]
-  
-  const socialNetworks = [{icon:"bi bi-facebook pe-3" , link:'#' },
-                          {icon:"bi bi-twitter pe-3" , link:'#' },
-                          {icon:"bi bi-linkedin pe-3" , link:'#' },
-                          {icon:"bi bi-instagram pe-3" , link:'#' }]
+  const footerLinks = [{ name: 'Inicio', to: '/' },
+  { name: 'Novedades', to: '/novedades' },
+  { name: 'Nosotros', to: '/nosotros' },
+  { name: 'Contacto', to: '/contacto' },
+  { name: 'Contribuye', to: '/contribuye' },]
+
+  const socialNetworks = [{ icon: "bi bi-facebook pe-3", link: '#' },
+  { icon: "bi bi-twitter pe-3", link: '#' },
+  { icon: "bi bi-linkedin pe-3", link: '#' },
+  { icon: "bi bi-instagram pe-3", link: '#' }]
 
 
 
@@ -25,13 +25,14 @@ function Footer() {
             <div className="brand text-center ">
               <div className="container-fluid">
                 <div className="row">
-                  <div className="col-xl-12"> <hr className='opacity-100' style={{width:500, marginLeft:0, marginTop:50}} /><hr className='opacity-100' style={{width:500, marginLeft:1050, marginTop:0}} />
-                 <img
+                  <div className="col-xl-12">
+                    <hr className='opacity-100' style={{ width: "30%", marginLeft: 0, marginTop: 50 }} />
+                    <hr className='opacity-100' style={{ width: "30%", marginLeft: "70%", marginTop: -10 }} />
+                    <img
                       className="img-fluid"
-                      style={{ width: 200, height: 200, marginTop: -100 }}  
+                      style={{ width: 200, height: 200, marginTop: -100 }}
                       src={'logo'}
-                    /> 
-                     
+                    />
                   </div>
                 </div>
               </div>
@@ -45,39 +46,39 @@ function Footer() {
                           {link.name}
                         </a>
                       </li>)}
-                    
-                    </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <hr className="text-black border-5 opacity-100" ></hr>
-              <div className="container-fluid">
-                <div className="row  pt-5">
-                  <div className="col-lg-12 text-center ">
-                    {socialNetworks.map((socialNetwork)=><a key={socialNetwork.icon} href={socialNetwork.link}>
-                      <i
-                        className={socialNetwork.icon}
-                        style={{ fontSize: 25, color: "black" }}
-                      ></i>
-                    </a>)}
-                  </div>
-                </div>
-              </div>
 
-              <div className="container-fluid" >
-                <div className="row pb-5">
-                  <div className="col-lg-12">
-                    <h4 className="text-center text-black">
-                      2022 by Alkemy. All rights reserved.
-                    </h4>
+                    </ul>
                   </div>
+                </div>
+              </div>
+            </div>
+            <hr className="text-black border-5 opacity-100" ></hr>
+            <div className="container-fluid">
+              <div className="row  pt-5">
+                <div className="col-lg-12 text-center ">
+                  {socialNetworks.map((socialNetwork) => <a key={socialNetwork.icon} href={socialNetwork.link}>
+                    <i
+                      className={socialNetwork.icon}
+                      style={{ fontSize: 25, color: "black" }}
+                    ></i>
+                  </a>)}
+                </div>
+              </div>
+            </div>
+
+            <div className="container-fluid" >
+              <div className="row pb-5">
+                <div className="col-lg-12">
+                  <h4 className="text-center text-black">
+                    2022 by Alkemy. All rights reserved.
+                  </h4>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
   )
 }
 
