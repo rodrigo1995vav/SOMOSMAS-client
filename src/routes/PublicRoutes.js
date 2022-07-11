@@ -5,11 +5,11 @@ import Footer from '../components/Footer'
 import { LoginPage } from '../pages/login/LoginPage';
 import NotFound from '../pages/notfound/NotFound';
 import Navbar from '../components/Navbar/Navbar.jsx';
-
 import { ContactPage } from '../pages/contact/ContactPage';
-import { NewsDetail } from '../pages/news/NewsDetail';
+
 import RegisterPage from '../pages/register/RegisterPage.jsx';
 import NewsDetails from '../components/NewsDetails/NewsDetails.jsx';
+import SignupForm from '../components/SignUpForm/SignUpForm.jsx';
 
 
 const PublicRoutes = () => {
@@ -23,7 +23,7 @@ const PublicRoutes = () => {
                 <Route path='testimonios' element={<News />} />
                 <Route path='contacto' element={<ContactPage />} />
                 <Route path='login' element={<LoginPage />} />
-                <Route path='registrarse' element={<RegisterPage />} />
+                <Route path='registrarse' element={<RegisterPage/>} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
             <Footer></Footer>

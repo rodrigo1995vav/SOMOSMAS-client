@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import logo from "../../img/Navbar/LOGO-SOMOS-MAS.png";
@@ -44,7 +43,7 @@ export default function Navbar() {
         <section className="sticky-top ps-5" style={{ backgroundColor: '#EAEBF3' }} >
             <nav className="navbar navbar-expand-lg p-3 border-bottom container_navbar ps-5">
                 <div className="container-fluid">
-                    <a className="navbar-brand mx-2" href="">
+                    <a className="navbar-brand mx-2" href="#">
                         <img
                             src={logo}
                             alt="Logo ong"
