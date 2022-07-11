@@ -8,6 +8,8 @@ import Navbar from '../components/Navbar/Navbar.jsx';
 
 import { ContactPage } from '../pages/contact/ContactPage';
 import { NewsDetail } from '../pages/news/NewsDetail';
+import RegisterPage from '../pages/register/RegisterPage.jsx';
+import NewsDetails from '../components/NewsDetails/NewsDetails.jsx';
 
 
 const PublicRoutes = () => {
@@ -17,11 +19,11 @@ const PublicRoutes = () => {
             <Routes>
                 <Route exact match path='' element={<Home />} />
                 <Route path='novedades' element={<News />} />
-                <Route path='novedades/:id' element={<NewsDetail />} />
+                <Route path='novedades/:id' element={<NewsDetails />} />
                 <Route path='testimonios' element={<News />} />
                 <Route path='contacto' element={<ContactPage />} />
-                <Route path='login' element={<LoginPage register ={false} />} />
-                <Route path='registrarse' element={<LoginPage register={true} />} />
+                <Route path='login' element={<LoginPage />} />
+                <Route path='registrarse' element={<RegisterPage />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
             <Footer></Footer>

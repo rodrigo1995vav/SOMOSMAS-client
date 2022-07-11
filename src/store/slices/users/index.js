@@ -29,20 +29,15 @@ export default userSlice.reducer; //exporto del userSlice el reducer , para pode
 export const { setUserLogged, deleteUserLogged } = userSlice.actions; //el userSlice siente una propiedad actions que aloja todas nuestras acciones
 
 //api requests
-export const login = ({ email, password, register},OnSuccess) => {
+export const login = (fields, OnSuccess) => {
   //a las actions solo las puede ejecutar un dispatch entonces se lo paso como parámetro a la función
   return (dispatch) => {
 
     let endpoint = '/auth/login'
 
-    if (register) {
-      endpoint = '/auth/register'
-    }
 
-   postPublic( endpoint , {
-        email,
-        password,
-      })
+
+   postPublic( endpoint , fields)
       .then(({ data }) => {
         dispatch(setUserLogged(data)); //esto pasa al actions de setUserLogged a la propiedad de payload   
         console.log(data)
@@ -55,6 +50,27 @@ export const login = ({ email, password, register},OnSuccess) => {
       });
   };
 };
+
+export const register = (fields , OnSuccess) => {
+  //a las actions solo las puede ejecutar un dispatch entonces se lo paso como parámetro a la función
+  return (dispatch) => {
+
+    let endpoint = '/auth/register'
+
+   postPublic( endpoint , fields)
+      .then(({ data }) => {
+        dispatch(setUserLogged(data)); //esto pasa al actions de setUserLogged a la propiedad de payload   
+        localStorage.setItem("token", data.accessToken);
+        OnSuccess();
+      })
+      .catch((err) => {
+        console.log(err)
+        Alert.error({ title:  err.response.data.name, message: err.response.data.message })
+      });
+  };
+};
+
+
 
 export const logout = (dispatch) =>{
   //token name may change in future version, unsafe name.

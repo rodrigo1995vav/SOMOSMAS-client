@@ -1,36 +1,9 @@
 import React from 'react'
 import { LoginForm } from '../../components/login/LoginForm'
 
-export const LoginPage = ({register}) => {
+export const LoginPage = () => {
 
 
-
-    if(register){
-      return  (<>
-        <section className="container login">
-            <div className="row justify-content-center">
-                <div className="col-12 col-lg-6">
-                    <header className='login__content-welcome'>
-                        <p className='login__content-firstline'>Bienvenido</p>
-                        <h2>Formulario de registro</h2>
-                    </header>
-                    
-                    <section className='login__content-form mt-4'>
-                      <LoginForm register = {register} />
-                    </section>
-
-                    <section className='login__content-footer mt-5'>
-                        <p>¿Ya tienes una cuenta?    
-                            <a href="/login" className="link">
-                                Logueate
-                            </a>
-                        </p>
-                    </section>
-                </div>
-            </div>
-        </section>
-    </>)
-    }
 
 
 
@@ -45,7 +18,7 @@ export const LoginPage = ({register}) => {
                     </header>
                     
                     <section className='login__content-form mt-4'>
-                      <LoginForm register = {register} />
+                      <LoginForm />
                     </section>
 
                     <section className='login__content-footer mt-5'>

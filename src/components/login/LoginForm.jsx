@@ -8,10 +8,9 @@ import { login } from '../../store/slices/users/index'
 
 
 
-export const LoginForm = ({ register }) => {
+export const LoginForm = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { user } = useSelector(state => state.userLogged)
     const [isShowPassword, setIsShowPassword] = useState(false)
 
     const handleClickShowPassword = () => {
@@ -46,11 +45,11 @@ export const LoginForm = ({ register }) => {
 
                     const onLogin = ()=>{ 
                         resetForm(); 
-                        Alert.success({ title: 'Bienvenido!!!', message: register ?'Recuerda completar el perfil':''}); 
+                        Alert.success({ title: 'Bienvenido!!!'}); 
                         navigate('/'); 
                         }
                    
-                        dispatch( login({ email: values.email, password: values.password, register: register }, onLogin ) )
+                        dispatch( login( values, onLogin ) )
                     
              
                 }}
@@ -80,7 +79,7 @@ export const LoginForm = ({ register }) => {
                             <div className='error'>{errors.password}</div>
                         } className='error' />
                     </div>
-                    <button type="submit" className='buttonColor'>{ register? "Registrarse" : "Iniciar sesión" }</button>
+                    <button type="submit" className='buttonColor'>Iniciar sesión</button>
                 </Form>
             )}
             </Formik>
