@@ -2,6 +2,9 @@ import React from "react";
 import { Formik, Form } from "formik";
 import { TextField } from "./TextField";
 import * as Yup from "yup";
+import { create } from "../../services/user/userServices";
+import Alert from "../../services/AlertService";
+import { Navigate } from "react-router-dom";
 
 export const Signup = () => {
   const validate = Yup.object({
@@ -21,6 +24,7 @@ export const Signup = () => {
       .oneOf([Yup.ref("password"), null], "La contraseña debe ser igual")
       .required("Campo requerido"),
   });
+
   return (
     <Formik
       initialValues={{
@@ -31,9 +35,33 @@ export const Signup = () => {
         confirmPassword: "",
       }}
       validationSchema={validate}
-      onSubmit={(values) => {
-        console.log("Successfully registered")
-        console.log(values);
+      onSubmit={async(values) => {
+        try{
+          const user=await create(values)
+         
+          console.log('user',user)
+          if (user.status===200) {
+            Alert.success({title:'Welcome!!!',message:'User created successfully'})
+            setTimeout(() =>{
+              return <Navigate to='/login' />
+            }, 2000)
+
+          } else if(user.error){
+            Alert.error({title:'Sorry...', message:'something went wrong, try again'})
+          } else{
+            Alert.error({title:'Sorry...', message:'Wrong data try again'})
+            setTimeout(() =>{
+              return <Navigate to='/' />
+            }, 2000)
+          }
+
+        } catch(e) {
+          console.log("Error: " + e.message);
+          Alert.error({title:'Sorry...', message:'Wrong data try again'})
+          setTimeout(() =>{
+            return <Navigate to='/' />
+          }, 2000)
+        }
         //TODO navigate to Login page 
       }}
     >

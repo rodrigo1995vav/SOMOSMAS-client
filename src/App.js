@@ -1,17 +1,18 @@
+
 import React from "react";
-import Footer from "./components/Footer";
 import AppRouter from "./router/AppRouter";
 import EditOrganization from "./pages/backOffice/EditOrganization";
 
+//redux
+import { Provider } from "react-redux";
+import store from "./store";
+
 function App() {
-  return (
-    <div>
-      <h1 className="fw-bolder"></h1>
-        <AppRouter/>
-        <Footer />
-        <EditOrganization/>
-    </div>
-  );
+    return (
+        <Provider store={store}>  
+                <AppRouter />
+        </Provider>
+    );
 }
 
 export default App;

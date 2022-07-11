@@ -1,28 +1,30 @@
-import React from 'react'
-import logo from "./LOGO-SOMOS MAS.png";
 
+import logo from '../assets/logo.png'
+import useSocialNetworks from '../hooks/useSocialNetworks';
 
 function Footer() {
+
+  const { socialNetworks } = useSocialNetworks();
+
   return (
-    <div style={{ backgroundColor: "#c0c0c0" }} className="fixed-bottom">
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-xl-12 col-md-8 ml-auto mr-auto">
+    <div className='footer'>
+      <div>
+        <div>
+          <div>
             <div className="brand text-center ">
-              <div className="container-fluid">
-                <div className="row">
-                  <div className="col-xl-12"> <hr className='opacity-100' style={{width:500, marginLeft:0, marginTop:50}} /><hr className='opacity-100' style={{width:500, marginLeft:1050, marginTop:0}} />
-                 <img
-                      className="img-fluid"
-                      style={{ width: 200, height: 200, marginTop: -100 }}  
-                      src={logo}
-                    /> 
-                     
-                  </div>
+              <div className="container-fluid ">
+                <div className="row footer__top-container" >
+                  <hr className='opacity-100 footer__hr-top-basis'/>
+                  <hr className='opacity-100 footer__hr-top-basis'  />
+                  <img 
+                    className='footer__logo'
+                    src={logo}
+                    alt="logo"
+                  /> 
                 </div>
               </div>
 
-              <div className="container-fluid">
+              <div>
                 <div className="row  pt-5">
                   <div className="row-lg-12  py-5 ">
                     <ul class="nav justify-content-center  ">
@@ -62,38 +64,26 @@ function Footer() {
                 </div>
               </div>
               <hr className="text-black border-5 opacity-100" ></hr>
-              <div className="container-fluid">
-                <div className="row  pt-5">
+              <div>
+                <div className="row pt-2">
                   <div className="col-lg-12 text-center ">
-                    <a href="www.facebook.com">
-                      <i
-                        className="bi bi-facebook pe-3"
-                        style={{ fontSize: 25, color: "black" }}
-                      ></i>
-                    </a>
-                    <a href="#">
-                      <i
-                        className="bi bi-twitter pe-3"
-                        style={{ fontSize: 25, color: "black" }}
-                      ></i>
-                    </a>
-                    <a href="#">
-                      <i
-                        class="bi bi-linkedin pe-3"
-                        style={{ fontSize: 25, color: "black" }}
-                      ></i>
-                    </a>
-                    <a href="#">
-                      <i
-                        class="bi bi-instagram pe-3"
-                        style={{ fontSize: 25, color: "black" }}
-                      ></i>
-                    </a>
+
+                    {
+                      socialNetworks?.length > 0 && socialNetworks.map( ( social ) => {
+                        const { id, link, bootstrapIconName } = social;
+                        return(
+                          <a href={ link } key={ id } target="_blank">
+                            <i className={ `bi ${ bootstrapIconName } footer__social-icons me-3` } />
+                          </a>
+                        )
+                     })
+                    }
+
                   </div>
                 </div>
               </div>
 
-              <div className="container-fluid" style={{ height: 300 }}>
+              <div className="container-fluid">
                 <div className="row pb-5">
                   <div className="col-lg-12">
                     <h4 className="text-center text-black">
