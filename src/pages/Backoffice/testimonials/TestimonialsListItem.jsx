@@ -1,4 +1,3 @@
-
 import { deletePrivate } from "../../services/apiServices"
 import Alert from '../../services/AlertService'
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 //TODO here we should put the base url from the server side
 axios.defaults.baseURL = "http://localhost:3001";
 
@@ -53,6 +54,7 @@ export function getPublic(path) {
 }
 
 export function postPublic(path, body) {
+  console.log(path)
   return axios.post(path, body);
 }
 

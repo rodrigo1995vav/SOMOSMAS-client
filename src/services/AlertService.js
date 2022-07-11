@@ -28,7 +28,7 @@ export default class Alert {
     }
     
     static error({title,message}){
-        return Swal.fire({
+        Swal.fire({
             title,
             text:message,
             confirmButtonColor: this.buttonConfirmColor,
@@ -64,7 +64,7 @@ export default class Alert {
     }
     
     
-    static confirmRequest({title,message},request,onSuccess){
+    static confirmRequest({title,message}, request, onSuccess){
         Swal.fire({
             title,
             text:message,
