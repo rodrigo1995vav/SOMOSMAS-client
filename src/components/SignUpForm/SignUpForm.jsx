@@ -25,7 +25,7 @@ import { register } from "../../store/slices/users";
       .matches(/^[aA-zZ\s]+$/, "Solo se permiten letras en este campo "),
     email: Yup.string().email("Email no valido").required("Email requerido"),
     password: Yup.string()
-      .min(6, "Su contraseña debe tener un minimo de 6 caracteres")
+      .min(8, "Su contraseña debe tener un minimo de 8 caracteres")
       .required("Ingrese una contraseña"),
       //If necessary next line of code will ensure the user types a safe password 
       //.matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/, "Must include uppercase and lowercase letters, a number and a special character.")
