@@ -76,9 +76,9 @@ export default class Alert {
             confirmButtonColor: this.buttonConfirmColor,
             showLoaderOnConfirm: true,
             preConfirm: () => {
-              return request()
+              return (request())
                 .then(response => {
-                  if (!response.ok) {
+                  if (!response) {
                     throw new Error(response.statusText)
                   }
                   return response.data

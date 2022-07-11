@@ -1,13 +1,13 @@
-import { getPublic } from "../../services/apiServices"
+import { deletePrivate } from "../../services/apiServices"
 import Alert from '../../services/AlertService'
 
 const TestimonialsListItem = ({testimonial}) => {
 
 
     const deleteTestimonial = (testimonial) =>{
-        const requestDelete = getPublic('delete endpoint')
+    
         Alert.confirmRequest({title:`¿Desea eliminar a ${testimonial}?`}, 
-                             requestDelete, 
+                            ()=> deletePrivate('delete endpoint'), 
                             ()=> Alert.success({title:'Testimonio eliminado'}))
     }
 
