@@ -1,4 +1,6 @@
-const Paginator = ({pageCount , baseUrl ,currentPage, justify = 'center'}) => {
+import { Link } from "react-router-dom";
+
+const Paginator = ({pageCount ,currentPage, justify = 'center'}) => {
     
 
 
@@ -9,17 +11,17 @@ const Paginator = ({pageCount , baseUrl ,currentPage, justify = 'center'}) => {
     const renderPages = () => {
         let li = [];
         li.push(<li key={"page/prev"}  className= {page > 1?"page-item": "page-item disabled" }>
-                    <a className="page-link" href={`${baseUrl}${currentPage-1}`}>Ant.</a>
+                    <Link className="page-link" to={`${currentPage-1}`}>Ant.</Link>
                     </li>)
         for (let i = 0; i < pageCount; i++) {
                  li.push( <li key={`page${i+1}`} className = { i+1===page?"page-item active": 'page-item'}>
-                                     <a className="page-link" href={`${baseUrl}${i+1}`}>{i+1}</a>
+                                     <Link className="page-link" to={`${i+1}`}>{i+1}</Link>
                          </li>);
         }
 
         li.push(
                     <li key={"page/next"}  className={page < pageCount?"page-item":"page-item disabled"}>
-                        <a className="page-link" href={`${baseUrl}${currentPage+1}`}>Sig.</a>
+                        <Link className="page-link" to={`${currentPage+1}`}>Sig.</Link>
                     </li>)
 
         return li;
