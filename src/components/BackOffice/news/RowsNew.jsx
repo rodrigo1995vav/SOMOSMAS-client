@@ -1,6 +1,7 @@
 function RowsNew({
     name,
     image,
+    deleteNews,
     createdAt }) {
 
     return (
@@ -16,7 +17,7 @@ function RowsNew({
                     <i class="bi bi-pencil-fill h3"></i>
                     Editar
                     </button>
-                <button className="btn btn-danger mx-1 display-1">
+                <button onClick={()=>deleteNews()} className="btn btn-danger mx-1 display-1">
                     <i class="bi bi-trash3 h3"></i>
                     Eliminar
                     </button>

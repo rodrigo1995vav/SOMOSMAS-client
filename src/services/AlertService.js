@@ -78,12 +78,11 @@ export default class Alert {
             preConfirm: () => {
               return request()
                 .then(response => {
-                  if (!response.ok) {
-                    throw new Error(response.statusText)
-                  }
+              
                   return response.data
                 })
                 .catch(error => {
+                  console.log(error)
                   Swal.showValidationMessage(
                     `No se pudo realizar la solicitud: ${error.response.data.message}`
                   )
