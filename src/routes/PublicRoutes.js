@@ -6,10 +6,9 @@ import { LoginPage } from '../pages/login/LoginPage';
 import NotFound from '../pages/notfound/NotFound';
 import Navbar from '../components/Navbar/Navbar.jsx';
 import { ContactPage } from '../pages/contact/ContactPage';
-
 import RegisterPage from '../pages/register/RegisterPage.jsx';
 import NewsDetails from '../components/NewsDetails/NewsDetails.jsx';
-import SignupForm from '../components/SignUpForm/SignUpForm.jsx';
+
 
 
 const PublicRoutes = () => {
