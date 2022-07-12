@@ -1,8 +1,15 @@
 import React from "react";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import logo from "../../img/Navbar/LOGO-SOMOS-MAS.png";
+import { selectUser, logout } from "../../store/slices/users";
 import Menu from "./Menu";
 export default function Navbar() {
+
+    useSelector(selectUser);
+    const navigate = useNavigate()
+    const userLogged = useSelector(selectUser);
+    const dispatch = useDispatch()
     const menu = {
         route: "",
         menu: [
@@ -12,31 +19,31 @@ export default function Navbar() {
             },
             {
                 text: "Nosotros",
-                link: '/us'
+                link: '/nosotros'
             },
             {
                 text: "Novedades",
-                link: '/news'
+                link: '/novedades'
             },
             {
                 text: "Testimonios",
-                link: '/testimonials'
+                link: '/testimonios'
             },
             {
                 text: "Contacto",
-                link: 'contact'
+                link: 'contacto'
             },
             {
                 text: "Contribuye",
-                link: '/contribute'
+                link: '/contribuye'
             }
         ]
     };
     return (
-        <section>
-            <nav className="navbar navbar-expand-lg p-3 border-bottom container_navbar ">
+        <section className="sticky-top ps-5" style={{ backgroundColor: '#EAEBF3' }} >
+            <nav className="navbar navbar-expand-lg p-3 border-bottom container_navbar ps-5">
                 <div className="container-fluid">
-                    <a className="navbar-brand mx-2" href="">
+                    <a className="navbar-brand mx-2" href="#">
                         <img
                             src={logo}
                             alt="Logo ong"
@@ -53,7 +60,7 @@ export default function Navbar() {
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                     >
-                        <span className="navbar-toggler-icon"></span>
+                        <span className="bi bi-list"></span>
                     </button>
                     <div
                         className="collapse navbar-collapse  justify-content-end"
@@ -61,25 +68,42 @@ export default function Navbar() {
                     >
                         <div className="">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
-                                {menu.length > 0 &&
-                                    menu.map((section) => <Menu section={section} />)}
+                                {menu.menu.length > 0 &&
+                                    menu.menu.map((section) => <Menu key={section.text} {...section} />)}
                             </ul>
                         </div>
                         <div className="justify-content-end">
-                            <button
-                                className="btn text-dark rounded-pill border border-dark mx-3"
-                                type="submit"
-                                style={{ transform: "scale(1.2)" }}
-                            >
-                                Login in
-                            </button>
-                            <button
-                                className="btn btn-danger mx-3  rounded-pill"
-                                type="submit"
-                                style={{ transform: "scale(1.2)" }}
-                            >
-                                Registrate
-                            </button>
+
+                            {
+                                userLogged ?
+                                    <button
+                                        className="btn btn-danger mx-3  rounded-pill"
+                                        type="submit"
+                                        style={{ transform: "scale(1.2)" }}
+                                        onClick={() => { logout(dispatch) }}
+                                    >
+                                        Log Out
+                                    </button> :
+                                    <>
+                                        <button
+                                            className="btn text-dark rounded-pill border border-dark mx-3"
+                                            type="submit"
+                                            style={{ transform: "scale(1.2)" }}
+                                            onClick={() => { navigate('/login') }}
+                                        >
+                                            Log In
+                                        </button>
+                                        <button
+                                            className="btn btn-danger mx-3  rounded-pill"
+                                            type="submit"
+                                            style={{ transform: "scale(1.2)" }}
+                                            onClick={() => { navigate('/registrarse') }}
+                                        >
+                                            Registrate
+                                        </button>
+                                    </>
+
+                            }
                         </div>
                     </div>
                 </div>

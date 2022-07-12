@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"
@@ -56,6 +55,3 @@ const NewsDetails = ({imgHeight = '40rem'}) => {
 }
 
 export default NewsDetails
-
-
-
