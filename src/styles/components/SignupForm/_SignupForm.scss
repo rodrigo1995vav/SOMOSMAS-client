@@ -10,9 +10,13 @@ input.form-control:focus {
 }
 
 .sign-up {
-  width: 300px;
+  max-width: 100rem;
 }
 
 .btn-reg {
-  width: 250px;
+  background-color: red;
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+  width: 12rem;
 }

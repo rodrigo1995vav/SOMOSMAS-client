@@ -19,7 +19,7 @@ function Footer() {
 
   return (
     <div style={{ backgroundColor: "#c0c0c0" }} className="mt-5">
-      <div className="container-fluid">
+      <div className="container-fluid p-0">
         <div className="row">
           <div className="col-xl-12 ml-auto mr-auto">
             <div className="brand text-center ">
@@ -51,7 +51,7 @@ function Footer() {
                 </div>
               </div>
 
-              <div className="container-fluid">
+              <div className="container-fluid p-0">
                 <div className="row  pt-5">
                   <div className="row-lg-12  py-5 ">
                     <ul className="nav justify-content-center  ">
@@ -71,7 +71,7 @@ function Footer() {
               </div>
             </div>
             <hr className="text-black border-5 opacity-100"></hr>
-            <div className="container-fluid">
+            <div className="container-fluid p-0">
               <div className="row  pt-5">
                 <div className="col-lg-12 text-center ">
                   {socialNetworks.map((socialNetwork) => (
@@ -86,7 +86,7 @@ function Footer() {
               </div>
             </div>
 
-            <div className="container-fluid">
+            <div className="container-fluid p-0">
               <div className="row pb-5">
                 <div className="col-lg-12">
                   <h4 className="text-center text-black">

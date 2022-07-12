@@ -57,9 +57,9 @@ import { register } from "../../store/slices/users";
       }}
     >
       {(formik) => (
-        <div className="col-10 col-md-8 col-lg-6 mx-auto">
-          <h1 className="my-4 font-weight-bold .display-4 text-center">
-            Eres nuevo? Registrate!
+        <div className="">
+          <h1 className="my-4 font-weight-bold display-4 text-center">
+            ¿Eres nuevo? Registrate!
           </h1>
           <Form className="d-flex flex-column">
             <TextField
@@ -86,13 +86,13 @@ import { register } from "../../store/slices/users";
               placeholder="Contraseña"
               type="password"
             />
-            <TextField
+            <TextField 
               label="Confirmar Contraseña"
               name="confirmPassword"
               placeholder="Confirmar Contraseña"
               type="password"
             />
-            <button className="btn bg-primary mt-3 btn-reg mx-auto p-2" type="submit">
+            <button className="btn mt-4 btn-reg align-self-center " type="submit">
               Registrarse
             </button>
           </Form>
