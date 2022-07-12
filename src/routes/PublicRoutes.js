@@ -15,18 +15,6 @@ import RegisterPage from '../pages/register/RegisterPage.jsx';
 
 const PublicRoutes = () => {
     return (
-<<<<<<< HEAD
-        <Routes>
-            <Route exact match path='' element={<Home/>} />
-            <Route path='news' element={<News/>} />
-            <Route path='news/:id' element={<NewsDetail/>} />
-            <Route path='testimonials' element={<News/>} />
-          {/*   <Route path='contact' element={<ContactPage/>} /> */}
-          {/*    <Route path='login' element={<LoginPage/>} /> */}
-           
-            <Route path='*' element={<NotFound/>} />
-        </Routes>
-=======
         <>
             <Navbar></Navbar>
             <Routes>
@@ -41,7 +29,6 @@ const PublicRoutes = () => {
             </Routes>
             <Footer></Footer>
         </>
->>>>>>> 8481696ac7bdecf438da1e369eaa9bf4efda291a
     );
 }
 
