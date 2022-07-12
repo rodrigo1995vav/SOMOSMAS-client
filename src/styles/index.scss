@@ -1,27 +1,24 @@
 @import './base/override';
-
 @import "../../node_modules/bootstrap/scss/bootstrap";
-
 @import './base/base';
 @import './components/signUp.scss';
 
 @import './base/mixins';
 
 
+// //components
+// @import '../components/login/loginForm.module';
+ @import '../styles/components/SignupForm/SignupForm.scss';
+ @import './components/carousel';
+ @import './components/textArea';
+ @import './components/textInput';
+ @import './components/AlertStyles';
+
+
+ 
 //pages
-//@import '../pages/login/loginPage.module';
-@import '../pages/backOffice/backOffice.module';
-@import './pages/testimonials/testimonials.scss';
-
-//components
-//@import '../components/login/loginForm.module';
-@import './components/footer';
-@import './components/carousel';
-@import './componentes/textArea';
-@import './componentes/textInput';
-
+// @import '../pages/login/loginPage.module';
 @import './pages/contact/contactPage';
-@import './pages/activityDetail/activityDetailPage';
-
-@import './components/AlertStyles.scss'
+@import '../pages/backOffice/backOffice.module';
+@import './pages/home/homePage';
 
