@@ -28,7 +28,7 @@ export default class Alert {
     }
     
     static error({title,message}){
-        return Swal.fire({
+        Swal.fire({
             title,
             text:message,
             confirmButtonColor: this.buttonConfirmColor,
@@ -64,7 +64,7 @@ export default class Alert {
     }
     
     
-    static confirmRequest({title,message},request,onSuccess){
+    static confirmRequest({title,message}, request, onSuccess){
         Swal.fire({
             title,
             text:message,
@@ -76,16 +76,16 @@ export default class Alert {
             confirmButtonColor: this.buttonConfirmColor,
             showLoaderOnConfirm: true,
             preConfirm: () => {
-              return request
+              return (request())
                 .then(response => {
-                  if (!response.ok) {
+                  if (!response) {
                     throw new Error(response.statusText)
                   }
-                  return response.json()
+                  return response.data
                 })
-                .catch(error => {
+                .catch(err => {
                   Swal.showValidationMessage(
-                    `No se pudo realizar la solicitud: ${error}`
+                    `No se pudo realizar la solicitud: ${err.response.data.message}`
                   )
                   Swal.getConfirmButton().textContent ='Reintentar'
                 })

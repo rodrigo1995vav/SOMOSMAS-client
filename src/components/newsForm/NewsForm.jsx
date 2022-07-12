@@ -2,31 +2,42 @@ import React, { useEffect, useState } from 'react'
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
 import './newsForm.css'
+import { getPrivate, postPrivate, putPrivate } from '../../services/apiServices';
+import Alert from '../../services/AlertService';
 
 function NewsForm({ patch }) {
     let { id } = useParams()
-    const [title, setTitle] = useState("");
-    const [image, setImage] = useState("");
-    const [content, setContent] = useState("");
-    const [category, setCategory] = useState("");
+    const [newsFormData, setNewsFormData] = useState({ 
+                                                       title:'', 
+                                                       image:'',
+                                                       content:'',
+                                                       category:''
+                                                     })
 
-    useEffect(async () => {
+    const updateField = (e) => {
+
+            setNewsFormData({...newsFormData,[e.target.name]: e.target.value}); };
+    
+    useEffect(() => {
         if (patch) {
-            const newsData = await axios.get(`http://localhost:8080/news/${id}`)
-            setTitle(newsData.title)
-            setImage(newsData.image)
-            setContent(newsData.content)
-            setCategory(newsData.category)
+            getPrivate(`/news/${id}`)
+                .then(res => res.json())
+                .then(res => setNewsFormData(res))
+                .catch(err => Alert.error({title:'Error ', message :`${err.message}`}))
         }
-    }, []);
+    },[id,patch]);
 
-    const onSubmit = async () => {
+    const onSubmit = (e) => {
+        e.preventDefault()
         if (patch) {
-            await axios.patch(`http://localhost:8080/news/${id}`, { title, image, content, category })
+            putPrivate(`/news/${id}`, newsFormData)
+            .then(res => Alert.success({ title:'Se modificó la novedad:', message : `${newsFormData.title}`}))
+            .catch(err=> Alert.error({title:'No se ha podido modificar la novedad...'}))
         } else {
-            await axios.post(`http://localhost:8080/news`, { title, image, content, category })
+            postPrivate(`/news`, newsFormData)
+            .then(res => Alert.success({ title:`Se ha creado la novedad: `, message : `${newsFormData.title}` }))
+            .catch(err=> Alert.error({title:'No se pudo crear la novedad: ', message :`${err.message}`}))
         }
     }
 
@@ -39,39 +50,42 @@ function NewsForm({ patch }) {
                     <input
                         type="text"
                         className='titleInput'
-                        value={title}
-                        onChange={(e) => { setTitle(e.target.value) }} />
+                        value={newsFormData.title}
+                        name='title'
+                        onChange={(e) =>  updateField(e)} />
                 </div>
                 <div className="newsImage newsInput">
                     <label>Image</label>
                     <input
-                        value={image}
+                        value={newsFormData.image}
                         type="file"
-                        onChange={(e) => setImage(e.target.value)} />
+                        name='image'
+                        onChange={(e) =>  updateField(e)}/>
                 </div>
                 <div className="newsCategory newsInput">
                     <label>Category</label>
                     <input
                         type="text"
                         className='categoryInput'
-                        value={category}
-                        onChange={(e) => { setCategory(e.target.value) }} />
+                        value={newsFormData.category}
+                        name='category'
+                        onChange={(e) =>  updateField(e)} />
                 </div>
             </div>
-            <CKEditor
+            <CKEditor 
                 className='contentInput'
                 editor={ClassicEditor}
-                data={content}
-                value={content}
-                onChange={(event, editor) => {
+                data={newsFormData.content}
+                value={newsFormData.content}
+                onChange={(e, editor) => {
                     const data = editor.getData()
-                    setContent(data)
+                    setNewsFormData({...newsFormData, content: data })
                 }}
             />
             <button
                 className="btn btn-primary"
                 type='submit'
-                onClick={() => { onSubmit() }}>{patch ? "Update News" : "Create News"}</button>
+                onClick={(e) => { onSubmit(e) }}>{patch ? "Update News" : "Create News"}</button>
         </div>
     )
 }
