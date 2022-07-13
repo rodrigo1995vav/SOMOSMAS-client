@@ -4,11 +4,11 @@ import NewsAdmin from "../pages/Backoffice/News/NewsAdmin"
 const BackofficeRoutes = () => {
 
     return (
-        <div>
+      
             <Routes>
-                <Route exact path="/news" element={<NewsAdmin />}/>
+                <Route exact path="/news" element={<NewsAdmin />}/> 
             </Routes>
-        </div>
+        
     )
 }
 

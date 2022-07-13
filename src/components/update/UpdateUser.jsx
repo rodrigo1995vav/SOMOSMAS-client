@@ -1,8 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+// import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 
-export default function UpdateUser({user}) {
+export default function UpdateUser() {
 
+    // const dispatch = useDispatch()
+
+    const state = useSelector( state => state.user );
+
+    const [user, setUser] = useState('')
+
+    useEffect(() => {
+      if (state){
+        switch (state){
+            case 'admin':
+                setUser('admin')
+                break
+            case 'user':
+                setUser('user')
+                break
+            default:
+                break
+        }
+      }
+    
+    }, [state])
+    
     return (
         <>
             <Formik
@@ -33,8 +58,7 @@ export default function UpdateUser({user}) {
                 }}
                 onSubmit={(values,{resetForm})=>{
     
-                    console.log(values)
-                    // resetForm()
+                    // dispatch(updateUserReducer(values))
                 }}
             >{({errors}) => (
                 <Form className='form' >

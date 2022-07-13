@@ -2,11 +2,20 @@ import React from "react";
 import { Formik, Form } from "formik";
 import { TextField } from "./TextField";
 import * as Yup from "yup";
-import { create } from "../../services/user/userServices";
+import { useDispatch } from 'react-redux';
 import Alert from "../../services/AlertService";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { register } from "../../store/slices/users";
 
-export const Signup = () => {
+
+
+
+ const SignupForm = () => {
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+
   const validate = Yup.object({
     firstName: Yup.string()
       .required("Ingrese su nombre")
@@ -16,7 +25,7 @@ export const Signup = () => {
       .matches(/^[aA-zZ\s]+$/, "Solo se permiten letras en este campo "),
     email: Yup.string().email("Email no valido").required("Email requerido"),
     password: Yup.string()
-      .min(6, "Su contraseña debe tener un minimo de 6 caracteres")
+      .min(8, "Su contraseña debe tener un minimo de 8 caracteres")
       .required("Ingrese una contraseña"),
       //If necessary next line of code will ensure the user types a safe password 
       //.matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/, "Must include uppercase and lowercase letters, a number and a special character.")
@@ -24,6 +33,7 @@ export const Signup = () => {
       .oneOf([Yup.ref("password"), null], "La contraseña debe ser igual")
       .required("Campo requerido"),
   });
+
 
   return (
     <Formik
@@ -35,34 +45,15 @@ export const Signup = () => {
         confirmPassword: "",
       }}
       validationSchema={validate}
-      onSubmit={async(values) => {
-        try{
-          const user=await create(values)
-         
-          console.log('user',user)
-          if (user.status===200) {
-            Alert.success({title:'Welcome!!!',message:'User created successfully'})
-            setTimeout(() =>{
-              return <Navigate to='/login' />
-            }, 2000)
-
-          } else if(user.error){
-            Alert.error({title:'Sorry...', message:'something went wrong, try again'})
-          } else{
-            Alert.error({title:'Sorry...', message:'Wrong data try again'})
-            setTimeout(() =>{
-              return <Navigate to='/' />
-            }, 2000)
+      onSubmit={async (values, { resetForm })=> {
+        const onRegister = ()=> { 
+          resetForm(); 
+          Alert.success({ title: 'Bienvenido!!!', message:'Recuerda completar tu perfil'}); 
+          navigate('/'); 
           }
-
-        } catch(e) {
-          console.log("Error: " + e.message);
-          Alert.error({title:'Sorry...', message:'Wrong data try again'})
-          setTimeout(() =>{
-            return <Navigate to='/' />
-          }, 2000)
-        }
-        //TODO navigate to Login page 
+          delete values.confirmPassword
+          dispatch( register( values , onRegister ) )
+           
       }}
     >
       {(formik) => (
@@ -110,3 +101,6 @@ export const Signup = () => {
     </Formik>
   );
 };
+
+
+export default SignupForm

@@ -2,6 +2,11 @@ import React from 'react'
 import { LoginForm } from '../../components/login/LoginForm'
 
 export const LoginPage = () => {
+
+
+
+
+
   return (
     <>
         <section className="container login">
@@ -17,8 +22,8 @@ export const LoginPage = () => {
                     </section>
 
                     <section className='login__content-footer mt-5'>
-                        <p>No tienes una cuenta ? 
-                            <a href="/" className="link">
+                        <p>¿No tienes una cuenta?  
+                            <a href="/registro" className="link">
                                 Registrate
                             </a>
                         </p>
