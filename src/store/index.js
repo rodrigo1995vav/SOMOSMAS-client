@@ -2,9 +2,11 @@ import { configureStore } from "@reduxjs/toolkit";
 
 // reducers
 import userLogged from "./slices/users";
+import allCategories from "./slices/categories/getAllCategories"
 export default configureStore({
-  //estados globales
-  reducer: {
-    userLogged,
-  },
+    //estados globales
+    reducer: {
+        userLogged,
+        allCategories
+    },
 });
