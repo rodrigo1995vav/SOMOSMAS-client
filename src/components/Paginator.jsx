@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Paginator = ({ pageCount, currentPage, justify = "center" }) => {
@@ -6,12 +5,6 @@ const Paginator = ({ pageCount, currentPage, justify = "center" }) => {
     let currentLoc
     const loc = location.pathname.lastIndexOf("/")
     currentLoc = location.pathname.slice(0,loc+1);
-    console.log(currentLoc)
-//   useEffect(() => {
-//     const loc = location.pathname.lastIndexOf("/")
-//     currentLoc = location.pathname.slice(0,loc);
-//   }, []);
-
   const page = Number(currentPage);
 
   const renderPages = () => {
