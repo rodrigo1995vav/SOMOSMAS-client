@@ -1,4 +1,5 @@
-export default function RowsActivities(activity) {
+export default function RowsActivities({ activity }) {
+    //each activity is an activity object with name and id properties
     return (<tr >
         <td className="col-3 text-center h4 " style={{ paddingTop: '35px' }}>{activity.name}</td>
         <td className="col-3 text-center h4 " style={{ paddingTop: '35px' }}>

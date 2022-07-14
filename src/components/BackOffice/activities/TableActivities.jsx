@@ -1,18 +1,7 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllActivities } from "../../../store/slices/activities/getAllActivities";
-import { Loader } from "../../Loader";
-import RowsActivities from "./RowsActivities";
-export default function TableActivities() {
-    const [{ activities}, { loader }] = useSelector((state) => [state.allActivities, state.loader])
 
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(getAllActivities(1))
-    }, [])
-    if (loader) {
-        return <Loader />
-    }
+import RowsActivities from "./RowsActivities";
+export default function TableActivities({ activities }) {
+
     return (
         <div>
             <table class="table table-dark">
@@ -23,10 +12,9 @@ export default function TableActivities() {
                     </tr>
 
                 </thead>
-                {activities &&
-                 (activities.total_activities.length > 0 && activities.activities != 0 ?
+                {(activities.length > 0 ?
                     (<tbody>
-                        {activities.activities.map((activity) =>
+                        {activities.map((activity) =>
                             (<RowsActivities key={activity.id} activity={activity} />))
                         }
                     </tbody>
