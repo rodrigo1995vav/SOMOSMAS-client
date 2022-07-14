@@ -1,0 +1,50 @@
+.activity-detail{
+  height: 100vh;
+
+  @include responsive($medium){
+    padding-top: 4rem;
+    clear: both;
+  }
+
+  @include responsive($large){
+    max-width: 110rem;
+    margin: 0 auto;
+  }
+}
+
+.activity-image-container{
+  margin-bottom: 1rem;
+
+  @include responsive($small){
+    margin: 0 auto;
+    width: 57.5rem;
+  }
+
+  @include responsive($medium){
+    margin: 0 auto;
+    width: 70rem;
+  }
+
+}
+
+.activity-image{
+  max-width: 100%;
+  min-height: 18rem;
+}
+
+.activity-text-container{
+  padding: 2.5rem;
+}
+
+.activity-text-title{
+  font-size: 2.4rem;
+
+  @include responsive($large){
+    font-size: 2.9rem;
+  }
+}
+
+.activity-text-paragraph{
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+}
