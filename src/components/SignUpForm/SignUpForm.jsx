@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import { TextField } from "./TextField";
 import * as Yup from "yup";
@@ -14,6 +14,13 @@ import { register } from "../../store/slices/users";
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  const [ShowPassword, setShowPassword] = useState({ password:false , confirmPassword:false })
+
+    const handleClickShowPassword = (state) => {
+      console.log(state)
+        setShowPassword(state)
+    }
 
 
   const validate = Yup.object({
@@ -57,46 +64,47 @@ import { register } from "../../store/slices/users";
       }}
     >
       {(formik) => (
-        <div className="">
-          <h1 className="my-4 font-weight-bold display-4 text-center">
-            ¿Eres nuevo? Registrate!
-          </h1>
+  
+  
           <Form className="d-flex flex-column">
             <TextField
-              label="Nombre"
+              label=""
               placeholder="Nombre"
               name="firstName"
               type="text"
             />
             <TextField
-              label="Apellido"
+              label=""
               name="lastName"
               placeholder="Apellido"
               type="text"
             />
             <TextField
-              label="Email"
+              label=""
               name="email"
               placeholder="Email"
               type="email"
             />
-            <TextField
-              label="Contraseña"
-              name="password"
-              placeholder="Contraseña"
-              type="password"
-            />
             <TextField 
-              label="Confirmar Contraseña"
+              icon={ShowPassword.password ? "bi bi-eye" : "bi bi-eye-slash"}
+              onClickIcon = {()=> handleClickShowPassword({...ShowPassword, password: !ShowPassword.password})}
+              label=""
+              placeholder="Contraseña"
+              name="password"
+              type={ShowPassword.password ? 'text' : "password"}/>
+
+            <TextField 
+              icon={ShowPassword.confirmPassword ? "bi bi-eye" : "bi bi-eye-slash"}
+              onClickIcon = {()=> handleClickShowPassword({...ShowPassword, confirmPassword: !ShowPassword.confirmPassword})}
+              label=""
+              placeholder="Confirmar contraseña"
               name="confirmPassword"
-              placeholder="Confirmar Contraseña"
-              type="password"
-            />
-            <button className="btn mt-4 btn-reg align-self-center " type="submit">
-              Registrarse
-            </button>
+              type={ShowPassword.confirmPassword ? 'text' : "password"}/>
+              <button type="submit" style={ { borderRadius: '.7rem' } } 
+                      className=' btn btn-primary w-100   text-white fs-2 p-3 my-4 shadow-lg '>Registrarse</button>
+
+
           </Form>
-        </div>
       )}
     </Formik>
   );
