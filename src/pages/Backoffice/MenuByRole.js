@@ -5,8 +5,7 @@ import { BackOffice } from "./BackOffice";
 
 
 const MenuByRole = () => {
-  const user = useSelector((state) => state.userLogged.user.user)
-  console.log(user)  
+  const user = useSelector((state) => state.userLogged.user.user) 
   const location = useLocation();
 
   const nonAdminDecision = () => {
