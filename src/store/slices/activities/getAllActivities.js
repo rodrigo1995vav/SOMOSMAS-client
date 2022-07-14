@@ -15,7 +15,7 @@ export const activitySlice = createSlice({
     reducers: {
         //actions
         setStateActivity: (state, action) => {
-            console.log(action.payload.loading)
+            
             if (action.payload.loading) {
                 state.loading = action.payload.loading;
             }
@@ -23,7 +23,6 @@ export const activitySlice = createSlice({
                 state.loading = action.payload.loading;
                 state.activities = action.payload.activities;
             }
-            console.log(action.payload.error)
             if (action.payload.error) {
                 state.error = action.payload.error;
                 state.loading = action.payload.loading;
