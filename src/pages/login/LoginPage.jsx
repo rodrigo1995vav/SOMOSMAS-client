@@ -20,7 +20,7 @@ export const LoginPage = () => {
                         <h2 className='fs-1'>Inicia sesión en tu cuenta!</h2>
                         <LoginForm />
                     </div>
-                    <div className='d-flex flex-row justify-content-center gap-4 w-75'>
+                    <div className='d-flex flex-row justify-content-center gap-2 w-75'>
                         <p className='fs-3'>¿No tienes una cuenta?</p>
                         <a href="/registrarse" className="fs-3 ">Registrate</a>
                     </div>

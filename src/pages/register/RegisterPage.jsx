@@ -20,7 +20,7 @@ const RegisterPage = () => {
                             <h2 className='fs-1'>Crea tu cuenta!</h2>
                             <SignupForm></SignupForm>
                         </div>
-                        <div className='d-flex flex-row justify-content-center gap-4 w-75'>
+                        <div className='d-flex flex-row justify-content-center gap-2 w-75'>
                             <p className='fs-3'>¿Ya tienes una cuenta?</p>
                             <a href="/login" className="fs-3 ">Inicia sesión</a>
                         </div>
