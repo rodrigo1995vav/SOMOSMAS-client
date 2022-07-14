@@ -1,7 +1,7 @@
 
 import React from "react";
 import AppRouter from "./router/AppRouter";
-import EditOrganization from "./pages/backOffice/EditOrganization";
+
 
 //redux
 import { Provider } from "react-redux";
