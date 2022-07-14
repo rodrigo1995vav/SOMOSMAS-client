@@ -13,7 +13,7 @@ const AppRouter = () => {
     return (
         <>
             <Router>
-            <Navbar></Navbar>
+                <Navbar></Navbar>
                 <div>
                     <Routes>
 
@@ -27,9 +27,9 @@ const AppRouter = () => {
                         } />
                         <Route path="/backoffice/*" element={
                             // Rutas para usuarios administradores
-                            <AdminRoutes>
-                                <BackofficeRoutes />
-                            </AdminRoutes>
+
+                            <BackofficeRoutes />
+
                         } />
 
                     </Routes>
