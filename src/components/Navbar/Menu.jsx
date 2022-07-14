@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+
 export default function Menu({ text, link }) {
     return (
         <li className="nav-item">

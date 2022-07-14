@@ -28,7 +28,7 @@ const TestimonialsList = ({ testimonials , pageCount }) =>{
                 </ul>
                 </div>
                    <div className="mw-100">
-                    <Paginator currentPage={page} pageCount={pageCount} baseUrl ={"/backoffice/testimonios/"} justify={'center'} ></Paginator>
+                    <Paginator currentPage={page} pageCount={pageCount} justify={'center'} ></Paginator>
                     </div>
                    
                
