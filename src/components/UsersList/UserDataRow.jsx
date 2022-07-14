@@ -1,20 +1,14 @@
 import React from "react";
-import axios from "axios";
 import Alert from "../../services/AlertService";
 
 const UserDataRow = ({ user, handleEditUser, setShow, handleDelete }) => {
-  const deleteUser = (id) => {
-    //TODO delete request
-    //test
-    
-    return axios.get("http://localhost:3001/activity/list?page=1");
-  };
 
   return (
     <tr key={user.id}>
       <td>{user.id}</td>
       <td>{user.firstName}</td>
       <td>{user.lastName}</td>
+      <td>{user.roleId}</td>
       <td>{user.email}</td>
       <td className="text-center">
         <a
@@ -22,6 +16,7 @@ const UserDataRow = ({ user, handleEditUser, setShow, handleDelete }) => {
           className="edit"
           title="Editar"
           onClick={(e) => {
+            //Here we should put the userform thats being made by Israeli
             handleEditUser(e, user);
             setShow(true);
           }}
@@ -36,10 +31,7 @@ const UserDataRow = ({ user, handleEditUser, setShow, handleDelete }) => {
             e.preventDefault();
             Alert.confirmRequest(
               { title: `Seguro deseas eliminar al usuario ${user.firstName} ${user.lastName}?` },
-              //TODO axios delete with path and user id
-              deleteUser(),
-              () => {Alert.success({ title: "Usuario elimiando" });handleDelete(user.id)
-              }
+              ()=>{handleDelete(user.id); Alert.success({ title:'El usuario ha sido eliminada'}) }             
             );
           }}
         >

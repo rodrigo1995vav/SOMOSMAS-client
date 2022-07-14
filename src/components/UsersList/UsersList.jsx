@@ -1,16 +1,23 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import UserDataRow from "./UserDataRow";
-import Users from "./MOCK_DATA.json";
-import ReactPaginate from "react-paginate";
 import EditFormModal from "./EditFormModal";
+import Paginator from "../Paginator";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Loader } from '../Loader';
+
 
 function UsersList() {
+  const navigate = useNavigate();
+  const { page } = useParams();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [totalUsers, setTotalUsers] = useState();
   const [data, setData] = useState([]);
-  const [mainData, setMainData] = useState([]);
   const [editContactId, setEditContactId] = useState(null);
-  const [deleteUserId, setDeleteUserId] = useState(null);
-  const [order, setOrder] = useState("dsc");
+  const [sortByColumn, setSortByColumn] = useState("id");
+  const [sortDirection, setSortDirection] = useState("ASC");
   const [editFormData, setEditFormData] = useState({
     id: "",
     firstName: "",
@@ -18,19 +25,35 @@ function UsersList() {
     email: "",
   });
   const [show, setShow] = useState(false);
-  const [pageNumber, setPageNumber] = useState(0);
+  const [loading,setLoading] = useState(true)
 
   const usersPerPage = 10;
 
-  const pagesVisited = pageNumber * usersPerPage;
-
   useEffect(() => {
     getData();
-  }, []);
 
-  const getData = () => {
-    setMainData(Users);
-    setData(Users);
+    setTimeout(()=>setLoading(false),1000)
+  }, [page, searchTerm, sortDirection]);
+
+  const getData = async () => {
+    axios
+      .get("http://localhost:3001/users", {
+        params: {
+          page: page,
+          searchTerm: searchTerm,
+          sortCol: sortByColumn,
+          sortDirection: sortDirection,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        setTotalUsers(res.data.total_users);
+        setData(res.data.users);
+      })
+      .catch(function (error) {
+        setData([]);
+        console.log(error.response.data.message);
+      });
   };
 
   const handleEditUser = (e, user) => {
@@ -52,7 +75,6 @@ function UsersList() {
   const handleEditFormSubmit = (values) => {
     //TODO axios Patch USER!
     console.log(values);
-
     const editedUser = {
       id: values.id,
       firstName: values.firstName,
@@ -61,15 +83,13 @@ function UsersList() {
     };
 
     const newUsers = [...data];
-    const newMainUsers = [...mainData];
 
     const index = data.findIndex((user) => user.id === editContactId);
 
     newUsers[index] = editedUser;
-    newMainUsers[editContactId - 1] = editedUser;
     //TODO axios get users
     setData(newUsers);
-    setMainData(newMainUsers);
+
     setEditContactId(null);
     setShow(false);
   };
@@ -77,77 +97,43 @@ function UsersList() {
   const handleDelete = (id) => {
     //TODO axios DELETE USER
     const newUsers = [...data];
-    const newMainUsers = [...mainData];
 
     const index = data.findIndex((user) => user.id === id);
 
     newUsers.splice(index, 1);
-    newMainUsers.splice(index, 1);
-    //TODO axios get users
+    //TODO axios get user
 
     setData(newUsers);
-    setMainData(newMainUsers);
-    setDeleteUserId(null);
   };
 
   const sortUsers = (col) => {
-    const typeOfColumn = typeof(data[0][col])
-    if (typeOfColumn !== "number") {
-      if (order === "asc") {
-        const sorted = [...data].sort((a, b) =>
-          a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
-        );
-        setData(sorted);
-        setOrder("dsc");
-      } else {
-        const sorted = [...data].sort((a, b) =>
-          a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
-        );
-        setData(sorted);
-        setOrder("asc");
-      }
-    } else {
-      if (order === "asc") {
-        const sorted = [...data].sort((a, b) => (a[col] > b[col] ? 1 : -1));
-        setData(sorted);
-        setOrder("dsc");
-      } else {
-        const sorted = [...data].sort((a, b) => (a[col] < b[col] ? 1 : -1));
-        setData(sorted);
-        setOrder("asc");
-      }
-    }
+    setSortByColumn(col);
+    if (sortDirection === "ASC") {
+      return setSortDirection("DESC");
+    } else {return setSortDirection("ASC")}
   };
 
-  const displayUsers = data
-    .slice(pagesVisited, pagesVisited + usersPerPage)
-    .map((user) => (
-      <UserDataRow
-        user={user}
-        handleEditUser={handleEditUser}
-        handleDelete={handleDelete}
-        setShow={setShow}
-        editFormData={editFormData}
-        setDeleteUserId={setDeleteUserId}
-      />
-    ));
+  const displayUsers = data.map((user) => (
+    <UserDataRow
+      user={user}
+      handleEditUser={handleEditUser}
+      handleDelete={handleDelete}
+      setShow={setShow}
+      editFormData={editFormData}
+    />
+  ));
 
   const searchUserByEmail = (e) => {
     const search = e.target.value;
-    const actData = mainData.filter((user) => {
-      if (search === "") {
-        return user;
-      } else if (user.email.toLowerCase().includes(search.toLowerCase())) {
-        return user;
-      }
-    });
-    setData(actData);
+    setSearchTerm(search);
   };
-  const pageCount = Math.ceil(data.length / usersPerPage);
+  const pageCount = Math.ceil(totalUsers / usersPerPage);
 
-  const changePage = (e) => {
-    setPageNumber(e.selected);
-  };
+  if(loading){
+    return   <main className='container-fluid h-100 p-0 d-flex justify-content-center align-items-center bg-white '>
+              <Loader></Loader> 
+             </main>
+}
 
   return (
     <div className="container ">
@@ -169,8 +155,8 @@ function UsersList() {
                   placeholder="Buscar por email"
                   aria-label="Search"
                   onChange={(e) => {
+                    navigate("/backoffice/userslist/1", { replace: true });
                     searchUserByEmail(e);
-                    setPageNumber(0);
                   }}
                 />
               </form>
@@ -197,7 +183,7 @@ function UsersList() {
                       role="button"
                     >
                       ID
-                      {order === "dsc" ? (
+                      {sortDirection === "ASC" ? (
                         <i className="bi bi-sort-numeric-down mx-2"></i>
                       ) : (
                         <i className="bi bi-sort-numeric-up mx-2"></i>
@@ -210,7 +196,7 @@ function UsersList() {
                       role="button"
                     >
                       Nombre
-                      {order === "dsc" ? (
+                      {sortDirection === "ASC" ? (
                         <i className="bi bi-sort-alpha-down mx-2"></i>
                       ) : (
                         <i className="bi bi-sort-alpha-up-alt mx-2"></i>
@@ -223,10 +209,23 @@ function UsersList() {
                       role="button"
                     >
                       Apellido
-                      {order === "dsc" ? (
+                      {sortDirection === "ASC" ? (
                         <i className="bi bi-sort-alpha-down mx-2"></i>
                       ) : (
                         <i className="bi bi-sort-alpha-up-alt mx-2"></i>
+                      )}
+                    </div>
+                  </th>
+                  <th onClick={() => sortUsers("roleId")}>
+                    <div
+                      className="d-flex justify-content-center"
+                      role="button"
+                    >
+                      RoleId
+                      {sortDirection === "ASC" ? (
+                        <i className="bi bi-sort-numeric-down mx-2"></i>
+                      ) : (
+                        <i className="bi bi-sort-numeric-up mx-2"></i>
                       )}
                     </div>
                   </th>
@@ -236,7 +235,7 @@ function UsersList() {
                       role="button"
                     >
                       Email
-                      {order === "dsc" ? (
+                      {sortDirection === "ASC" ? (
                         <i className="bi bi-sort-alpha-down mx-2"></i>
                       ) : (
                         <i className="bi bi-sort-alpha-up-alt mx-2"></i>
@@ -246,25 +245,14 @@ function UsersList() {
                   <th>Acciones</th>
                 </tr>
               </thead>
-              <tbody>{displayUsers}</tbody>
+              <tbody>{data[0] && displayUsers}</tbody>
             </table>
+            {!data[0] && (
+              <h1 className="text-center m-4">No hay usuarios existentes</h1>
+            )}
           </div>
         </div>
-        <ReactPaginate
-          previousLabel={"<"}
-          nextLabel={">"}
-          pageCount={pageCount}
-          onPageChange={changePage}
-          containerClassName={"d-flex justify-content-center list-unstyled"}
-          previousLinkClassName={"btn btn-primary m-1 btn-sm p-1"}
-          nextLinkClassName={"btn btn-primary m-1 btn-sm p-1"}
-          pageLinkClassName={"btn btn-primary m-1 btn-sm"}
-          activeLinkClassName={"bg-secondary btn-sm "}
-          disabledClassName={""}
-          activeClassName={""}
-          pageRangeDisplayed={1}
-          forcePage={pageNumber === 0 ? 0 : pageNumber}
-        />
+        <Paginator pageCount={pageCount} currentPage={page} />
       </div>
     </div>
   );
