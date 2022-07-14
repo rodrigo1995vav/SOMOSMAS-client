@@ -40,15 +40,15 @@ export default function Navbar() {
         ]
     };
     return (
-        <section className="sticky-top ps-5" style={{ backgroundColor: '#EAEBF3' }} >
-            <nav className="navbar navbar-expand-lg p-3 border-bottom container_navbar ps-5">
+        <section className="sticky-top " style={{ backgroundColor: '#EAEBF3' }} >
+            <nav className="navbar navbar-expand-lg p-3 border-bottom container_navbar ">
                 <div className="container-fluid">
                     <a className="navbar-brand mx-2" href="#">
                         <img
                             src={logo}
                             alt="Logo ong"
                             width={"40px"}
-                            style={{ transform: "scale(2.2)" }}
+                            style={{ transform: "scale(2.2)", paddingLeft:"10%" }}
                         />
                     </a>
                     <button
@@ -66,13 +66,13 @@ export default function Navbar() {
                         className="collapse navbar-collapse  justify-content-end"
                         id="navbarSupportedContent"
                     >
-                        <div className="">
+                        <div className="d-flex">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
                                 {menu.menu.length > 0 &&
                                     menu.menu.map((section) => <Menu key={section.text} {...section} />)}
                             </ul>
                         </div>
-                        <div className="justify-content-end">
+                        <div className=" ">
 
                             {
                                 userLogged ?
