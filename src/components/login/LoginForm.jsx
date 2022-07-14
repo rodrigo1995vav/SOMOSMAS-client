@@ -69,7 +69,8 @@ export const LoginForm = () => {
                      placeholder="Contraseña"
                      name="password"
                      type={isShowPassword ? 'text' : "password"}/>
-                    <button type="submit" className=' btn btn-primary w-100   text-white fs-2 p-3 my-4 shadow-lg '>Iniciar sesión</button>
+                    <button type="submit" style={ { borderRadius: '.7rem' } } 
+                    className=' btn btn-primary w-100   text-white fs-2 p-3 my-4 shadow-lg '>Iniciar sesión</button>
                 </Form>
             )}
             </Formik>
