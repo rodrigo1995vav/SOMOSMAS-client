@@ -9,12 +9,13 @@ import { CustomTextInput } from '../../components/TextInput';
 import Alert from '../../services/AlertService';
 import { postPublic } from '../../services/apiServices';
 import { useNavigate } from 'react-router-dom';
+import { Loader } from '../../components/Loader';
 
 
 export const ContactPage = () => {
     const dispatch = useDispatch()
-    const response = useSelector(state => state.contact)
-    console.log(response)
+    const { responseContact, loading, error } = useSelector(state => state.contact)
+
     const navigate = useNavigate()
 
     // It returns the validation schema object used by Formik
@@ -29,6 +30,16 @@ export const ContactPage = () => {
             .min(5, 'Debe tener al menos 5 caracteres')
             .required('Requerido')
     })
+
+    if (loading) {
+        <Loader />
+    }
+    if (responseContact) {
+        Alert.success({ title: 'Consulta enviada', message: 'Gracias por contactarte con nosotros' })
+    }
+    if (error) {
+        <h1>Upss!!, Ocurrió un error</h1>
+    }
 
     return (
         <main className="layout_324af">
@@ -50,9 +61,8 @@ export const ContactPage = () => {
                 <Formik
                     initialValues={{ name: '', email: '', message: '' }}
                     onSubmit={(values, { resetForm }) => {
-                        postPublic(`http://localhost:3001/contacts`, values)
+                        dispatch(contactUs(values))
                         resetForm()
-                        Alert.success({ title: 'Consulta enviada', message: 'Gracias por contactarte con nosotros' })
                     }}
                     validationSchema={Yup.object(yupValidationSchema())}
                 >
