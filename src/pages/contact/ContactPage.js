@@ -6,15 +6,20 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { CustomTextArea } from '../../components/TextArea';
 import { CustomTextInput } from '../../components/TextInput';
+import Alert from '../../services/AlertService';
+import { postPublic } from '../../services/apiServices';
+import { useNavigate } from 'react-router-dom';
 
 
 export const ContactPage = () => {
     const dispatch = useDispatch()
     const response = useSelector(state => state.contact)
     console.log(response)
+    const navigate = useNavigate()
+
     // It returns the validation schema object used by Formik
     const yupValidationSchema = () => ({
-        fullName: Yup.string()
+        name: Yup.string()
             .min(3, 'Debe tener al menos 3 caracteres')
             .required('Requerido'),
         email: Yup.string()
@@ -43,9 +48,11 @@ export const ContactPage = () => {
             <div style={{ flexBasis: '50%' }} >
 
                 <Formik
-                    initialValues={{ fullName: '', email: '', message: '' }}
-                    onSubmit={values => {
-                        dispatch(contactUs(values))
+                    initialValues={{ name: '', email: '', message: '' }}
+                    onSubmit={(values, { resetForm }) => {
+                        postPublic(`http://localhost:3001/contacts`, values)
+                        resetForm()
+                        Alert.success({ title: 'Consulta enviada', message: 'Gracias por contactarte con nosotros' })
                     }}
                     validationSchema={Yup.object(yupValidationSchema())}
                 >
@@ -54,7 +61,7 @@ export const ContactPage = () => {
                             <Form>
                                 <CustomTextInput
                                     placeholder="Nombre y Apellido"
-                                    name="fullName"
+                                    name="name"
                                     className="text-input_324af"
                                 />
 
@@ -75,7 +82,7 @@ export const ContactPage = () => {
                                     className="btn btn-light py-2 px-4 mt-4 text-white fs-3 d-inline-block"
                                     style={{ borderRadius: '6px' }}
                                 >
-                                    Enviar consulta
+                                    Contribuir
                                 </button>
                             </Form>
                         )
@@ -85,12 +92,12 @@ export const ContactPage = () => {
                 <button
                     className='btn mt-3 fs-3 px-3'
                     style={{ border: '1px solid black', borderRadius: '6px' }}
+                    onClick={() => { navigate('/') }}
                 >
                     Ir al inicio
                 </button>
 
             </div>
-
         </main>
 
     )
