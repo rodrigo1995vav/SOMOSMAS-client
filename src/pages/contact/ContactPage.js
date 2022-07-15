@@ -31,16 +31,6 @@ export const ContactPage = () => {
             .required('Requerido')
     })
 
-    if (loading) {
-        <Loader />
-    }
-    if (responseContact) {
-        Alert.success({ title: 'Consulta enviada', message: 'Gracias por contactarte con nosotros' })
-    }
-    if (error) {
-        <h1>Upss!!, Ocurrió un error</h1>
-    }
-
     return (
         <main className="layout_324af">
 
@@ -57,7 +47,13 @@ export const ContactPage = () => {
             </div>
 
             <div style={{ flexBasis: '50%' }} >
+                <div>
+                    {loading && <Loader />}
 
+                    {responseContact && Alert.success({ title: 'Consulta enviada', message: 'Gracias por contactarte con nosotros' })}
+
+                    {error.errorState && <h1>Upss!! Ocurrió un error</h1>}
+                </div>
                 <Formik
                     initialValues={{ name: '', email: '', message: '' }}
                     onSubmit={(values, { resetForm }) => {
@@ -98,6 +94,7 @@ export const ContactPage = () => {
                         )
                     }
                 </Formik>
+
 
                 <button
                     className='btn mt-3 fs-3 px-3'

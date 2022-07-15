@@ -38,13 +38,13 @@ export const { saveInfoContact } = contactSlice.actions
 
 export const contactUs = ({ email, name, message }) => {
     return (dispatch) => {
-        dispatch(saveInfoContact({ loading: true }))
+        dispatch(saveInfoContact({ loading: true, responseContact: null }))
         postPublic(`${process.env.REACT_APP_PUBLIC_URL_API}/contacts?email=${email}&name=${name}&message=${message}`)
             .then(({ data }) => {
                 dispatch(saveInfoContact({ loading: false, responseContact: data }))
             }).catch((err) => {
                 console.log(err)
-                dispatch(saveInfoContact({ loading: false, error: { errorState: false, error: err.message } }))
+                dispatch(saveInfoContact({ loading: false, error: { errorState: true, error: err.message } }))
             });
     }
 }  
