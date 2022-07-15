@@ -10,8 +10,8 @@ const BackofficeRoutes = () => {
             <Routes>
                 <Route exact path="/news" element={<NewsAdmin/>}/> 
                 <Route path='activities/'>
-                    <Route path=':id' element={<ActivitiesForm patch={true}/>} />
-                    <Route path='' element={<ActivitiesForm patch={false}/>} />
+                    <Route path=':id' element={<ActivitiesForm update={true}/>} />
+                    <Route path='' element={<ActivitiesForm update={false}/>} />
                 </Route>
                 <Route exact path="/userslist/:page" element={<UsersList/>}/> 
             </Routes>

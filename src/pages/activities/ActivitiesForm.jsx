@@ -6,7 +6,7 @@ import { getPrivate, postPrivate, putPrivate } from '../../services/apiServices'
 import Alert from '../../services/AlertService';
 
 
-export const ActivitiesForm = ({ patch }) => {
+export const ActivitiesForm = ({ update }) => {
 
     let { id } = useParams()
     const [activitiesFormData, setActivitiesFormData] = useState({
@@ -20,17 +20,17 @@ export const ActivitiesForm = ({ patch }) => {
     }
 
     useEffect(() => {
-        if (patch) {
+        if (update) {
             getPrivate(`/activities/${id}`)
                 .then(res => res.json())
                 .then(res => setActivitiesFormData(res))
                 .catch(err => Alert.error({ title: 'Error ', message: `${err.message}` }))
         }
-    }, [id, patch]);
+    }, [id, update]);
 
     const onSubmit = (e) => {
         e.preventDefault()
-        if (patch) {
+        if (update) {
             putPrivate(`/activities/${id}`, activitiesFormData)
             .then(res => Alert.success({ title: 'Se modificó la actividad:', message: `${activitiesFormData.name}` }))
             .catch(err => Alert.error({ title: 'No se ha podido modificar la actividad...' }))
@@ -70,7 +70,7 @@ export const ActivitiesForm = ({ patch }) => {
                 className="btn btn-danger fs-4"
                 type='submit'
                 onClick={(e) => { onSubmit(e) }}
-                style={{width: 120, borderRadius: 30}}>{patch ? "Actualizar" : "Crear"}</button>
+                style={{width: 120, borderRadius: 30}}>{update ? "Actualizar" : "Crear"}</button>
                 </form>
             </div>
         </div>
