@@ -35,7 +35,7 @@ export const ContactPage = () => {
         <main className="layout_324af">
 
             <div>
-                <p className="fs-1">¿Queres contribuir?</p>
+                <p className="fs-1">¿Querés contribuir?</p>
                 <button
                     type="button"
                     className="btn btn-primary text-white fs-3 mt-1 px-4"
@@ -43,7 +43,7 @@ export const ContactPage = () => {
                 >
                     Contribuir
                 </button>
-                <p className="fs-1 mt-5">¡Contectate con nosotros!</p>
+                <p className="fs-1 mt-5">¡Contactate con nosotros!</p>
             </div>
 
             <div style={{ flexBasis: '50%' }} >
