@@ -1,10 +1,12 @@
 
 import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../store/slices/users";
+
 
 const PrivateRoutes = ({ children }) => {
 
-    //Test variable to see if user is logged in 
-    const userLogged = true
+    const userLogged = useSelector(selectUser);
 
     return (
         userLogged ? (

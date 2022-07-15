@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom"
-import NewsAdmin from "../pages/Backoffice/News/NewsAdmin"
+import UsersList from "../components/UsersList/UsersList"
+import NewsAdmin from "../pages/backOffice/News/NewsAdmin"
 
 const BackofficeRoutes = () => {
 
@@ -7,6 +8,7 @@ const BackofficeRoutes = () => {
       
             <Routes>
                 <Route exact path="/news" element={<NewsAdmin />}/> 
+                <Route exact path="/userslist/:page" element={<UsersList/>}/> 
             </Routes>
         
     )
