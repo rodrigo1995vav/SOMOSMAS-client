@@ -8,6 +8,7 @@
 
 // //components
  @import './components/carousel';
+ @import './components/footer';
  @import './components/textArea';
  @import './components/textInput';
  @import './components/AlertStyles';
@@ -16,7 +17,8 @@
 
  
 //pages
-//@import '../pages/login/loginPage.module';
+// @import '../pages/login/loginPage.module';
+@import './pages/activityDetail/activityDetailPage';
 @import './pages/contact/contactPage';
 @import '../pages/backOffice/backOffice.module';
 @import './pages/home/homePage';

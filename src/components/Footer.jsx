@@ -1,7 +1,9 @@
-import React from "react";
-// import logo from "./LOGO-SOMOS MAS.png";
+
+import logo from '../assets/logo.png'
+import useSocialNetworks from '../hooks/useSocialNetworks';
 
 function Footer() {
+
   const footerLinks = [
     { name: "Inicio", to: "/" },
     { name: "Novedades", to: "/novedades" },
@@ -10,96 +12,79 @@ function Footer() {
     { name: "Contribuye", to: "/contribuye" },
   ];
 
-  const socialNetworks = [
-    { icon: "bi bi-facebook pe-3", link: "#" },
-    { icon: "bi bi-twitter pe-3", link: "#" },
-    { icon: "bi bi-linkedin pe-3", link: "#" },
-    { icon: "bi bi-instagram pe-3", link: "#" },
-  ];
+  const { socialNetworks } = useSocialNetworks();
 
   return (
-    <div style={{ backgroundColor: "#c0c0c0" }} className="mt-5">
-      <div className="container-fluid p-0">
-        <div className="row">
-          <div className="col-xl-12 ml-auto mr-auto">
+    <div className='footer'>
+      <div>
+        <div>
+          <div>
             <div className="brand text-center ">
-              <div className="container-fluid">
-                <div className="row">
-                  <div className="col-xl-12">
-                    <div class="d-flex flex-row justify-content-around">
-                      <div class="p-2 align-self-center" style={{ width: "35%" }}>
-                        {" "}
-                        <hr className="opacity-100" style={{ width: "100%" }} />
-                      </div>
-                      <div class="p-2 align-self-center">
-                        <img
-                          className="img-fluid"
-                          style={{ width: 200 }}
-                          src={"https://ong-project.vercel.app/images/LOGO-SOMOS-MAS.png"}
-                        />
-                      </div>
-                      <div class="p-2 align-self-center" style={{ width: "35%" }}>
-                        <hr
-                          className="opacity-100"
-                          style={{
-                            width: "100%",
-                          }}
-                        />
-                      </div>
+              <div className="container-fluid ">
+                <div className="row footer__top-container" >
+                  <hr className='opacity-100 footer__hr-top-basis'/>
+                  <hr className='opacity-100 footer__hr-top-basis'  />
+                  <img 
+                    className='footer__logo'
+                    src={logo}
+                    alt="logo"
+                  /> 
+                </div>
+              </div>
+
+              <div>
+                <div className="row  pt-5">
+                  <div className="row-lg-12  py-5 ">
+                    <ul className="nav justify-content-center  ">
+                        {footerLinks.map((link) => (
+                          <li key={`footer/${link.name}`} className="nav-item ">
+                            <a
+                              className="nav-link fs-3 text-black"
+                              href={link.to}
+                            >
+                              {link.name}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 </div>
               </div>
+              <hr className="text-black border-5 opacity-100" ></hr>
+              <div>
+                <div className="row pt-2">
+                  <div className="col-lg-12 text-center ">
 
-              <div className="container-fluid p-0">
-                <div className="row  pt-5">
-                  <div className="row-lg-12  py-5 ">
-                    <ul className="nav justify-content-center  ">
-                      {footerLinks.map((link) => (
-                        <li key={`footer/${link.name}`} className="nav-item ">
-                          <a
-                            className="nav-link fs-3 text-black"
-                            href={link.to}
-                          >
-                            {link.name}
+                    {
+                      socialNetworks?.length > 0 && socialNetworks.map( ( social ) => {
+                        const { id, link, bootstrapIconName } = social;
+                        return(
+                          <a href={ link } key={ id } target="_blank" rel="noreferrer">
+                            <i className={ `bi ${ bootstrapIconName } footer__social-icons me-3` } />
                           </a>
-                        </li>
-                      ))}
-                    </ul>
+                        )
+                     })
+                    }
+
                   </div>
                 </div>
               </div>
-            </div>
-            <hr className="text-black border-5 opacity-100"></hr>
-            <div className="container-fluid p-0">
-              <div className="row  pt-5">
-                <div className="col-lg-12 text-center ">
-                  {socialNetworks.map((socialNetwork) => (
-                    <a key={socialNetwork.icon} href={socialNetwork.link}>
-                      <i
-                        className={socialNetwork.icon}
-                        style={{ fontSize: 25, color: "black" }}
-                      ></i>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
 
-            <div className="container-fluid p-0">
-              <div className="row pb-5">
-                <div className="col-lg-12">
-                  <h4 className="text-center text-black">
-                    2022 by Alkemy. All rights reserved.
-                  </h4>
+              <div className="container-fluid">
+                <div className="row pb-5">
+                  <div className="col-lg-12">
+                    <h4 className="text-center text-black">
+                      2022 by Alkemy. All rights reserved.
+                    </h4>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+  )
 }
 
-export default Footer;
+export default Footer
