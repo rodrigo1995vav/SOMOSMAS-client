@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom"
 import NewsAdmin from "../pages/Backoffice/News/NewsAdmin"
 import {ActivitiesForm} from '../pages/activities/ActivitiesForm.jsx';
 import UsersList from "../components/UsersList/UsersList";
-import NewsAdmin from "../pages/Backoffice/News/NewsAdmin"
 
 const BackofficeRoutes = () => {
 
