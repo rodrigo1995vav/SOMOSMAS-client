@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import UsersList from "../components/UsersList/UsersList"
-import NewsAdmin from "../pages/backOffice/News/NewsAdmin"
+import NewsAdmin from "../pages/Backoffice/News/NewsAdmin"
 
 const BackofficeRoutes = () => {
 
