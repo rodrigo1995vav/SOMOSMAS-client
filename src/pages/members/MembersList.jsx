@@ -1,47 +1,34 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useLocation, useParams } from "react-router-dom"
-import { Loader } from "../../../components/Loader"
-import Paginator from "../../../components/Paginator"
+import {Loader}  from '../../components/Loader'
+import Paginator from "../../components/Paginator"
 import MemberContainerList from "../../components/membersList/MemberContainerList"
 import { getAllMembers } from "../../store/slices/members/getAllMembers"
 
 
 
-export default function ActivitiesList() {
-
+export default function MembersList() {
     const { members, loading, error } = useSelector((state) => state.allMembers)
-
     const dispatch = useDispatch()
     const query = useParams()
     const page = query.page || 1
-    const limit = 10;
-
+    const limit = 16;
     useEffect(() => {
-        dispatch(getAllMembers(page))
+        dispatch(getAllMembers(page,limit))
     }, [page])
-
-    // if (loading) {
-    //     console.log(loading)
-    //     return <Loader />
-    // }
-
-    // if (error.errorState) {
-    //     return <h1>Upss hubo un error!!</h1>
-    //     //hay que hacer errores lindos , tambien tengo el error en el objeto por si las dudas , me parecio correcto no mostrarlo
-    // }
 
     return (
         <div>
 
-            {members && <MemberContainerList members={members.members} />}
+            {members ? <>    
+            <MemberContainerList members={members.members} />
+            <Paginator currentPage={page} pageCount={members.total_pages} justify={'center'} ></Paginator>     
+            </> : null}   
 
-            {members &&
-                <Paginator currentPage={page} pageCount={pagesAmount} justify={'center'} ></Paginator>
-            }
-            { loading &&   <Loader/>}
+            {loading && <Loader/>}
 
-            {error.errorState   && <h1>Upss hubo un error!!</h1>}
+            {error.errorState && <h1>Upss!! hubo un error!!</h1>}
 
         </div>);
 }

@@ -36,10 +36,10 @@ export default membersSlice.reducer;
 
 export const { setStateMember } = membersSlice.actions;
 
-export const getAllMembers = (page) => {
+export const getAllMembers = (page,limit) => {
     return (dispatch) => {
         dispatch(setStateMember({ loading: true }))
-        getPublic(`${process.env.REACT_APP_PUBLIC_URL_API}/members?page=${page}`)
+        getPublic(`${process.env.REACT_APP_PUBLIC_URL_API}/members?page=${page}&limit=${limit}`)
             .then(({ data }) => {
                 dispatch(setStateMember({ loading: false, members: { ...data } }));
             }).catch((err) => {
