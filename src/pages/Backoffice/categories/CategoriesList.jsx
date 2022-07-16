@@ -34,9 +34,12 @@ export default function CategoriesList() {
     return (
         <div>
 
-            {categories && <TableCategories categories={categories.categories} />}
-
-            {categories && <Paginator currentPage={page} pageCount={categories.total_pages} justify={'center'}/>}
+            {categories ?
+                <>
+                    <TableCategories categories={categories.categories} />
+                    <Paginator currentPage={page} pageCount={categories.total_pages} justify={'center'} />
+                </>
+                : null}
 
         </div>);
 }
