@@ -1,5 +1,5 @@
 
-import RowsCategories from "./RowsCategories";
+import RowsCategory from "./RowsCategory";
 export default function TableCategories({ categories }) {
 
     return (
@@ -15,7 +15,7 @@ export default function TableCategories({ categories }) {
                 {(categories.length > 0 ?
                     (<tbody>
                         {categories.map((category) =>
-                            (<RowsCategories key={category.id} category={category} />))
+                            (<RowsCategory key={category.id} category={category} />))
                         }
                     </tbody>
                     ) : <th colSpan={2}> <h2 className="text-dark text-center pt-5 " >No hay categorías</h2> </th>)

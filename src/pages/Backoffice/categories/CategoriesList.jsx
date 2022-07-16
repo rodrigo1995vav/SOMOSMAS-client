@@ -36,9 +36,7 @@ export default function CategoriesList() {
 
             {categories && <TableCategories categories={categories.categories} />}
 
-            {categories &&
-                <Paginator currentPage={page} pageCount={categories.total_pages} justify={'center'} ></Paginator>
-            }
+            {categories && <Paginator currentPage={page} pageCount={categories.total_pages} justify={'center'}/>}
 
         </div>);
 }

@@ -41,7 +41,7 @@ export const getAllCategories = (page) => {
         dispatch(setStateCategories({ loading: true }))
         getPrivate(`${process.env.REACT_APP_PUBLIC_URL_API}/categories?page=${page}`)
             .then(({ data }) => {
-                dispatch(setStateCategories({ loading: false, categories: { ...data } })); //esto pasa al actions de setStateCategories a la propiedad de payload     
+                dispatch(setStateCategories({ loading: false, categories: { ...data } }));
             }).catch((err) => {
                 console.log(err)
                 dispatch(setStateCategories({ loading: false, error: { errorState: true, error: err.message } }))
