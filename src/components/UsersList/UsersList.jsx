@@ -6,8 +6,12 @@ import Paginator from "../Paginator";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { Loader } from '../Loader';
+import { Loader } from "../Loader";
+import { getPrivate } from "../../services/apiServices";
 
+const token = localStorage.getItem("token")
+  ? localStorage.getItem("token")
+  : localStorage.setItem("token", "no_token");
 
 function UsersList() {
   const navigate = useNavigate();
@@ -25,25 +29,25 @@ function UsersList() {
     email: "",
   });
   const [show, setShow] = useState(false);
-  const [loading,setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   const usersPerPage = 10;
 
   useEffect(() => {
     getData();
-
-    setTimeout(()=>setLoading(false),1000)
+    setLoading(false);
   }, [page, searchTerm, sortDirection]);
 
   const getData = async () => {
     axios
-      .get("http://localhost:3001/users", {
+      .get(`${process.env.REACT_APP_PUBLIC_URL_API}/users`, {
         params: {
           page: page,
           searchTerm: searchTerm,
           sortCol: sortByColumn,
           sortDirection: sortDirection,
         },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
         console.log(res);
@@ -110,7 +114,9 @@ function UsersList() {
     setSortByColumn(col);
     if (sortDirection === "ASC") {
       return setSortDirection("DESC");
-    } else {return setSortDirection("ASC")}
+    } else {
+      return setSortDirection("ASC");
+    }
   };
 
   const displayUsers = data.map((user) => (
@@ -129,11 +135,13 @@ function UsersList() {
   };
   const pageCount = Math.ceil(totalUsers / usersPerPage);
 
-  if(loading){
-    return   <main className='container-fluid h-100 p-0 d-flex justify-content-center align-items-center bg-white '>
-              <Loader></Loader> 
-             </main>
-}
+  if (loading) {
+    return (
+      <main className="container-fluid h-100 p-0 d-flex justify-content-center align-items-center bg-white ">
+        <Loader></Loader>
+      </main>
+    );
+  }
 
   return (
     <div className="container ">

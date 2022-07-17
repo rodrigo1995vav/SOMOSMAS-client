@@ -26,7 +26,7 @@ const News = () => {
     console.log(data)
     useEffect(()=>{
         getPublic(`/news`)
-        .then(res=>setData(res.data))
+        .then(res=>setData(res.data.entries))
         .catch(err=>setError(err))
         .finally(()=>{setLoading(false)})
         

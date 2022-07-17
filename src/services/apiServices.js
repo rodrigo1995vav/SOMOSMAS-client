@@ -30,6 +30,7 @@ export function loginUser(path, body) {
 }
 
 export function getPrivate(path) {
+  console.log(token)
   return axios.get(path, {
     headers: { Authorization: `Bearer ${token}` },
   });
