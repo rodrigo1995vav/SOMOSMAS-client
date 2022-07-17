@@ -73,6 +73,15 @@
     }
 }
 
+.button_Expand{
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.button_Expand:hover{
+    text-decoration:underline;
+    text-decoration-color: black
+}
 
 .singleFeature {
     display: flex;

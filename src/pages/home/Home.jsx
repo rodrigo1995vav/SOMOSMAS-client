@@ -44,7 +44,7 @@ function Home() {
         </div>
         <div className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
           <h1 className="">Últimas Novedades</h1>
-          <a className="fs-4 text-decoration-none text-black hover-zoom" href="/novedades">
+          <a className="fs-4  text-black button_Expand" href="/novedades">
             Ver todas<i class="bi bi-caret-right-fill "></i>
           </a>
         </div>

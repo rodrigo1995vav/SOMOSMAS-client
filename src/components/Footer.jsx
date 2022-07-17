@@ -35,12 +35,12 @@ function Footer() {
 
               <div>
                 <div className="">
-                  <div className="col-lg-12">
+                  <div className="col-lg-12 mt-3">
                     <ul className="nav justify-content-center  ">
                         {footerLinks.map((link) => (
                           <li key={`footer/${link.name}`} className="nav-item ">
                             <a
-                              className="nav-link fs-3 text-black"
+                              className="nav-link fs-4 text-black"
                               href={link.to}
                             >
                               {link.name}
