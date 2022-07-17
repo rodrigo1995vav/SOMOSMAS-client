@@ -3,6 +3,10 @@ import { useEffect, useState } from "react";
 import { Loader } from "../../components/Loader";
 import "../../styles/index.scss";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useSelector } from "react-redux";
+
+
 
 function Home() {
   //Hardcoded variables
@@ -22,11 +26,13 @@ function Home() {
   const [news, setFeatures] = useState([]);
   const [image, setImage] = useState("");
   const navigate = useNavigate()
+  const {user} = useSelector ((state) => state.userLogged);
 
   useEffect(() => {
     setWelcomeMessage(hcWelcomeMessage);
     setFeatures(hcFeatures.slice(hcFeatures.length - 3).reverse());
     setImage(hcImage);
+    console.log(user)
   }, []);
 
   return (

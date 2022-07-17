@@ -1,5 +1,7 @@
-
+import { useNavigate} from "react-router-dom";
 export const BackOffice = () => {
+
+    const navigate = useNavigate()
   return (
     <>
         <div className='container'>
@@ -18,7 +20,7 @@ export const BackOffice = () => {
                     <div>
                         <h4>Categorias</h4>
                         <i className="fa-solid fa-rectangle-list fa-2xl"></i>
-                        <button>Ir</button>
+                        <button onClick={()=>navigate("/backoffice/categorias/1")}>Ir</button>
                     </div>
                     <div>
                         <h4>Testimonios</h4>
@@ -42,7 +44,7 @@ export const BackOffice = () => {
                     <div>
                         <h4>Usuarios</h4>
                         <i className="fa-solid fa-users fa-2xl"></i>
-                        <button>Ir</button>
+                        <button onClick={()=>navigate("/backoffice/userslist/1")}>Ir</button>
                     </div>
                     <div>
                         <h4>Miembros</h4>
