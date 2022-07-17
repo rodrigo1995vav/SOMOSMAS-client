@@ -10,7 +10,7 @@ export const BackOffice = () => {
                     <div>
                         <h4>Novedades</h4>
                         <i className="fa-solid fa-newspaper fa-2xl"></i>
-                        <button>Ir</button>
+                        <button onClick={()=>navigate("/backoffice/news")}>Ir</button>
                     </div>
                     <div>
                         <h4>Actividades</h4>

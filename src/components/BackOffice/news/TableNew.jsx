@@ -15,7 +15,7 @@ function TableNew() {
 const deleteNews = (id,name) => {
     Alert.confirmRequest({title: `¿Desea eliminar la novedad ${name}?`},
     ()=>deletePrivate(`/news/${id}`),
-    ()=>Alert.success({ title:'La novedad ha sido eliminada'}))
+    ()=>{Alert.success({ title:'La novedad ha sido eliminada'}); setNews(news.filter((entry)=>entry.id !== id))})
 }
 
     useEffect(() => {
