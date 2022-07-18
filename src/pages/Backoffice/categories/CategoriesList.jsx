@@ -5,8 +5,7 @@ import { useLocation, useParams } from "react-router-dom"
 import TableCategories from "../../../components/BackOffice/categories/TableCategories"
 import { Loader } from "../../../components/Loader"
 import Paginator from "../../../components/Paginator"
-import { deletePrivate } from "../../../services/apiServices"
-import { deleteCategory, getAllCategories } from "../../../store/slices/categories/getAllCategories"
+import { getAllCategories } from "../../../store/slices/categories/getAllCategories"
 
 
 
@@ -16,9 +15,6 @@ export default function CategoriesList() {
     const dispatch = useDispatch()
     const query = useParams()
     const page = query.page || 1
-
-    categories && console.log(categories.categories)
-
 
     useEffect(() => {
         dispatch(getAllCategories(page))
@@ -35,8 +31,6 @@ export default function CategoriesList() {
         return <h1>Upss hubo un error!!</h1>
         //hay que hacer errores lindos , tambien tengo el error en el objeto por si las dudas , me parecio correcto no mostrarlo
     }
-
-
 
     return (
         <div>
