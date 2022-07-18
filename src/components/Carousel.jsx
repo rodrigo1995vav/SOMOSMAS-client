@@ -21,7 +21,7 @@ const Carousel = ({ imgSlides, imgHeight }) => {
   return (
     <div
       id="carouselExampleIndicators"
-      className="carousel slide m-4"
+      className="carousel slide m-3"
       data-bs-ride="carousel"
     >
       <div className="carousel-indicators">
