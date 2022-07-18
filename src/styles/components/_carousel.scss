@@ -42,16 +42,17 @@
 
 .carousel-control-next-icon{
     background-image: url('../../../public/vectors/chevron-control.svg');
-   position: relative !important;
+    position: relative !important;
+    transform: rotate(-90deg) !important;
     margin: 1rem !important;
     left: 20%;
-    
     padding: calc(6% + 1.5rem) ;
 }
 
 .carousel-control-prev-icon{
     background-image: url('../../../public/vectors/chevron-control.svg');
     position: relative !important;
+    transform: rotate(90deg) !important;
     right: 20%;
     margin: 1rem !important;
     padding: calc(6% + 1.5rem) ;
