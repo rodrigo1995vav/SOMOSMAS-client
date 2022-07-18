@@ -11,14 +11,12 @@ export default function TableCategories({ dataCategories }) {
 
     const handlerDeleteCategory = (id, name) => {
         Alert.confirmRequest({ title: `¿Desea eliminar la categoría ${name}?` },
+            () => deletePrivate(`${process.env.REACT_APP_PUBLIC_URL_API}/categories/${id}`),
             () => {
+                Alert.success({ title: `La categoría ${name} ha sido eliminada` });
                 setCategories(categories.filter((category) => category.id !== id))
-                return deletePrivate(`${process.env.REACT_APP_PUBLIC_URL_API}/categories/${id}`)
-            },
-            () => Alert.success({ title: `La categoría ${name} ha sido eliminada` }));
-
+            });
     }
-
 
     return (
         <div>
