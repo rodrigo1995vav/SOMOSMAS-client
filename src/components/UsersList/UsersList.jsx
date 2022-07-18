@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import UserDataRow from "./UserDataRow";
 import EditFormModal from "./EditFormModal";
