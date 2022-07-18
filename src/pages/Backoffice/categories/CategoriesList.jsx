@@ -1,25 +1,30 @@
+import { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useLocation, useParams } from "react-router-dom"
 import TableCategories from "../../../components/BackOffice/categories/TableCategories"
 import { Loader } from "../../../components/Loader"
 import Paginator from "../../../components/Paginator"
-import { getAllCategories } from "../../../store/slices/categories/getAllCategories"
+import { deletePrivate } from "../../../services/apiServices"
+import { deleteCategory, getAllCategories } from "../../../store/slices/categories/getAllCategories"
 
 
 
 export default function CategoriesList() {
 
     const { categories, loading, error } = useSelector((state) => state.allCategories)
-
     const dispatch = useDispatch()
     const query = useParams()
     const page = query.page || 1
 
-    console.log(categories)
+    categories && console.log(categories.categories)
+
+
     useEffect(() => {
         dispatch(getAllCategories(page))
+
     }, [page])
+
 
     if (loading) {
         console.log(loading)
@@ -31,12 +36,14 @@ export default function CategoriesList() {
         //hay que hacer errores lindos , tambien tengo el error en el objeto por si las dudas , me parecio correcto no mostrarlo
     }
 
+
+
     return (
         <div>
 
             {categories ?
                 <>
-                    <TableCategories categories={categories.categories} />
+                    <TableCategories dataCategories={categories.categories} />
                     <Paginator currentPage={page} pageCount={categories.total_pages} justify={'center'} />
                 </>
                 : null}

@@ -28,6 +28,9 @@ export const categoriesSlice = createSlice({
                 state.loading = action.payload.loading;
             }
         },
+        deletedCategory: (state, action) => {
+            state.categories.categories = action.payload.categories;
+        }
     },
 });
 
@@ -48,3 +51,8 @@ export const getAllCategories = (page) => {
             });
     };
 };
+export const deleteCategory = (arrCategoryDeleted) => {
+    return (dispatch) => {
+        dispatch(setStateCategories({ categories: arrCategoryDeleted }));
+    }
+}
