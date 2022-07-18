@@ -120,6 +120,7 @@ function UsersList() {
 
   const displayUsers = data.map((user) => (
     <UserDataRow
+      key={ user.id }
       user={user}
       handleEditUser={handleEditUser}
       handleDelete={handleDelete}
