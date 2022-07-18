@@ -37,8 +37,8 @@ function Home() {
 
   return (
     <div className="container mt-5">
-      <div className="homePage">
-        <div className="welcomeContainer">
+    
+        <section className="welcomeContainer">
           <div className="welcomeMessage">
             <h1>Hola! Bienvenidx</h1>
             <p>{welcomeMessage}</p>
@@ -47,21 +47,20 @@ function Home() {
           <div className="imageContainer">
             <img className="welcomeImage" src={image} alt="" />
           </div>
-        </div>
-        <div className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
+        </section>
+        <header className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
           <h1 className="">Últimas Novedades</h1>
           <a className="fs-4  text-black button_Expand" href="/novedades">
             Ver todas<i className="bi bi-caret-right-fill "></i>
           </a>
-        </div>
-        <div >
+        </header>
+        <section >
           {!arrayImg ? (
             <Loader className="d-flex justify-content-center align-self-center"></Loader>
           ) : (
             <Carousel imgSlides={arrayImg} />
           )}
-        </div>
-      </div>
+        </section>
     </div>
   );
 }
