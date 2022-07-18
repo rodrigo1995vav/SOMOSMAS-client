@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Alert from '../../services/AlertService';
 //import { login } from '../../services/user/userServices';
 import { login } from '../../store/slices/users/index'
+import { TextField } from '../SignUpForm/TextField';
 
 
 
@@ -34,9 +35,9 @@ export const LoginForm = () => {
                         errors.email = 'Dirección de correo inválida';
                     }
                     if (!values.password) {
-                        errors.password = 'El password es requiredo';
+                        errors.password = 'La contraseña es requerido';
                     } else if (values.password.length < 3) {
-                        errors.password = 'El password debe tener al menos 6 caracteres';
+                        errors.password = 'La contraseña debe tener al menos 6 caracteres';
                     }
 
                     return errors;
@@ -54,32 +55,22 @@ export const LoginForm = () => {
              
                 }}
             >{({ errors }) => (
-                <Form className='form' >
-                    <div className='form-floating mb-3'>
-                        <Field
-                            placeholder="tucorreo@mail.com"
-                            className='form-control'
-                            name='email'
-                            type="email"
-                        />
-                        <ErrorMessage name='email' component={() =>
-                            <div className='error'>{errors.email}</div>
-                        } className='error-message' />
-                    </div>
-                    <div className='form-floating mb-3'>
-                        <p className='show-password' onClick={() => handleClickShowPassword()}>Mostrar</p>
-                        <Field
-                            id="password"
-                            name='password'
-                            className='form-control floatingPassword'
-                            type={isShowPassword ? 'text' : "password"}
-                        />
-                        <label htmlFor="password">Contraseña</label>
-                        <ErrorMessage name="password" component={() =>
-                            <div className='error'>{errors.password}</div>
-                        } className='error' />
-                    </div>
-                    <button type="submit" className='buttonColor'>Iniciar sesión</button>
+                <Form className='login-form'  >
+                    <TextField 
+                     label=""
+                     placeholder="Email"
+                     name="email"
+                     type="email"/>
+                
+                <TextField 
+                     icon={isShowPassword ? "bi bi-eye" : "bi bi-eye-slash"}
+                     onClickIcon = {()=> handleClickShowPassword()}
+                     label=""
+                     placeholder="Contraseña"
+                     name="password"
+                     type={isShowPassword ? 'text' : "password"}/>
+                    <button type="submit" style={ { borderRadius: '.7rem' } } 
+                    className=' btn btn-primary w-100   text-white fs-2 p-3 my-4 shadow-lg '>Iniciar sesión</button>
                 </Form>
             )}
             </Formik>

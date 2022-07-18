@@ -13,7 +13,7 @@ const AppRouter = () => {
     return (
         <>
             <Router>
-            <Navbar></Navbar>
+                <Navbar></Navbar>
                 <div>
                     <Routes>
 
