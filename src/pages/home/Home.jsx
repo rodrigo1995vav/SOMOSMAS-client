@@ -50,13 +50,13 @@ function Home() {
     
         <section className="d-flex flex-column flex-md-row gap-5 my-5 justify-content-center align-items-center w-100" 
                   style={{height:'fit-content'}}>
-          <div className="w-100 d-flex flex-column justify-content-center gap-4" style={{height:'60vh'}} >
+          <div className="w-100 d-flex flex-column justify-content-center gap-4" style={{height:'50vh'}} >
             <h1 className="text-center text-md-start" style={{fontSize:'5rem'}}>Hola! Bienvenidx</h1>
             <p className="text-center text-md-start fs-md-2 fs-3 " >{welcomeMessage}</p>
             <button className="btn-primary text-white fs-1 px-5 py-2 align-self-center align-self-md-start shadow-lg" style={{borderRadius:'1.5rem'}} onClick={() => navigate("/contacto")}>Contactanos</button>
           </div>
-          <div className="w-100 bg-primary d-flex flex-column flex-lg-row justify-content-center align-items-center"
-                style={{height:'60vh'}}>
+          <div className="w-100  d-flex flex-column flex-lg-row justify-content-center align-items-center"
+                style={{height:'50vh'}}>
             <img className="img-fluid w-100 " style={imgStyles}  src={teamWorkImage} alt="" />
           </div>
         </section>
