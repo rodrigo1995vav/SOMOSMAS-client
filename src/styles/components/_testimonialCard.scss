@@ -1,0 +1,11 @@
+
+.testimonial-card{
+    height: 8rem;
+    width: 100%;
+    @include responsive($medium){
+        height: 24rem;
+        width: 18rem;
+      }
+    
+}
+
