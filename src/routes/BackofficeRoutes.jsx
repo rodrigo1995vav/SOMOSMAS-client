@@ -5,7 +5,6 @@ import UsersList from "../components/UsersList/UsersList"
 import MenuByRole from "../pages/backOffice/MenuByRole";
 //import Testimonials from "../pages/testimonials/Testimonials"
 import CategoriesList from "../pages/Backoffice/categories/CategoriesList"
-import NewsAdmin from "../pages/Backoffice/News/NewsAdmin"
 import { ActivitiesForm } from '../pages/activities/ActivitiesForm.jsx';
 
 
