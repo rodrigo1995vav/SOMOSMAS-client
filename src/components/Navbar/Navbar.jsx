@@ -40,7 +40,7 @@ export default function Navbar() {
         ]
     };
     return (
-        <section className="sticky-top " style={{ backgroundColor: '#EAEBF3' }} >
+        <section className="sticky-top shadow " style={{ backgroundColor: '#EAEBF3' }} >
             <nav className="navbar navbar-expand-lg p-3 ps-5 border-bottom container ">
                 <div className="container-fluid">
                     <a className="navbar-brand mx-2" href="#">

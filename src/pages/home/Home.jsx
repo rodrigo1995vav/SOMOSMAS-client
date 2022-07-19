@@ -7,6 +7,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import CardCarousel from "../../components/CardCarousel";
 import TestimonialCard from "../../components/TestimonialCard";
+import teamWorkImage from '../../img/Login/team-work.jpg'
 
 
 
@@ -30,6 +31,14 @@ function Home() {
   const navigate = useNavigate()
   const {user} = useSelector ((state) => state.userLogged);
 
+  const imgStyles = {
+    objectFit:'cover',
+    objectPosition:'centered',
+    overflow:'hidden',
+    borderRadius: '1.5rem',
+    height:`100%`
+  }
+
   useEffect(() => {
     setWelcomeMessage(hcWelcomeMessage);
     setFeatures(hcFeatures.slice(hcFeatures.length - 3).reverse());
@@ -39,14 +48,16 @@ function Home() {
   return (
     <div className="container mt-5">
     
-        <section className="welcomeContainer">
-          <div className="welcomeMessage">
-            <h1>Hola! Bienvenidx</h1>
-            <p>{welcomeMessage}</p>
-            <button className="btn" onClick={() => navigate("/contacto")}>Contactanos</button>
+        <section className="d-flex flex-column flex-md-row gap-5 my-5 justify-content-center align-items-center w-100" 
+                  style={{height:'fit-content'}}>
+          <div className="w-100 d-flex flex-column justify-content-center gap-4" style={{height:'60vh'}} >
+            <h1 className="text-center text-md-start" style={{fontSize:'5rem'}}>Hola! Bienvenidx</h1>
+            <p className="text-center text-md-start fs-md-2 fs-3 " >{welcomeMessage}</p>
+            <button className="btn-primary text-white fs-1 px-5 py-2 align-self-center align-self-md-start shadow-lg" style={{borderRadius:'1.5rem'}} onClick={() => navigate("/contacto")}>Contactanos</button>
           </div>
-          <div className="imageContainer">
-            <img className="welcomeImage" src={image} alt="" />
+          <div className="w-100 bg-primary d-flex flex-column flex-lg-row justify-content-center align-items-center"
+                style={{height:'60vh'}}>
+            <img className="img-fluid w-100 " style={imgStyles}  src={teamWorkImage} alt="" />
           </div>
         </section>
         <header className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
