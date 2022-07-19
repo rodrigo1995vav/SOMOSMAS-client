@@ -1,10 +1,11 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom"
+import ActivitiesList from "../pages/Backoffice/activities/ActivitiesList"
+import NewsAdmin from "../pages/Backoffice/News/NewsAdmin"
+import UsersList from "../components/UsersList/UsersList"
 import MenuByRole from "../pages/backOffice/MenuByRole";
 //import Testimonials from "../pages/testimonials/Testimonials"
-import NewsAdmin from "../pages/backOffice/News/NewsAdmin";
-import UsersList from "../components/UsersList/UsersList"
 import CategoriesList from "../pages/Backoffice/categories/CategoriesList"
-import NewsAdmin from "../pages/Backoffice/News/NewsAdmin"
+
 
 const BackofficeRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const BackofficeRoutes = () => {
       <Route exact path="/news" element={<NewsAdmin />}/> 
       <Route exact path="/userslist/:page" element={<UsersList/>}/>
       <Route exact path="/categorias/:page" element={<CategoriesList />} />
+      <Route path="/actividades/:page" element={<ActivitiesList />} />
     </Routes>
   );
 };
