@@ -29,7 +29,7 @@ const imgStyles = {
 }
 
 return (
-<div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel" >
+<div id="carouselExampleIndicators" className="carousel slide m-4" data-bs-ride="carousel" >
   <div className="carousel-indicators">
           {imgSlides.map((img,index)=>(<button  type="button" 
                                                 key={img.imageUrl}
@@ -44,7 +44,7 @@ return (
   <div className="carousel-inner" >
        {imgSlides.map((img,index)=>(<div key={img.imageUrl} className={index===0?"carousel-item active": "carousel-item"}>
                                                    <img className="d-block w-100"  style={imgStyles} src={img.imageUrl} alt={img.text}/>
-                                       {img.text&& <div class="carousel-caption d-none d-md-block">
+                                       {img.text&& <div className="carousel-caption d-none d-md-block mb-5">
                                                        <h1>{img.text}</h1>
                                                    </div>}
                                     </div>

@@ -1,34 +1,42 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PublicRoutes from "../routes/PublicRoutes";
-import PrivateRoutes from "../routes/PrivateRoutes";
+import PrivateRoutes from "./RouteProtectors/PrivateRoutes";
 import DashboardRoutes from "../routes/DashboardRoutes";
 import BackofficeRoutes from "../routes/BackofficeRoutes";
+import AdminRoutes from "./RouteProtectors/AdminRoutes";
+import Footer from '../components/Footer'
+import Navbar from '../components/Navbar/Navbar.jsx';
 
 const AppRouter = () => {
 
     return (
-        <Router>
-            <div>
-                <Routes>
-                    
-                    <Route path="/*" element={<PublicRoutes />} />
+        <>
+            <Router>
+                <Navbar></Navbar>
+                <div>
+                    <Routes>
 
-                    <Route path="/auth/*" element={
-                        <PrivateRoutes>
-                            <DashboardRoutes />
-                        </PrivateRoutes>
-                    } />
-                    <Route path="/backoffice/*" element={
-                      /*   <PrivateRoutes> */ //no esta envuelt oya que esta private router solo dice si es usuario, no si es adminitrador
-                      // se deberia crear un componente que verifica eso y envuelva a el componente BackofficeRoutes
+                        <Route path="/*" element={<PublicRoutes />} />
+
+                        <Route path="/auth/*" element={
+                            // Rutas para usuarios registrados
+                            <PrivateRoutes>
+                                <DashboardRoutes />
+                            </PrivateRoutes>
+                        } />
+                        <Route path="/backoffice/*" element={
+                            // Rutas para usuarios administradores
+
                             <BackofficeRoutes />
-                       /*  </PrivateRoutes> */
-                    } />
 
-                </Routes>
-            </div>
-        </Router>
+                        } />
+
+                    </Routes>
+                </div>
+                <Footer></Footer>
+            </Router>
+        </>
     );
 
 }

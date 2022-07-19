@@ -1,0 +1,38 @@
+.news{
+
+  &__loader{
+    min-height: 100vh;
+    width: 100vw;
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__card{
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background-color: #EAEBF3;
+    margin-bottom: 1rem;
+    width: 100%;
+
+    @include responsive($medium){
+      max-width: 110rem;
+      margin: 0 auto;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__card-body{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+
+    padding: 0 2rem;
+  }
+
+}
+
