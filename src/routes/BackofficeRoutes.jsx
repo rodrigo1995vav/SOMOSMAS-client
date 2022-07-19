@@ -2,8 +2,8 @@ import { Route, Routes } from "react-router-dom"
 import ActivitiesList from "../pages/Backoffice/activities/ActivitiesList"
 import NewsAdmin from "../pages/Backoffice/News/NewsAdmin"
 import UsersList from "../components/UsersList/UsersList"
-import MenuByRole from "../pages/backOffice/MenuByRole";
-import Testimonials from "../pages/testimonials/Testimonials"
+import MenuByRole from "../pages/Backoffice/MenuByRole";
+import Testimonials from "../pages/Backoffice/testimonials/Testimonials"
 import CategoriesList from "../pages/Backoffice/categories/CategoriesList"
 import { ActivitiesForm } from '../pages/activities/ActivitiesForm.jsx';
 

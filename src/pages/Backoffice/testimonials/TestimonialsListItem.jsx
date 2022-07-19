@@ -1,5 +1,5 @@
-import { deletePrivate } from "../../services/apiServices"
-import Alert from '../../services/AlertService'
+import { deletePrivate } from "../../../services/apiServices"
+import Alert from '../../../services/AlertService'
 
 const TestimonialsListItem = ({testimonial}) => {
 

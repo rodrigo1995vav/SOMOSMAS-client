@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
-import Paginator from "../../components/Paginator"
-import TestimonialsListItem from "./TestimonialsListItem"
+import Paginator from "../../../components/Paginator"
+import TestimonialsListItem from "../testimonials/TestimonialsListItem"
 
 
 

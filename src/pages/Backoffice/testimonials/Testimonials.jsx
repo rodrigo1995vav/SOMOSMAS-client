@@ -1,9 +1,9 @@
 import { useState , useEffect } from "react"
 import  { useParams } from 'react-router-dom'
-import { getPublic } from "../../services/apiServices"
-import { Loader } from '../../components/Loader'
-import ErrorSign from "../../components/ErrorSign"
-import TestimonialsList from "./TestimonialsList"
+import { getPublic } from "../../../services/apiServices"
+import { Loader } from '../../../components/Loader'
+import ErrorSign from "../../../components/ErrorSign"
+import TestimonialsList from "../testimonials/TestimonialsList"
 
 
 
