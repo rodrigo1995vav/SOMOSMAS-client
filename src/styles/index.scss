@@ -1,14 +1,15 @@
 @import './base/override';
-
+@import "../../node_modules/bootstrap/scss/bootstrap";
 @import './base/base';
 
 
 @import './base/mixins';
-@import "../../node_modules/bootstrap/scss/bootstrap";
+
 
 
 // //components
  @import './components/carousel';
+ @import './components//cardCarousel';
  @import './components/footer';
  @import './components/textArea';
  @import './components/textInput';

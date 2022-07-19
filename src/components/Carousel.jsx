@@ -20,7 +20,7 @@ const Carousel = ({ imgSlides, imgHeight }) => {
 
   return (
     <div
-      id="carouselExampleIndicators"
+      id="standardCarousel"
       className="carousel slide m-3"
       data-bs-ride="carousel"
     >
@@ -29,7 +29,7 @@ const Carousel = ({ imgSlides, imgHeight }) => {
           <button
             type="button"
             key={img.imageUrl}
-            data-bs-target="#carouselExampleIndicators"
+            data-bs-target="#standardCarousel"
             data-bs-slide-to={index}
             className={
               index === 0 ? "carousel-button active" : "carousel-button"
@@ -62,7 +62,7 @@ const Carousel = ({ imgSlides, imgHeight }) => {
       <button
         className="carousel-control-prev"
         type="button"
-        data-bs-target="#carouselExampleIndicators"
+        data-bs-target="#standardCarousel"
         data-bs-slide="prev"
       >
         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -70,7 +70,7 @@ const Carousel = ({ imgSlides, imgHeight }) => {
       <button
         className="carousel-control-next"
         type="button"
-        data-bs-target="#carouselExampleIndicators"
+        data-bs-target="#standardCarousel"
         data-bs-slide="next"
       >
         <span className="carousel-control-next-icon" aria-hidden="true"></span>

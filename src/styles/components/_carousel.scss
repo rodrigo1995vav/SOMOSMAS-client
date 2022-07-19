@@ -1,6 +1,6 @@
 
 
-
+#standardCarousel{
 
 .carousel-button {
 
@@ -12,14 +12,15 @@
         
         border: none !important ;
         border-radius: 20px ;
-        opacity: 1 !important;
+        opacity: .5 !important;
         box-shadow: 0px 0.4rem 0.7rem 0px #000000;
    
       
     background-color: white !important;
     
     &.active{
-
+    box-shadow: 0px 0.4rem 0.7rem 0px rgb(24, 41, 59);
+    opacity: .9 !important;
     background-color:#0038FF !important ;
   
     }
@@ -61,3 +62,4 @@
     padding: calc(6% + 1.5rem) ;
 }
 
+}

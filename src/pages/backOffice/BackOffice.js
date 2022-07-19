@@ -6,7 +6,7 @@ export const BackOffice = () => {
     <>
         <div className='container'>
             <div className='row'>
-                <div className='col-md-12 card'>
+                <div className='col-md-12 backoffice_card'>
                     <div>
                         <h4>Novedades</h4>
                         <i className="fa-solid fa-newspaper fa-2xl"></i>
@@ -30,7 +30,7 @@ export const BackOffice = () => {
                 </div>
             </div>
             <div className='row'>
-                <div className='col-md-12 card'>
+                <div className='col-md-12 backoffice_card'>
                     <div>
                         <h4>Organización</h4>
                         <i class="fa-solid fa-network-wired fa-2xl"></i>

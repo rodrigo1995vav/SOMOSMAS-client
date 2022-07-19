@@ -90,7 +90,7 @@ export default function Navbar() {
                                   Menu de Usuario                    
                                 </button>
                                 <button
-                                  className="btn btn-danger mx-3  rounded-pill"
+                                  className="btn btn-primary mx-3  rounded-pill"
                                   type="submit"
                                   style={{ transform: "scale(1.2)" }}
                                   onClick={() => {
@@ -110,7 +110,7 @@ export default function Navbar() {
                                             Log In
                                         </button>
                                         <button
-                                            className="btn btn-danger mx-3  rounded-pill"
+                                            className="btn btn-primary text-white mx-3  rounded-pill"
                                             type="submit"
                                             style={{ transform: "scale(1.2)" }}
                                             onClick={() => { navigate('/registrarse') }}
