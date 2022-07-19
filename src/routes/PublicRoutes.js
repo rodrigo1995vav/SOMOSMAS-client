@@ -9,7 +9,6 @@ import RegisterPage from '../pages/register/RegisterPage.jsx';
 
 
 
-
 const PublicRoutes = () => {
     return (
         <>
