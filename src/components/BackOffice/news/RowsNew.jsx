@@ -6,11 +6,19 @@ const RowsNew = ({
     createdAt, 
     deleteNews }) => {
 
+    const date = new Date( createdAt );
+    const options = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    };
+        
     return (
-        <tr >
+        <tr>
             <td className="col-3 text-center h4 " style={{paddingTop:'35px'}}>{name}</td>
             <td className="col-3 text-center "><img src={image} alt="avatar"  width='80'/></td>
-            <td className="col-3 text-center h4 "  style={{paddingTop:'35px'}}>{createdAt}</td>
+            <td className="col-3 text-center h4 "  style={{paddingTop:'35px'}}>{ new Intl.DateTimeFormat('es-Es', options).format(date) }</td>
 
             <td className="col-3 text-center h4 " style={{ paddingTop: '35px' }}>
                 <div className="d-flex d-flex justify-content-center ">
