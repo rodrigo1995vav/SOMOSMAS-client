@@ -10,50 +10,42 @@ const News = () => {
     const [error,setError] = useState(false)
     const [loading,setLoading] = useState(true)
 
- 
-
-
-
     const imgStyles = {
         objectFit:'cover',
         objectPosition:'centered',
         overflow:'hidden',
-        height:`20rem`
+        height:`13rem`
       }
 
 
- 
-    console.log(data)
     useEffect(()=>{
         getPublic(`/news`)
         .then(res=>setData(res.data))
         .catch(err=>setError(err))
         .finally(()=>{setLoading(false)})
-        
-
     },[])
 
     if(loading){
-        return <Loader> </Loader>
+        return <Loader className="news__loader"/>
     }
-
 
     return (
 
-        <main className="container-fluid w-100">
+        <main className="container-fluid w-100" >
 
             <h1 className="title text-center my-5 h-auto">Novedades</h1>
-            <div className="container-fluid h-100 p-0 d-flex flex-column justify-content-center align-items-center bg-white">
+            <div className="container-fluid h-100 p-0 d-flex flex-column justify-content-center align-items-center py-3">
             {
-                data&&data.map(news => (
-                    <div key={news.name} className="card  bg-light">
-                    <img  src={news.image} className="card-img-top img-fluid" style={imgStyles} alt="..."/>
-                    <div className="card-body overflow-auto ">
-                        <h5 className="card-title fs-1">{news.name}</h5>
-                        <Link to={`/novedades/${news.id}`}>Ver mas</Link>
+                data&&data.entries.map(news => (
+                    <div key={news.id} className="card news__card" >
+                        <img  src={news.image} style={imgStyles} alt="..."/>
+                        <div className="news__card-body">
+                            <h5 className="card-title fs-1">{news.name}</h5>
+                            <Link to={`/novedades/${news.id}`} style={{ fontSize: '1.5rem' }}>Ver mas</Link>
+                        </div>
                     </div>
-               </div>
-                    ))
+                    )
+                )
                     
             }
             </div>

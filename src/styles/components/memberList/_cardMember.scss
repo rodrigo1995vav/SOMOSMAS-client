@@ -1,0 +1,9 @@
+#cardMember{
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+#cardMember:hover {
+   transform: scale(1.04);
+    cursor: pointer;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25)
+  }

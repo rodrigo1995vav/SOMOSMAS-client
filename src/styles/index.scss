@@ -1,19 +1,30 @@
 @import './base/override';
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import './base/base';
-@import './components/signUp.scss';
+
 
 @import './base/mixins';
 
 
+
+
+//@import '../pages/login/loginPage.module';
+@import '../pages/backOffice/backOffice.module';
+//@import './pages/testimonials/testimonials.scss';
+
+//components
+//@import '../components/login/loginForm.module';
+//@import './components/footer';
+//@import './components/carousel';
+//@import './componentes/textArea';
+//@import './componentes/textInput';
 // //components
-// @import '../components/login/loginForm.module';
- @import '../styles/components/SignupForm/SignupForm.scss';
  @import './components/carousel';
  @import './components/footer';
  @import './components/textArea';
  @import './components/textInput';
  @import './components/AlertStyles';
+@import './components//memberList/cardMember';
 
 
  
@@ -21,6 +32,9 @@
 // @import '../pages/login/loginPage.module';
 @import './pages/activityDetail/activityDetailPage';
 @import './pages/contact/contactPage';
-@import '../pages/backOffice/backOffice.module';
+@import './pages/backoffice/backoffice';
 @import './pages/home/homePage';
+@import './pages/news/news';
+@import './pages/newsdetails/newsdetails';
+
 
