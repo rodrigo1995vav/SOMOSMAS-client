@@ -1,4 +1,4 @@
-export default function RowsCategory({ category }) {
+export default function RowsCategory({ category, handlerDeleteCategory }) {
     //each activity is an activity object with name and id properties
     return (<tr >
         <td className="col-3 text-center h4 " style={{ paddingTop: '35px' }}>{category.name}</td>
@@ -7,7 +7,7 @@ export default function RowsCategory({ category }) {
                 <button className="btn btn-primary mx-3 display-1"  >
                     <i class="bi bi-pencil-square h3" ></i>
                 </button>
-                <button className="btn btn-danger mx-3 display-1">
+                <button className="btn btn-danger mx-3 display-1" onClick={() => handlerDeleteCategory(category.id, category.name)}>
                     <i class="bi bi-trash3 h3"></i>
                 </button>
             </div>

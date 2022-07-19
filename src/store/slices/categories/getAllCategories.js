@@ -28,6 +28,7 @@ export const categoriesSlice = createSlice({
                 state.loading = action.payload.loading;
             }
         },
+
     },
 });
 
@@ -48,3 +49,4 @@ export const getAllCategories = (page) => {
             });
     };
 };
+

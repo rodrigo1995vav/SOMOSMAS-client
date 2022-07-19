@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useLocation, useParams } from "react-router-dom"
@@ -11,15 +12,15 @@ import { getAllCategories } from "../../../store/slices/categories/getAllCategor
 export default function CategoriesList() {
 
     const { categories, loading, error } = useSelector((state) => state.allCategories)
-
     const dispatch = useDispatch()
     const query = useParams()
     const page = query.page || 1
 
-    console.log(categories)
     useEffect(() => {
         dispatch(getAllCategories(page))
+
     }, [page])
+
 
     if (loading) {
         console.log(loading)
@@ -36,7 +37,7 @@ export default function CategoriesList() {
 
             {categories ?
                 <>
-                    <TableCategories categories={categories.categories} />
+                    <TableCategories dataCategories={categories.categories} />
                     <Paginator currentPage={page} pageCount={categories.total_pages} justify={'center'} />
                 </>
                 : null}
