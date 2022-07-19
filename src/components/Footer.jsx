@@ -60,7 +60,7 @@ function Footer() {
                       socialNetworks?.length > 0 && socialNetworks.map( ( social ) => {
                         const { id, link, bootstrapIconName } = social;
                         return(
-                          <a href={ link } key={ id } target="_blank">
+                          <a href={ link } key={ id } target="_blank" rel="noreferrer">
                             <i className={ `bi ${ bootstrapIconName } footer__social-icons me-3` } />
                           </a>
                         )

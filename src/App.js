@@ -9,9 +9,9 @@ import store from "./store";
 function App() {
     return (
         <Provider store={store}>
-                <AppRouter />
+            <AppRouter />
 
-                {/* <Footer /> */}
+            {/* <Footer /> */}
         </Provider>
     );
 }

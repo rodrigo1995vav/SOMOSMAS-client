@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { getPrivate } from "../../services/apiServices";
-import ErrorSign from "../ErrorSign";
-import { Loader } from '../Loader';
+import ErrorSign from "../../components/ErrorSign";
+import { Loader } from '../../components/Loader';
 import NewsDetailCard from "./NewsDetailCard";
 
 
@@ -23,35 +23,35 @@ const NewsDetails = ({imgHeight = '40rem'}) => {
     objectFit:'cover',
     objectPosition:'centered',
     overflow:'hidden',
-    height:`${imgHeight}`
+    height: imgHeight
   }
 
 
  useEffect(()=>{
    getPrivate(`/news/${id}`)
-   .then(res=>res.json())
-   .then(res=>setData(res))
+   .then(({ data })=>setData(data.payload))
    .catch(err=>setError(err))
    .finally(setLoading(false))
-      
  },[id])
 
-
  if(loading){
-       return   <main className='container-fluid h-100 p-0 d-flex justify-content-center align-items-center bg-white '>
-                 <Loader></Loader> 
-                </main>
+    return(
+      <main className='container-fluid h-100 p-0 d-flex justify-content-center align-items-center bg-white '>
+        <Loader></Loader> 
+      </main>
+    )  
  }
 
 
   return (
     <main className='container-fluid h-100 p-0 d-flex justify-content-center align-items-center bg-white '>
-
-        {  data ?  <NewsDetailCard data={data} imgStyles = {imgStyles}  />
-
-          : error && <ErrorSign error={error} />}
+        {  
+          data 
+            ?  <NewsDetailCard data={data} imgStyles={{ imgStyles }}/>
+            : error && <ErrorSign error={error} />
+        }
     </main>
-        )
+  )
 }
 
 export default NewsDetails

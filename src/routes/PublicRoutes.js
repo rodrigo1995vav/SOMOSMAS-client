@@ -1,13 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
 import Home from '../pages/home/Home.jsx';
-import NewsDetails from '../components/NewsDetails/NewsDetails.jsx';
+import NewsDetails from '../pages/NewsDetails/NewsDetails.jsx';
+
 import News from '../pages/news/News';
 import { LoginPage } from '../pages/login/LoginPage';
 import NotFound from '../pages/notfound/NotFound';
 import { ContactPage } from '../pages/contact/ContactPage';
 import RegisterPage from '../pages/register/RegisterPage.jsx';
 import MembersList from '../pages/members/MembersList.jsx';
-
 
 
 
