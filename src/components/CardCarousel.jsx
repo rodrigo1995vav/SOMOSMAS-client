@@ -7,7 +7,7 @@
 // cardsPerSlide : amount of cards per slide
 // CardComponent : CardType  (the carousel always takes the height of its content)
 
-const CardCarousel = ({ cardsData, cardsPerSlide , CardComponent }) => {
+const CardCarousel = ({ carouselId ,cardsData, cardsPerSlide , CardComponent }) => {
 
 
 
@@ -22,7 +22,7 @@ const CardCarousel = ({ cardsData, cardsPerSlide , CardComponent }) => {
         buttonArray.push(<button
         type="button"
         key={i+1}
-        data-bs-target="#card-carousel"
+        data-bs-target={`#${carouselId}`}
         data-bs-slide-to={i}
         className={
           i === 0 ? "carousel-button active" : "carousel-button"
@@ -70,8 +70,8 @@ const CardCarousel = ({ cardsData, cardsPerSlide , CardComponent }) => {
 
     return (
       <div
-        id="card-carousel"
-        className="carousel slide m-3"
+        id={`${carouselId}`}
+        className="carousel slide m-3 card-carousel "
         data-bs-ride="carousel"
       >
         <div className="carousel-indicators">
@@ -83,7 +83,7 @@ const CardCarousel = ({ cardsData, cardsPerSlide , CardComponent }) => {
         <button
           className="carousel-control-prev"
           type="button"
-          data-bs-target="#card-carousel"
+          data-bs-target={`#${carouselId}`}
           data-bs-slide="prev"
         >
           <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -91,7 +91,7 @@ const CardCarousel = ({ cardsData, cardsPerSlide , CardComponent }) => {
         <button
           className="carousel-control-next"
           type="button"
-          data-bs-target="#card-carousel"
+          data-bs-target={`#${carouselId}`}
           data-bs-slide="next"
         >
           <span className="carousel-control-next-icon" aria-hidden="true"></span>

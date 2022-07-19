@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import CardCarousel from "../../components/CardCarousel";
 import TestimonialCard from "../../components/TestimonialCard";
 import teamWorkImage from '../../img/Login/team-work.jpg'
+import MemberCard from "../../components/MemberCard";
 
 
 
@@ -61,13 +62,36 @@ function Home() {
           </div>
         </section>
         <header className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
+          <h1 className="">Nuestro Staff</h1>
+          <a className="fs-4  text-black button_Expand" href="/nosotros">
+            Ver todos<i className="bi bi-caret-right-fill "></i>
+          </a>
+        </header>
+        <section className="h-100" >
+          <CardCarousel carouselId={'members-card-carousel'} cardsData={[{name:'dawdawd dawdaw',image:'https://picsum.photos/200'},
+                                    {name:'dawdawd dawdawd dawdawdw',image:'https://picsum.photos/200'},
+                                    {name:'dawdawd',image:'https://picsum.photos/200'},
+                                    {name:'dawdawd',image:'https://picsum.photos/200'},
+                                    {name:'dawdawd',image:'https://picsum.photos/200'},
+                                    {name:'dawdawd',image:'https://picsum.photos/200'},
+                                    {name:'dawdawd',image:'https://picsum.photos/200'},
+                                    {name:'dawdawd',image:'https://picsum.photos/200'},
+                                    {name:'dawdawd',image:'https://picsum.photos/200'},
+                                    {name:'dawdawd',image:'https://picsum.photos/200'},
+                                    {name:'dawdawd',image:'https://picsum.photos/200'},
+                                    {name:'dawdawd',image:'https://picsum.photos/200'}
+                                    ]} 
+          cardsPerSlide={5} CardComponent={MemberCard}></CardCarousel>
+        </section>
+        <header className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
           <h1 className="">Testimonios</h1>
           <a className="fs-4  text-black button_Expand" href="/testimonios">
             Ver todos<i className="bi bi-caret-right-fill "></i>
           </a>
         </header>
+        
         <section className="h-100" >
-          <CardCarousel cardsData={[{name:'dawdawd dawdaw',image:'https://picsum.photos/200',content:'“testimoniotestimoniotestim oniotestim oniote stimoniotest imoniotestim oniote stimoniotestimoniotestimoni”'},
+          <CardCarousel carouselId={'testimonial-card-carousel'} cardsData={[{name:'dawdawd dawdaw',image:'https://picsum.photos/200',content:'“testimoniotestimoniotestim oniotestim oniote stimoniotest imoniotestim oniote stimoniotestimoniotestimoni”'},
                                     {name:'dawdawd dawdawd dawdawdw',image:'https://picsum.photos/200',content:'“test imoniotestimo niotestimo niote stimoniotestimon iotest imoniot estimon iotesti moniotestimon iotest imoni”'},
                                     {name:'dawdawd',image:'https://picsum.photos/200',content:'“testimon iotestimoniote stimo niote st imoniotestimon iotestimoniotest imoniotest imoniotestim oniotestimo ni”'},
                                     {name:'dawdawd',image:'https://picsum.photos/200',content:'“testimoniotes tim oniotestimo niotestimoniote stimoniotest imoniotestimo niotestimonio testimonio testimoni”'},

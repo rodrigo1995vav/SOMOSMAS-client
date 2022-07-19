@@ -8,7 +8,7 @@ const TestimonialCard = ({name, image, content}) => {
                     <img src={image}  className=" p-2 p-md-0 mt-md-4 ms-md-4"  
                             style={{borderRadius:'10rem', maxWidth:'7rem',maxHeight:'7rem'}} alt="" />
                 </div>
-                <div className="  m-auto mt-md-3 mx-md-3 px-1 px-md-2 h-full w-100">
+                <div className="  m-auto mt-md-3 mx-md-3 px-1 px-md-2 w-100">
                 <h5 class="">{name}</h5>
                 <p class="text-justify text-break text-wrap text-left">{content}</p>
                 </div>
