@@ -2,24 +2,48 @@
     display: flex;
     flex-direction: row;
     gap: 20px;
-    padding: 100px;
+    padding: 50px;
+    flex: 1;
 }
 
-.welcomeMessage {
+.welcomeMessage {    
     display: flex;
-    gap: 10px;
     flex-direction: column;
+    flex: 1;
 }
 
-.homePage {
-    img {
-        height: 500px;
-        width: 563px;
-        border-radius: 15px;
-        left: 735px;
-        top: 120px;
-    }
+
+.welcomeImage{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex: 1;
+    border-radius: 3rem;
 }
+
+.imageContainer{
+    max-width: 50%;
+}
+
+@media only screen and (max-width: 992px) {
+    .welcomeContainer {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .welcomeImage{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        object-fit: cover;
+        flex: 1;
+    }
+    .imageContainer{
+        max-width: 100%;
+    }
+  }
+
 
 .welcomeMessage {
     h1 {
@@ -49,6 +73,15 @@
     }
 }
 
+.button_Expand{
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.button_Expand:hover{
+    text-decoration:underline;
+    text-decoration-color: black
+}
 
 .singleFeature {
     display: flex;

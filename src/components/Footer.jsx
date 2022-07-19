@@ -21,25 +21,26 @@ function Footer() {
           <div>
             <div className="brand text-center ">
               <div className="container-fluid ">
-                <div className="row footer__top-container" >
+                <div className="footer__top-container" >
                   <hr className='opacity-100 footer__hr-top-basis'/>
-                  <hr className='opacity-100 footer__hr-top-basis'  />
                   <img 
                     className='footer__logo'
                     src={logo}
                     alt="logo"
                   /> 
+                  <hr className='opacity-100 footer__hr-top-basis'  />
+                  
                 </div>
               </div>
 
               <div>
-                <div className="row  pt-5">
-                  <div className="row-lg-12  py-5 ">
+                <div className="">
+                  <div className="col-lg-12 mt-3">
                     <ul className="nav justify-content-center  ">
                         {footerLinks.map((link) => (
                           <li key={`footer/${link.name}`} className="nav-item ">
                             <a
-                              className="nav-link fs-3 text-black"
+                              className="nav-link fs-4 text-black"
                               href={link.to}
                             >
                               {link.name}
@@ -53,8 +54,8 @@ function Footer() {
               </div>
               <hr className="text-black border-5 opacity-100" ></hr>
               <div>
-                <div className="row pt-2">
-                  <div className="col-lg-12 text-center ">
+                <div className="">
+                  <div className="col-lg-12 text-center mt-3 ">
 
                     {
                       socialNetworks?.length > 0 && socialNetworks.map( ( social ) => {
