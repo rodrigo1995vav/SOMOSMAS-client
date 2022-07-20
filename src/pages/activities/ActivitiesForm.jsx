@@ -32,27 +32,27 @@ export const ActivitiesForm = ({ update }) => {
         e.preventDefault()
         if (update) {
             putPrivate(`/activities/${id}`, activitiesFormData)
-            .then(res => Alert.success({ title: 'Se modificó la actividad:', message: `${activitiesFormData.name}` }))
-            .catch(err => Alert.error({ title: 'No se ha podido modificar la actividad...' }))
+                .then(res => Alert.success({ title: 'Se modificó la actividad:', message: `${activitiesFormData.name}` }))
+                .catch(err => Alert.error({ title: 'No se ha podido modificar la actividad...' }))
         } else {
             postPrivate(`/activities`, activitiesFormData)
-            .then(res => Alert.success({ title: `Se ha creado la actividad: `, message: `${activitiesFormData.name}` }))
-            .catch(err => Alert.error({ title: 'No se pudo crear la actividad: ', message: `${err.message}` }))
+                .then(res => Alert.success({ title: `Se ha creado la actividad: `, message: `${activitiesFormData.name}` }))
+                .catch(err => Alert.error({ title: 'No se pudo crear la actividad: ', message: `${err.message}` }))
         }
     }
 
     return (
         <div className='container'>
-            <h1 className='text-center m-5'>Activities</h1>
+            <h1 className='text-center m-5'>Actividades</h1>
             <div>
                 <form className='my-5'>
                     <div className="form-group fs-2 m-5">
-                        <label htmlFor="name" className='mb-3'>Nombre</label>
+                        <label htmlFor="name" className='mb-3'>Titulo</label>
                         <input
-                        type="text"
-                        className='form-control fs-4'
-                        value={activitiesFormData.name}
-                        onChange={(e) => { updateField(e) }} />
+                            type="text"
+                            className='form-control fs-4'
+                            value={activitiesFormData.name}
+                            onChange={(e) => { updateField(e) }} />
                     </div>
                     <div className="form-group fs-2 m-5">
                         <CKEditor
@@ -66,11 +66,23 @@ export const ActivitiesForm = ({ update }) => {
                             }}
                         />
                     </div>
+                    <div className="form-group fs-2 m-5">
+                        <div class="input-group">
+                            <label class="input-group-text fs-2" for="inputGroupFile01">Imagen</label>
+                            <input
+                                type="file"
+                                class="form-control fs-2"
+                                value={activitiesFormData.image}
+                                name='image'
+                                id="inputGroupFile01"
+                                onChange={(e) => updateField(e)} />
+                        </div>
+                    </div>
                     <button
-                className="btn btn-danger fs-4"
-                type='submit'
-                onClick={(e) => { onSubmit(e) }}
-                style={{width: 120, borderRadius: 30}}>{update ? "Actualizar" : "Crear"}</button>
+                        className="btn btn-danger fs-4"
+                        type='submit'
+                        onClick={(e) => { onSubmit(e) }}
+                        style={{ width: 120, borderRadius: 30 }}>{update ? "Actualizar" : "Crear"}</button>
                 </form>
             </div>
         </div>
