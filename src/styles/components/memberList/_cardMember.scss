@@ -1,9 +1,51 @@
-#cardMember{
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+.containerMemberDetail {
+    display: block;
 }
 
-#cardMember:hover {
-   transform: scale(1.04);
+.shadowCardMember {
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+}
+
+.shadowCardMember:hover {
+    transform: scale(1.04);
     cursor: pointer;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25)
-  }
+}
+
+
+.texto-borde {
+    -webkit-text-stroke: 2px black;
+    color: transparent;
+}
+
+.shadowTextMember {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.50)
+}
+
+
+.renderImgMember {
+    image-rendering: auto;
+    width: 100%;
+    margin: auto;
+}
+
+// .containerComponentDetailMember {
+//     border: 1px solid #FF0000
+// }
+
+
+@media (min-width: 720px) {
+
+    .containerMemberDetail {
+        display: flex;
+        justify-content: center;
+    }
+
+    .renderImgMember {
+        image-rendering: auto;
+        width: 300px;
+        max-width: 300px;
+    }
+
+
+}

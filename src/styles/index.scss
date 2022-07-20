@@ -9,7 +9,7 @@
 
 
 //@import '../pages/login/loginPage.module';
-@import '../pages/backOffice/backOffice.module';
+//@import '../pages/backOffice/Backoffice.module';
 //@import './pages/testimonials/testimonials.scss';
 
 //components
@@ -19,15 +19,15 @@
 //@import './componentes/textArea';
 //@import './componentes/textInput';
 // //components
- @import './components/carousel';
- @import './components/footer';
- @import './components/textArea';
- @import './components/textInput';
- @import './components/AlertStyles';
+@import './components/carousel';
+@import './components/footer';
+@import './components/textArea';
+@import './components/textInput';
+@import './components/AlertStyles';
 @import './components//memberList/cardMember';
 
 
- 
+
 //pages
 // @import '../pages/login/loginPage.module';
 @import './pages/activityDetail/activityDetailPage';
@@ -36,5 +36,3 @@
 @import './pages/home/homePage';
 @import './pages/news/news';
 @import './pages/newsdetails/newsdetails';
-
-
