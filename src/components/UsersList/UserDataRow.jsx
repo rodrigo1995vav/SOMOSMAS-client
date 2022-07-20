@@ -1,7 +1,7 @@
 import React from "react";
 import Alert from "../../services/AlertService";
 
-const UserDataRow = ({ user, handleEditUser, setShow, handleDelete }) => {
+const UserDataRow = ({ user, handleEditUser, setShow, handleDelete, setEditFormData }) => {
 
   return (
     <tr key={user.id}>
@@ -19,6 +19,8 @@ const UserDataRow = ({ user, handleEditUser, setShow, handleDelete }) => {
             //Here we should put the userform thats being made by Israeli
             handleEditUser(e, user);
             setShow(true);
+            setEditFormData(user)
+
           }}
         >
           <i className="bi bi-pencil-square mx-2"></i>

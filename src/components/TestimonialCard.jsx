@@ -9,8 +9,8 @@ const TestimonialCard = ({name, image, content}) => {
                             style={{borderRadius:'10rem', maxWidth:'7rem',maxHeight:'7rem'}} alt="" />
                 </div>
                 <div className="  m-auto mt-md-3 mx-md-3 px-1 px-md-2 w-100">
-                <h5 class="">{name}</h5>
-                <p class="text-justify text-break text-wrap text-left">{content}</p>
+                <h5 className="">{name}</h5>
+                <p className="text-justify text-break text-wrap text-left">{content}</p>
                 </div>
         </div>
 }

@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import MenuByRole from "../pages/Backoffice/MenuByRole";
+import MenuByRole from "../pages/backOffice/MenuByRole";
 import UsersList from "../components/UsersList/UsersList"
-import CategoriesList from "../pages/Backoffice/categories/CategoriesList"
-import NewsAdmin from "../pages/Backoffice/News/NewsAdmin"
+import CategoriesList from "../pages/backOffice/categories/CategoriesList"
+import NewsAdmin from "../pages/backOffice/News/NewsAdmin"
 
 const BackofficeRoutes = () => {
   return (

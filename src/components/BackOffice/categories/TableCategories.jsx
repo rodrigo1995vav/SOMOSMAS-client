@@ -4,7 +4,7 @@ export default function TableCategories({ categories }) {
 
     return (
         <div>
-            <table class="table table-dark">
+            <table className="table table-dark">
                 <thead >
                     <tr>
                         <th scope="col" className="text-center h2">Categoría</th>

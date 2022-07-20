@@ -6,11 +6,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "../Loader";
-import { getPrivate } from "../../services/apiServices";
 
-const token = localStorage.getItem("token")
-  ? localStorage.getItem("token")
-  : localStorage.setItem("token", "no_token");
+
 
 function UsersList() {
   const navigate = useNavigate();
@@ -31,6 +28,7 @@ function UsersList() {
   const [loading, setLoading] = useState(true);
 
   const usersPerPage = 10;
+  const token = localStorage.getItem("token")
 
   useEffect(() => {
     getData();
@@ -38,6 +36,7 @@ function UsersList() {
   }, [page, searchTerm, sortDirection]);
 
   const getData = async () => {
+    
     axios
       .get(`${process.env.REACT_APP_PUBLIC_URL_API}/users`, {
         params: {
@@ -49,7 +48,7 @@ function UsersList() {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log(res);
+        console.log("New user data recived")
         setTotalUsers(res.data.total_users);
         setData(res.data.users);
       })
@@ -83,6 +82,7 @@ function UsersList() {
       firstName: values.firstName,
       lastName: values.lastName,
       email: values.email,
+      roleId:values.roleId
     };
 
     const newUsers = [...data];
@@ -90,6 +90,7 @@ function UsersList() {
     const index = data.findIndex((user) => user.id === editContactId);
 
     newUsers[index] = editedUser;
+    
     //TODO axios get users
     setData(newUsers);
 
@@ -105,6 +106,12 @@ function UsersList() {
 
     newUsers.splice(index, 1);
     //TODO axios get user
+    axios.delete(`${process.env.REACT_APP_PUBLIC_URL_API}/users/delete/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .catch(function (error) {
+        console.log(error.response.data.message);
+      });
 
     setData(newUsers);
   };
@@ -125,7 +132,7 @@ function UsersList() {
       handleEditUser={handleEditUser}
       handleDelete={handleDelete}
       setShow={setShow}
-      editFormData={editFormData}
+      setEditFormData={setEditFormData}
     />
   ));
 
@@ -144,7 +151,7 @@ function UsersList() {
   }
 
   return (
-    <div className="container ">
+    <div className="container" style={{transform: "scale(1)", 'font-size':"165%"}}>
       {show && (
         <EditFormModal
           editFormData={editFormData}
@@ -155,10 +162,11 @@ function UsersList() {
       <div className="crud shadow-lg p-3 mb-5 mt-5 bg-body rounded">
         <div className="row ">
           <div className="col-sm mt-5 mb-4 text-gred">
-            <div className="search">
+            <div className="search" >
               <form className="form-inline">
                 <input
                   className="form-control mr-sm-2"
+                  style={{'font-size':"100%"}}
                   type="search"
                   placeholder="Buscar por email"
                   aria-label="Search"
@@ -171,7 +179,7 @@ function UsersList() {
             </div>
           </div>
           <div className="col-sm-6  mt-5 mb-4" style={{ color: "black" }}>
-            <h2 className="text-center">
+            <h2 className="text-center" style={{'font-size':"165%"}}>
               <b>Detalle de Ususarios</b>
             </h2>
           </div>
