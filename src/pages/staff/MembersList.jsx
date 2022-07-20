@@ -16,7 +16,7 @@ export default function MembersList() {
     const dispatch = useDispatch()
     const query = useParams()
     const page = query.page || 1
-    const limit = 16;
+    const limit = 10;
 
     useEffect(() => {
         dispatch(getAllMembers(page, limit))
