@@ -15,7 +15,7 @@ const AppRouter = () => {
             <div style={{ display:'flex', minHeight: '100vh', flexDirection:'column' }}>
             <Router>
                 <Navbar></Navbar>
-                <div style={{ flex: 1 }}>
+                <div className="middle_div" style={{ flex: 1, position: "relative" }}>
                     <Routes>
 
                         <Route path="/*" element={<PublicRoutes />} />
