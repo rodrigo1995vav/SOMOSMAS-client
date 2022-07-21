@@ -51,7 +51,7 @@ function UsersList() {
       })
       .catch(function (error) {
         setData([]);
-        console.log(error.response.data.message);
+        console.log(error.response.data.error);
       });
   };
 
