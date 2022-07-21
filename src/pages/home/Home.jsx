@@ -9,6 +9,7 @@ import CardCarousel from "../../components/CardCarousel";
 import TestimonialCard from "../../components/TestimonialCard";
 import teamWorkImage from '../../img/Login/team-work.jpg'
 import MemberCard from "../../components/MemberCard";
+import { getPublic } from '../../services/apiServices';
 
 
 
@@ -16,18 +17,12 @@ function Home() {
   //Hardcoded variables
   const hcWelcomeMessage =
     "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est ipsum placeat natus! A quam porro possimus. Optio harum cupiditate rem dolore itaque. Tempora quae dignissimos excepturi sunt nostrum sint accusantium.";
-  const hcFeatures = [
-    { title: "feature 0", content: "feature 0 body", image: "Manos 10.jpg" },
-    { title: "feature 1", content: "feature 1 body", image: "Manos 10.jpg" },
-    { title: "feature 2", content: "feature 2 body", image: "Manos 10.jpg" },
-    { title: "feature 3", content: "feature 3 body", image: "Manos 10.jpg" },
-    { title: "feature 4", content: "feature 4 body", image: "Manos 10.jpg" },
-  ];
+  
   const hcImage = "Manos 10.jpg";
   const arrayImg = [{ imageUrl: "Manos 10.jpg", text: "text-1" },{ imageUrl: "Manos 10.jpg", text: "text-1" }];
 
   const [welcomeMessage, setWelcomeMessage] = useState("");
-  const [news, setFeatures] = useState([]);
+  const [news, setNews] = useState([]);
   const [image, setImage] = useState("");
   const navigate = useNavigate()
   const {user} = useSelector ((state) => state.userLogged);
@@ -41,8 +36,14 @@ function Home() {
   }
 
   useEffect(() => {
+    getPublic(`http://localhost:3001/news`).then(data => {
+      const entries = data.data.entries
+      const array = entries.map(entry => {
+        return {imageUrl: entry.image, text: entry.name}
+      })
+      setNews(array.slice(array.length - 3).reverse());
+    }) 
     setWelcomeMessage(hcWelcomeMessage);
-    setFeatures(hcFeatures.slice(hcFeatures.length - 3).reverse());
     setImage(hcImage);
   }, []);
 
@@ -116,7 +117,7 @@ function Home() {
           {!arrayImg ? (
             <Loader className="d-flex justify-content-center align-self-center"></Loader>
           ) : (
-            <Carousel imgSlides={arrayImg} />
+            <Carousel imgSlides={news} imgHeight="500px" />
           )}
         </section>
     </div>
