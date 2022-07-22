@@ -24,7 +24,6 @@ const Testimonials = () => {
 
     //define table rows in request with limit
     const limit = 10
-    const [pageCount, setPageCount] =  useState(null)
     const [data,setData] = useState(null)
     const [loading,setLoading] = useState(true)
     const [error, setError] = useState(false)
@@ -33,13 +32,10 @@ const Testimonials = () => {
     useEffect(()=>{
       getPublic(`/testimonials/${limit}/${page}`)
             .then(res=>{
-              setData(res.testimonials); 
-              setPageCount(res.pageCount)})
+              setData(res.data) 
+            })
             .catch(err => setError(err))
             .finally(setLoading(false)) 
-        
-           
-              
      },[page])
 
 
@@ -54,7 +50,7 @@ const Testimonials = () => {
 
     return(
     <main className="w-100 h-auto p-0  justify-content-center align-items-center bg-white">
-        {  data  ? <TestimonialsList testimonials={data.testimonials} pageCount={pageCount} />
+        {  data  ? <TestimonialsList testimonials={data.testimonials} pageCount={data.pageCount} />
           : error && <ErrorSign error={{message:'Show error content'}} />}
     </main>)
 }
