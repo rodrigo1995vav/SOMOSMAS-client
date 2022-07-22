@@ -6,7 +6,7 @@ export default function MemberCard({ member, altImage, handlerDescription }) {
                 <h4 className="card-text fs-3 text-light shadowTextMember" >
                     <strong>{member.name}</strong>
                 </h4>
-                <h6 className="card-text fs-4 text-light shadowTextMember">CEO</h6>
+                <h6 className="card-text fs-4 text-light shadowTextMember">{member.Role_ong.role_ong}</h6>
             </section>
         </div>);
 }

@@ -1,6 +1,5 @@
 export default function MemberDetail({ member, selectMember }) {
     const currentMember = selectMember ? selectMember : member
-    console.log(currentMember, 'currentMember')
     return (
         <div className="containerComponentDetailMember">
             <h1 className="text-center pt-5 pb-5"><strong>¡Nuestro staff!</strong></h1>
