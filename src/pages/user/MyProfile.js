@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from "react-redux";
+import { selectUser } from "../../store/slices/users";
 
 const MyProfile = () => {
 
@@ -44,6 +46,9 @@ const MyProfile = () => {
         password: "123456"
     }
 
+    const userLogged = useSelector(selectUser);
+    console.log(userLogged)
+
     return (
         <div className="container mt-5" style={{ fontSize: 2 + 'rem', height: 600 }}>
             <h1 className="title text-center">Panel de administración</h1>
@@ -53,10 +58,8 @@ const MyProfile = () => {
                 </div>
                 <div className="col-12 col-md-8 mt-5">
                     <h2 className="subtitle mb-5">Bienvenido Usuario:</h2>
-                    <p className="card-text mb-4">Nombre:  {user.firstName}  {user.lastName}</p>
-                    <p className="card-text mb-4">Email:  {user.email}</p>
-                    <p className="card-text mb-4">Teléfono:  {user.phone}</p>
-                    <p className="card-text mb-4">Dirección:  {user.address}</p>
+                    <p className="card-text mb-4">Nombre:  {userLogged.user.firstName}  {userLogged.user.lastName}</p>
+                    <p className="card-text mb-4">Email:  {userLogged.user.email}</p>
                     <div className="mb-2">
                         <Link to={`edit/${user.id}`} className="btn btn-primary mb-2 fs-3" style={{ width: 110, borderRadius: 30}}>Editar</Link>
                     </div>

@@ -84,6 +84,16 @@ export default function Navbar() {
                                   type="submit"
                                   style={{ transform: "scale(1.2)" }}
                                   onClick={() => {
+                                      navigate("/auth/user");
+                                  }}
+                                >
+                                  Mi Perfil  
+                                  </button>
+                                <button
+                                  className="btn text-dark rounded-pill border border-dark mx-3"
+                                  type="submit"
+                                  style={{ transform: "scale(1.2)" }}
+                                  onClick={() => {
                                       navigate("/backoffice");
                                   }}
                                 >
