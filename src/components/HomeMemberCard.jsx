@@ -9,7 +9,7 @@ const HomeMemberCard = ({name, image}) => {
                                 overflow:'hidden', 
                                 height:'20rem',
                                 maxWidth:'20rem' }} >
-                <img src={`${image}`} class="" style={{height:'100%',
+                <img src={`${image}`} className="" style={{height:'100%',
                                                         width:'100%',
                                                         opacity:'0.7', 
                                                         objectFit:'cover', 
@@ -30,7 +30,7 @@ const HomeMemberCard = ({name, image}) => {
                                                            objectFit:'cover', 
                                                            objectPosition:'center',}}>
 
-                                <img src={`${image}`} class=" " style={ { height:'100%',
+                                <img src={`${image}`} className=" " style={ { height:'100%',
                                                         width:'100%',borderRadius: '2rem', opacity:'0.7', objectFit:'cover',objectPosition:'center' }} alt={`Miembro de la ong`} />
                         </div>
                         <section className=" w-100 h-100 text-start p-2" style={{ width:'60%',bottom: '1.5rem' }}>

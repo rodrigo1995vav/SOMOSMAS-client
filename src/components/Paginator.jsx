@@ -48,9 +48,9 @@ const Paginator = ({ pageCount, currentPage, justify = "center" }) => {
 
   return (
     pageCount > 0 && (
-      <div className={`w-100 d-flex justify-content-${justify}`}>
-        <nav aria-label="Page navigation example overflow-hidden">
-          <ul className="pagination pagination-lg d-flex flex-wrap  ">
+      <div className={`  overflow-hidden  d-flex justify-content-${justify}`} style={{width:'100%', height:'fit-content'}}>
+        <nav className="m-0 p-0" aria-label="Page navigation example">
+          <ul className="pagination pagination-lg d-flex flex-wrap m-0 p-0 ">
             {renderPages()}
           </ul>
         </nav>
