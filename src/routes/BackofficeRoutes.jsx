@@ -5,6 +5,7 @@ import CategoriesList from "../pages/backOffice/categories/CategoriesList"
 import NewsAdmin from "../pages/backOffice/News/NewsAdmin"
 import { ActivitiesForm } from "../pages/activities/ActivitiesForm";
 import ActivitiesList from "../pages/backOffice/activities/ActivitiesList";
+import Testimonials from "../pages/backOffice/testimonials/Testimonials";
 
 const BackofficeRoutes = () => {
     return (
@@ -13,6 +14,7 @@ const BackofficeRoutes = () => {
         <Routes>
             <Route index element={<MenuByRole />} />
             <Route exact path="/news" element={<NewsAdmin />} />
+            <Route exact path="/userslist/:page" element={<Testimonials />} />
             <Route exact path="/userslist/:page" element={<UsersList />} />
             <Route exact path="/categorias/:page" element={<CategoriesList />} />
             <Route path="/actividades/:page" element={<ActivitiesList />} />
