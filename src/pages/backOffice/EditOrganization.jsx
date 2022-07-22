@@ -77,7 +77,7 @@ export default function EditOrganization() {
         ) : null}
         
         <br />
-        <div class="d-grid">
+        <div className="d-grid">
         <button className="btn btn-danger rounded-pill btn-lg" type="submit">
         Enviar información
         </button>

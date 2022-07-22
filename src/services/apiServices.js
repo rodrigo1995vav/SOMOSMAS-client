@@ -10,8 +10,6 @@ axios.defaults.headers.get["Accept"] = "application/json";
 //var token = localStorage.getItem("token") || 0;
 
 const token = localStorage.getItem("token")
-  ? localStorage.getItem("token")
-  : localStorage.setItem("token", "no_token");
 
 export function registerUser(body, path) {
   return axios.post(path, body);
@@ -30,6 +28,7 @@ export function loginUser(path, body) {
 }
 
 export function getPrivate(path) {
+  console.log(token)
   return axios.get(path, {
     headers: { Authorization: `Bearer ${token}` },
   });

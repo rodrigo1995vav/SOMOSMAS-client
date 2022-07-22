@@ -40,15 +40,15 @@ export default function Navbar() {
         ]
     };
     return (
-        <section className="sticky-top " style={{ backgroundColor: '#EAEBF3' }} >
-            <nav className="navbar navbar-expand-lg p-3 border-bottom container_navbar ">
+        <section className="sticky-top shadow " style={{ backgroundColor: '#EAEBF3' }} >
+            <nav className="navbar navbar-expand-lg p-3 ps-5 border-bottom container ">
                 <div className="container-fluid">
                     <a className="navbar-brand mx-2" href="#">
                         <img
                             src={logo}
                             alt="Logo ong"
                             width={"40px"}
-                            style={{ transform: "scale(2.2)", paddingLeft: "10%" }}
+                            style={{ transform: "scale(2.2)" }}
                         />
                     </a>
                     <button
@@ -76,14 +76,40 @@ export default function Navbar() {
 
                             {
                                 userLogged ?
-                                    <button
-                                        className="btn btn-danger mx-3  rounded-pill"
-                                        type="submit"
-                                        style={{ transform: "scale(1.2)" }}
-                                        onClick={() => { logout(dispatch) }}
-                                    >
-                                        Log Out
-                                    </button> :
+
+                                    <>
+                                        {" "}
+                                        <button
+                                            className="btn text-dark rounded-pill border border-dark mx-3"
+                                            type="submit"
+                                            style={{ transform: "scale(1.2)" }}
+                                            onClick={() => {
+                                                navigate("/auth/user");
+                                            }}
+                                        >
+                                            Mi Perfil
+                                        </button>
+                                        <button
+                                            className="btn text-dark rounded-pill border border-dark mx-3"
+                                            type="submit"
+                                            style={{ transform: "scale(1.2)" }}
+                                            onClick={() => {
+                                                navigate("/backoffice");
+                                            }}
+                                        >
+                                            Menu de Usuario
+                                        </button>
+                                        <button
+                                            className="btn btn-primary mx-3  rounded-pill"
+                                            type="submit"
+                                            style={{ transform: "scale(1.2)" }}
+                                            onClick={() => {
+                                                logout(dispatch);
+                                            }}
+                                        >
+                                            Log Out
+                                        </button>
+                                    </> :
                                     <>
                                         <button
                                             className="btn text-dark rounded-pill border border-dark mx-3"
@@ -94,7 +120,7 @@ export default function Navbar() {
                                             Log In
                                         </button>
                                         <button
-                                            className="btn btn-danger mx-3  rounded-pill"
+                                            className="btn btn-primary text-white mx-3  rounded-pill"
                                             type="submit"
                                             style={{ transform: "scale(1.2)" }}
                                             onClick={() => { navigate('/registrarse') }}

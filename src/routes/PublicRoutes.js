@@ -8,6 +8,7 @@ import NotFound from '../pages/notfound/NotFound';
 import { ContactPage } from '../pages/contact/ContactPage';
 import RegisterPage from '../pages/register/RegisterPage.jsx';
 import MembersList from '../pages/staff/MembersList.jsx';
+import TestimonialsPage from '../pages/testimonials/TestimonialsPage.jsx';
 
 
 
@@ -19,7 +20,7 @@ const PublicRoutes = () => {
                 <Route exact match path='' element={<Home />} />
                 <Route path='novedades' element={<News />} />
                 <Route path='novedades/:id' element={<NewsDetails />} />
-                <Route path='testimonios' element={<News />} />
+                <Route path='testimonios/:page' element={<TestimonialsPage />} />
                 <Route path='contacto' element={<ContactPage />} />
                 <Route path='login' element={<LoginPage />} />
                 <Route path='registrarse' element={<RegisterPage />} />

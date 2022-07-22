@@ -1,6 +1,8 @@
-.layout_324af{
+.layout_324af{  
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
   background-color: white;
-  height: 100vh;
   padding: 2rem;
   // padding: 2rem auto;
 
@@ -9,6 +11,10 @@
     justify-content: space-around;
     align-items: center;
     align-content: center;
+  }
+
+  @media all and (max-width: 410px){
+    position:unset;
   }
 
 }

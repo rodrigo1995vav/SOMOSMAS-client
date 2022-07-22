@@ -7,19 +7,10 @@
 
 
 
-
-//@import '../pages/login/loginPage.module';
-//@import '../pages/backOffice/Backoffice.module';
-//@import './pages/testimonials/testimonials.scss';
-
-//components
-//@import '../components/login/loginForm.module';
-//@import './components/footer';
-//@import './components/carousel';
-//@import './componentes/textArea';
-//@import './componentes/textInput';
 // //components
+@import './components/testimonialCard';
 @import './components/carousel';
+@import './components/cardCarousel';
 @import './components/footer';
 @import './components/textArea';
 @import './components/textInput';
@@ -29,10 +20,6 @@
 
 
 //pages
-// @import '../pages/login/loginPage.module';
 @import './pages/activityDetail/activityDetailPage';
 @import './pages/contact/contactPage';
-@import './pages/backoffice/backoffice';
-@import './pages/home/homePage';
-@import './pages/news/news';
-@import './pages/newsdetails/newsdetails';
+@import '../pages/backOffice/backOffice.module';
