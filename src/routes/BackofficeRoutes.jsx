@@ -3,6 +3,8 @@ import MenuByRole from "../pages/Backoffice/MenuByRole";
 import UsersList from "../components/UsersList/UsersList"
 import CategoriesList from "../pages/Backoffice/categories/CategoriesList"
 import NewsAdmin from "../pages/Backoffice/News/NewsAdmin"
+import { ActivitiesForm } from "../pages/activities/ActivitiesForm";
+import ActivitiesList from "../pages/Backoffice/activities/ActivitiesList";
 
 const BackofficeRoutes = () => {
     return (

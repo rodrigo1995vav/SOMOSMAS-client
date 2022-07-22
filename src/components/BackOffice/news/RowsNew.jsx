@@ -4,42 +4,37 @@ const RowsNew = ({
     id,
     name,
     image,
-    createdAt, 
+    createdAt,
     deleteNews,
     content,
     type,
     setShowAMForm,
-setNewData  }) => {
+    setNewData }) => {
 
-    const date = new Date( createdAt );
-    const options = { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
+    const date = new Date(createdAt);
+    const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
     };
-        
+
     return (
         <tr>
-            <td className="col-3 text-center h4 " style={{paddingTop:'35px'}}>{name}</td>
-<<<<<<< HEAD
-            <td className="col-3 text-center "><img src={image} alt="avatar"  width='80'/></td>
-            <td className="col-3 text-center h4 "  style={{paddingTop:'35px'}}>{ new Intl.DateTimeFormat('es-Es', options).format(date) }</td>
-=======
-            <td className="col-3 text-center "><img src={`${process.env.REACT_APP_PUBLIC_URL_API}/activity/image/${image}`} alt="avatar"  width='80'/></td>
-            <td className="col-3 text-center h4 "  style={{paddingTop:'35px'}}>{createdAt}</td>
->>>>>>> 32427a837a05b721619f15553774a31f181664f2
+            <td className="col-3 text-center h4 " style={{ paddingTop: '35px' }}>{name}</td>
+            <td className="col-3 text-center "><img src={`${process.env.REACT_APP_PUBLIC_URL_API}/activity/image/${image}`} alt="avatar" width='80' /></td>
+            <td className="col-3 text-center h4 " style={{ paddingTop: '35px' }}>{createdAt}</td>
 
             <td className="col-3 text-center h4 " style={{ paddingTop: '35px' }}>
                 <div className="d-flex d-flex justify-content-center ">
 
-                <button onClick={()=>{console.log('open edit form');setNewData({id:id,name: name, image:image , content:content, type:type}) ; setShowAMForm(true) }} className="btn btn-light mx-1 display-1 ">
-                    <i class="bi bi-pencil-fill h3"></i>
-                    Editar
+                    <button onClick={() => { console.log('open edit form'); setNewData({ id: id, name: name, image: image, content: content, type: type }); setShowAMForm(true) }} className="btn btn-light mx-1 display-1 ">
+                        <i class="bi bi-pencil-fill h3"></i>
+                        Editar
                     </button>
-                <button onClick={()=>deleteNews()} className="btn btn-danger mx-1 display-1">
-                    <i class="bi bi-trash3 h3"></i>
-                    Eliminar
+                    <button onClick={() => deleteNews()} className="btn btn-danger mx-1 display-1">
+                        <i class="bi bi-trash3 h3"></i>
+                        Eliminar
                     </button>
                 </div>
             </td>
