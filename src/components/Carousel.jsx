@@ -48,7 +48,7 @@ const Carousel = ({ imgSlides, imgHeight }) => {
             <img
               className="d-block w-100"
               style={imgStyles}
-              src={img.imageUrl}
+              src={`${process.env.REACT_APP_PUBLIC_URL_API}/activity/image/${img.imageUrl}`}
               alt={img.text}
             />
             {img.text && (

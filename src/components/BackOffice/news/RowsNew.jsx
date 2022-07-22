@@ -9,7 +9,7 @@ const RowsNew = ({
     return (
         <tr >
             <td className="col-3 text-center h4 " style={{paddingTop:'35px'}}>{name}</td>
-            <td className="col-3 text-center "><img src={image} alt="avatar"  width='80'/></td>
+            <td className="col-3 text-center "><img src={`${process.env.REACT_APP_PUBLIC_URL_API}/activity/image/${image}`} alt="avatar"  width='80'/></td>
             <td className="col-3 text-center h4 "  style={{paddingTop:'35px'}}>{createdAt}</td>
 
             <td className="col-3 text-center h4 "  style={{paddingTop:'35px'}}>
