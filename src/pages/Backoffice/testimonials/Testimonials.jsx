@@ -21,6 +21,7 @@ const arrayTestimonials = {total_testimonials: 40 ,testimonials:[{name:'somepeop
 const Testimonials = () => {
 
     const { page } = useParams()
+    console.log(page)
 
     //define table rows in request with limit
     const limit = 10
@@ -33,8 +34,9 @@ const Testimonials = () => {
     useEffect(()=>{
       getPublic(`/testimonials/${limit}/${page}`)
             .then(res=>{
-              setData(res.testimonials); 
-              setPageCount(res.pageCount)})
+              console.log(res)
+              setData(res.data.testimonials); 
+              setPageCount(res.data.pageCount)})
             .catch(err => setError(err))
             .finally(setLoading(false)) 
         
@@ -46,14 +48,14 @@ const Testimonials = () => {
 
 
     if(loading){
-        return  <main className="w-100 h-auto p-0  justify-content-center align-items-center bg-white">
+        return  <main className="w-100 h-100 p-0  justify-content-center align-items-center bg-white">
                   <Loader></Loader>
                 </main>
     }
 
 
     return(
-    <main className="w-100 h-auto p-0  justify-content-center align-items-center bg-white">
+    <main className="w-100 h-100 p-0  justify-content-center align-items-center bg-white">
         {  data  ? <TestimonialsList testimonials={data.testimonials} pageCount={pageCount} />
           : error && <ErrorSign error={{message:'Show error content'}} />}
     </main>)
