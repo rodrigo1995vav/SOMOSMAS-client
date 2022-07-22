@@ -30,21 +30,15 @@ const Testimonials = () => {
 
 
     useEffect(()=>{
-      /* getPublic(`/testimonios/${limit}/${page}`)
-            .then(res=>res.json())
-            .then(res=>setData(res))
+      getPublic(`/testimonials/${limit}/${page}`)
+            .then(res=>{
+              setData(res.testimonials); 
+              setPageCount(res.pageCount)})
             .catch(err => setError(err))
-            .finally(setLoading(false)) */
-            setData(arrayTestimonials)
-            if(data){
-              let pagesAmount =  Math.trunc(data.total_testimonials / limit) 
-              data.total_testimonials % limit > 0 && ( pagesAmount += 1 )
-
-              setPageCount(pagesAmount)
-              setLoading(false)
-             }
+            .finally(setLoading(false)) 
         
-
+           
+              
      },[page])
 
 

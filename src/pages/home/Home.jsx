@@ -24,6 +24,7 @@ function Home() {
   const [welcomeMessage, setWelcomeMessage] = useState("");
   const [news, setNews] = useState([]);
   const [image, setImage] = useState("");
+  const [testimonials, setTestimonials] = useState({data:null , loading:true, error: false})
   const navigate = useNavigate()
   const {user} = useSelector ((state) => state.userLogged);
 
@@ -36,7 +37,7 @@ function Home() {
   }
 
   useEffect(() => {
-    getPublic(`${process.env.REACT_APP_PUBLIC_URL_API}/news`).then(data => {
+    getPublic(`/news`).then(data => {
       const entries = data.data.entries
       const array = entries.map(entry => {
         return {imageUrl: entry.image, text: entry.name}
@@ -45,7 +46,15 @@ function Home() {
     }) 
     setWelcomeMessage(hcWelcomeMessage);
     setImage(hcImage);
-  }, []);
+
+    //Testimonios `/testimonials/limit/page`
+    getPublic(`/testimonials/15/1`)
+    .then(({data})=>{
+      setTestimonials({...testimonials, data: data.testimonials}); 
+     })
+    .catch(err => (setTestimonials({...testimonials,error:err})))
+    .finally(setTestimonials({...testimonials, loading:false})) 
+  },[]);
 
   return (
     <div className="container mt-5">
@@ -91,21 +100,9 @@ function Home() {
           </a>
         </header>
         
-        <section className="h-100" >
-          <CardCarousel carouselId={'testimonial-card-carousel'} cardsData={[{name:'dawdawd dawdaw',image:'https://picsum.photos/200',content:'“testimoniotestimoniotestim oniotestim oniote stimoniotest imoniotestim oniote stimoniotestimoniotestimoni”'},
-                                    {name:'dawdawd dawdawd dawdawdw',image:'https://picsum.photos/200',content:'“test imoniotestimo niotestimo niote stimoniotestimon iotest imoniot estimon iotesti moniotestimon iotest imoni”'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200',content:'“testimon iotestimoniote stimo niote st imoniotestimon iotestimoniotest imoniotest imoniotestim oniotestimo ni”'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200',content:'“testimoniotes tim oniotestimo niotestimoniote stimoniotest imoniotestimo niotestimonio testimonio testimoni”'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200',content:'dawdawdawdaw dawd dawdawdawdawdawadaw dawdawda wdawdawd daadw'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200',content:'dawdawdawdawdawd dawdawdawdawd awadaw dawdawd awdawdawdwdaadw'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200',content:'dawdawdawd awdawd daw  dawdawdaw dawadaw dawdawdawdawdawdwdaadw'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200',content:'dawd awdawdawdawd dawdawdawdawdawadaw dawdawdawdawdawdwdaadw'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200',content:'dawdawdawdawdawd da wdawdawdawdawadaw dawdawdaw dawdawdwdaadw'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200',content:'dawdawdawdawdawd dawda wda wdawdawadaw d awdawdawdawd awdwdaadw'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200',content:'dawdawdawdawdawd dawdawdawdawdawadaw dawdawdawdawda wdwdaadw'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200',content:'dawdawdawdawdawd dawdawdawdaw dawadaw dawdawdawdawdaw dwdaadw'}
-                                    ]} 
-          cardsPerSlide={5} CardComponent={TestimonialCard}></CardCarousel>
+        <section className="h-100" >{!testimonials.data?<Loader></Loader>:<CardCarousel carouselId={'testimonial-card-carousel'} cardsData={testimonials.data} 
+                                                                                        cardsPerSlide={5} CardComponent={TestimonialCard}>
+                                                                            </CardCarousel>}
         </section>
         <header className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
           <h1 className="">Últimas Novedades</h1>

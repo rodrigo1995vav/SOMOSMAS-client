@@ -28,7 +28,7 @@ const Carousel = ({ imgSlides, imgHeight }) => {
         {imgSlides.map((img, index) => (
           <button
             type="button"
-            key={img.imageUrl}
+            key={img.text}
             data-bs-target="#standardCarousel"
             data-bs-slide-to={index}
             className={
@@ -42,7 +42,7 @@ const Carousel = ({ imgSlides, imgHeight }) => {
       <div className="carousel-inner">
         {imgSlides.map((img, index) => (
           <div
-            key={img.imageUrl}
+            key={img.text}
             className={index === 0 ? "carousel-item active" : "carousel-item"}
           >
             <img
