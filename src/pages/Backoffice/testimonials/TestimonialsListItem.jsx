@@ -1,14 +1,18 @@
-import { deletePrivate } from "../../services/apiServices"
-import Alert from '../../services/AlertService'
+import Alert from "../../../services/AlertService"
+import { deletePrivate } from "../../../services/apiServices"
+
+
+
 
 const TestimonialsListItem = ({testimonial}) => {
 
 
     const deleteTestimonial = (testimonial) =>{
     
-        Alert.confirmRequest({title:`¿Desea eliminar a ${testimonial}?`}, 
-                            ()=> deletePrivate('delete endpoint'), 
+        Alert.confirmRequest({title:`¿Desea eliminar a ${testimonial.name}?`}, 
+                            ()=> deletePrivate(`/testimonials/${testimonial.id}`), 
                             ()=> Alert.success({title:'Testimonio eliminado'}))
+
     }
 
     return(
@@ -21,7 +25,7 @@ const TestimonialsListItem = ({testimonial}) => {
                     <i onClick={()=> console.log('Open form')} 
                     style={{color:'#0038FF'}}
                     className=" ms-4 fs-2 bi bi-pencil-square align-self-center"></i>
-                    <i onClick={()=> deleteTestimonial(testimonial.name)} 
+                    <i onClick={()=> deleteTestimonial(testimonial)} 
                     className=" ms-4  fs-2 bi bi-trash3-fill h3 align-self-center" 
                     style={{position: 'relative', top: '1px', color:'#ff0000'}}></i>
           </li>)
