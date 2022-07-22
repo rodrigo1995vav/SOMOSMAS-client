@@ -47,7 +47,7 @@ const News = () => {
             {
                 data&&data.map(news => (
                     <div key={news.name} className="card  bg-light">
-                    <img  src={news.image} className="card-img-top img-fluid" style={imgStyles} alt="..."/>
+                    <img  src={`${process.env.REACT_APP_PUBLIC_URL_API}/activity/image/${news.image}`} className="card-img-top img-fluid" style={imgStyles} alt="..."/>
                     <div className="card-body overflow-auto ">
                         <h5 className="card-title fs-1">{news.name}</h5>
                         <Link to={`/novedades/${news.id}`}>Ver mas</Link>
