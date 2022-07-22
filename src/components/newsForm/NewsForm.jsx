@@ -83,7 +83,7 @@ function NewsForm({ patch }) {
                 }}
             />
             <button
-                className="btn btn-primary"
+                className="btn_news_form  btn-primary"
                 type='submit'
                 onClick={(e) => { onSubmit(e) }}>{patch ? "Update News" : "Create News"}</button>
         </div>

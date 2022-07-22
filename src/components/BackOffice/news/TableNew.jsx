@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Alert from "../../../services/AlertService";
 import { getPublic , deletePrivate} from '../../../services/apiServices'
+import NewsForm from "../../newsForm/NewsForm";
 import RowsNew from "./RowsNew";
 
 function TableNew() {
@@ -22,6 +23,18 @@ const deleteNews = (id,name) => {
         getNews()
     }, [])
     return (
+        <div>
+        <div className="d-flex gap-5 justify-content-center ">
+            <div className="align-self-center">
+                <h1 className="p-3 ">
+                    ABM de novedades
+                </h1>
+            </div>
+            <div className="p-3 ">
+                <button className="btn btn-primary p-3 ">Agregar novedad</button>
+            </div>            
+        </div>   
+            <NewsForm/>
         <table class="table table-dark">
             <thead>
                 <tr>
@@ -37,6 +50,7 @@ const deleteNews = (id,name) => {
                 }
             </tbody>
         </table>
+        </div>
     );
 }
 
