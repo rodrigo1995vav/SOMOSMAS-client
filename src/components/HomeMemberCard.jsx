@@ -23,7 +23,7 @@ const HomeMemberCard = ({name, image}) => {
                                 <h6 className="fs-4 text-white ">CEO</h6>
                         </section>
                 </div>
-                <div className="d-flex flex-row gap-5 align-items-center m-1 d-md-none shadow" style={{height:'8rem', width:'90%',borderRadius: '2rem'}}>
+                <div className="d-flex flex-row gap-4 align-items-center m-1 d-md-none shadow" style={{height:'10rem', width:'90%',borderRadius: '2rem'}}>
                         <div className="bg-black " style={{width:'50%', 
                                                            height:'100%',
                                                            borderRadius: '2rem', 
@@ -33,7 +33,7 @@ const HomeMemberCard = ({name, image}) => {
                                 <img src={`${image}`} class=" " style={ { height:'100%',
                                                         width:'100%',borderRadius: '2rem', opacity:'0.7', objectFit:'cover',objectPosition:'center' }} alt={`Miembro de la ong`} />
                         </div>
-                        <section className=" w-100 h-100 text-start" style={{ width:'60%',bottom: '1.5rem' }}>
+                        <section className=" w-100 h-100 text-start p-2" style={{ width:'60%',bottom: '1.5rem' }}>
                                 <h4 className=" fs-3 " >
                                          <strong>{name}</strong>
                                 </h4>
