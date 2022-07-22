@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import CardCarousel from "../../components/CardCarousel";
 import TestimonialCard from "../../components/TestimonialCard";
 import teamWorkImage from '../../img/Login/team-work.jpg'
-import MemberCard from "../../components/MemberCard";
+import HomeMemberCard from "../../components/HomeMemberCard";
 import { getPublic } from '../../services/apiServices';
 
 
@@ -36,7 +36,7 @@ function Home() {
   }
 
   useEffect(() => {
-    getPublic(`http://localhost:3001/news`).then(data => {
+    getPublic(`${process.env.REACT_APP_PUBLIC_URL_API}/news`).then(data => {
       const entries = data.data.entries
       const array = entries.map(entry => {
         return {imageUrl: entry.image, text: entry.name}
@@ -82,7 +82,7 @@ function Home() {
                                     {name:'dawdawd',image:'https://picsum.photos/200'},
                                     {name:'dawdawd',image:'https://picsum.photos/200'}
                                     ]} 
-          cardsPerSlide={5} CardComponent={MemberCard}></CardCarousel>
+          cardsPerSlide={5} CardComponent={HomeMemberCard}></CardCarousel>
         </section>
         <header className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
           <h1 className="">Testimonios</h1>

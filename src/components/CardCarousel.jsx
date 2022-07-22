@@ -77,7 +77,7 @@ const CardCarousel = ({ carouselId ,cardsData, cardsPerSlide , CardComponent }) 
         <div className="carousel-indicators">
           {carouselIndicators()}
         </div>
-        <div style={{height:'fit-content'}} className="carousel-inner">
+        <div style={{height:'fit-content'}} className="carousel-inner py-5">
             {carouselItems()}
         </div>
         <button

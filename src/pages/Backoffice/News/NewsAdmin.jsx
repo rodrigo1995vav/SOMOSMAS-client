@@ -1,4 +1,4 @@
-import TableNew from "../../../components/BackOffice/news/TableNew";
+import TableNew from '../../../components/BackOffice/news/TableNew'
 
 function NewsAdmin() {
     return (<TableNew />);
