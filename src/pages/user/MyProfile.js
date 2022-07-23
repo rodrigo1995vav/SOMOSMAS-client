@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
-import { selectUser } from "../../store/slices/users";
+import { selectUser, setUserLogged } from "../../store/slices/users";
 import EditProfile from './EditProfile'
 import axios from "axios";
 
@@ -38,7 +38,14 @@ const MyProfile = () => {
     }
 
     const userLogged = useSelector(selectUser);
-    console.log(userLogged)
+    const dispatch = useDispatch()
+    const [file, setFile] = useState();
+    const [fileName, setFileName] = useState("");
+    const saveFile = (e) => {
+        setFile(e.target.files[0]);
+        setFileName(e.target.files[0].name);
+        console.log(file)
+      };
     const [show, setShow] = useState(false);
     const [editFormData, setEditFormData] = useState({
         firstName: userLogged.user.firstName,
@@ -52,27 +59,38 @@ const MyProfile = () => {
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
+            image: file
         };
         console.log(formValues);
 
         setEditFormData(formValues);
         console.log(editFormData);
     };
+    console.log(userLogged.user)
     const handleEditFormSubmit = (values) => {
         //TODO axios Patch USER!
         console.log(values);
         const editedUser = {
+            id: values.id,
             firstName: values.firstName,
             lastName: values.lastName,
             email: values.email,
+            updatedAt: new Date()
         };
-
-        axios
-            .put(`${process.env.REACT_APP_PUBLIC_URL_API}/users/update`, editedUser, {
-                headers: { Authorization: `Bearer ${token}` },
-            })
-            .then((res) => {
+        const formData = new FormData();
+        formData.append("image", file);
+        formData.append("id", values.id);
+        formData.append("firstName", values.firstName);
+        formData.append("lastName", values.lastName);
+        formData.append("email", values.email);
+        console.log(editedUser)
+        axios.put(`${process.env.REACT_APP_PUBLIC_URL_API}/users/updateProfile`, formData, {
+                headers: { Authorization: `Bearer ${token}` }
+            }).then((res) => {
                 console.log(res);
+                /*userLogged.user = editedUser
+                console.log(userLogged)*/
+                dispatch(setUserLogged({ accessToken: token, user: {...editedUser, image: res.data.image}}))
             })
             .catch(function (error) {
                 console.log(error.response.data.message);
@@ -89,6 +107,7 @@ const MyProfile = () => {
                     editFormData={editFormData}
                     setShow={setShow}
                     handleEditFormSubmit={handleEditFormSubmit}
+                    saveFile={saveFile}
                 />
             )}
             <h1 className="title text-center">Panel de administración</h1>

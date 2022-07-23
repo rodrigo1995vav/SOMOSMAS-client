@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { CustomTextInput } from "../../components/TextInput";
 import Alert from "../../services/AlertService";
 
-const EditProfile = ({ editFormData, setShow, handleEditFormSubmit }) => {
+const EditProfile = ({ editFormData, setShow, handleEditFormSubmit, saveFile }) => {
   console.log(editFormData);
   const modelStyle = {
     backgroundColor: "rgba(0,0,0,0.3)",
@@ -85,7 +85,7 @@ const EditProfile = ({ editFormData, setShow, handleEditFormSubmit }) => {
                       placeholder="Nuevo Email..."
                       name="email"
                     />
-                    
+                    <input type="file" name="image" onChange={(e) => saveFile(e)} />
                     <div className="modal-footer">
                       <button
                         type="submit"
