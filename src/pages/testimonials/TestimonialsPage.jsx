@@ -43,7 +43,7 @@ const TestimonialsPage = () =>{
     return (
    data ? <main className=" container d-flex flex-column justify-content-center align-items-center gap-3 my-5" style={{height:'fit-content',width:'100%'}}>
         <h1 className="text-center mt-5 mb-2">Testimonios</h1>
-        {data.map((row,index) => <div key={`row${index}`} className="w-100 h-auto  d-flex flex-column flex-md-row justify-content-around align-items-center gap-3">{row.map( testimonial => <TestimonialCard key={`testimonial${testimonial.id}`} {...testimonial}/>)}</div>)}
+        {data.map((row,index) => <div key={`row${index}`} className=" w-md-auto w-100  h-auto m-auto d-flex flex-column d-md-inline-flex justify-content-center flex-md-row align-items-center gap-3">{row.map( testimonial => <TestimonialCard key={`testimonial${testimonial.id}`} {...testimonial}/>)}</div>)}
         <Paginator currentPage={page} pageCount ={pageCount}></Paginator>
         <button className="btn btn-primary align-self-center align-self-md-start mt-5 px-5 py-2 fs-1 shadow text-white" style={{borderRadius:'1.5rem'}}>Agregar mi testimonio</button>
         <button className="btn btn-white align-self-center align-self-md-start my-2 px-5 py-2 fs-1 shadow border border-dark" style={{borderRadius:'1.5rem'}}>Ir al inicio</button>

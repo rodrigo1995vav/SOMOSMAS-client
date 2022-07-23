@@ -1,6 +1,6 @@
 
 
-const HomeMemberCard = ({name, image}) => {
+const HomeMemberCard = ({name, image ,ong_role}) => {
 
     return <><div className="bg-black d-none d-md-block m-1 p-0 position-relative shadow" 
                         style={{
@@ -20,7 +20,7 @@ const HomeMemberCard = ({name, image}) => {
                                 <h4 className="fs-3 text-white" >
                                         <strong>{name}</strong>
                                 </h4>
-                                <h6 className="fs-4 text-white ">CEO</h6>
+                                <h6 className="fs-4 text-white ">{ong_role}</h6>
                         </section>
                 </div>
                 <div className="d-flex flex-row gap-4 align-items-center m-1 d-md-none shadow" style={{height:'10rem', width:'90%',borderRadius: '2rem'}}>
@@ -37,7 +37,7 @@ const HomeMemberCard = ({name, image}) => {
                                 <h4 className=" fs-3 " >
                                          <strong>{name}</strong>
                                 </h4>
-                        <h6 className=" fs-4  ">CEO</h6>
+                        <h6 className=" fs-4  ">{ong_role}</h6>
                         </section>
                 </div>
              </>
