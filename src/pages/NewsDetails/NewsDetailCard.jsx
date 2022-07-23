@@ -6,7 +6,11 @@ const NewsDetailCard = ({data , imgStyles}) => {
 
     return ( <div className="newsdetail">
                <div className="newsdetail__image-container">
-                 <img className="newsdetail__image" src={data.image} alt="entry"/>
+                 <img 
+                  className="newsdetail__image" 
+                  src={`${process.env.REACT_APP_PUBLIC_URL_API}/activity/image/${data.image}`}  
+                  alt="entry"
+                />
                </div>
                <div className="card-body overflow-auto newsdetail__text">
                    <h5 className="card-title fs-1">{data.name}</h5>
