@@ -104,7 +104,7 @@ export default function Navbar() {
                                             )
                                         }
                                         <button
-                                            className="btn btn-primary mx-3  rounded-pill"
+                                            className="btn btn-primary text-white mx-3  rounded-pill"
                                             type="submit"
                                             style={{ transform: "scale(1.2)" }}
                                             onClick={() => {

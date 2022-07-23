@@ -17,7 +17,7 @@ const PublicRoutes = () => {
     return (
         <>
             <Routes>
-                <Route exact match path='' element={<Home />} />
+                <Route exact match path='/' element={<Home />} />
                 <Route path='novedades/:page' element={<News />} />
                 <Route path='novedades/:id/novedad' element={<NewsDetails />} />
                 <Route path='testimonios/:page' element={<TestimonialsPage />} />
