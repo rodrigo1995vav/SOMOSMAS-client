@@ -6,10 +6,11 @@ function Footer() {
 
   const footerLinks = [
     { name: "Inicio", to: "/" },
-    { name: "Novedades", to: "/novedades" },
-    { name: "Nosotros", to: "/nosotros" },
+    { name: "Novedades", to: "/novedades/1" },
+    { name: "Nosotros", to: "/nosotros/1" },
     { name: "Contacto", to: "/contacto" },
     { name: "Contribuye", to: "/contribuye" },
+    { name: "Testimonios", to: "/testimonios/1" },
   ];
 
   const { socialNetworks } = useSocialNetworks();
