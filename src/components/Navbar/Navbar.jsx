@@ -27,7 +27,7 @@ export default function Navbar() {
             },
             {
                 text: "Testimonios",
-                link: '/testimonios'
+                link: '/testimonios/1'
             },
             {
                 text: "Contacto",

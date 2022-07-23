@@ -3,13 +3,14 @@ import { useEffect, useState } from "react";
 import { Loader } from "../../components/Loader";
 import "../../styles/index.scss";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import CardCarousel from "../../components/CardCarousel";
 import TestimonialCard from "../../components/TestimonialCard";
 import teamWorkImage from '../../img/Login/team-work.jpg'
 import HomeMemberCard from "../../components/HomeMemberCard";
 import { getPublic } from '../../services/apiServices';
+import {getAllMembers }from "../../store/slices/members/getAllMembers";
+import ErrorSign from "../../components/ErrorSign";
 
 
 
@@ -20,7 +21,8 @@ function Home() {
   
   const hcImage = "Manos 10.jpg";
   const arrayImg = [{ imageUrl: "Manos 10.jpg", text: "text-1" },{ imageUrl: "Manos 10.jpg", text: "text-1" }];
-
+  const members = useSelector((state) => state.allMembers)
+  const dispatch = useDispatch()
   const [welcomeMessage, setWelcomeMessage] = useState("");
   const [news, setNews] = useState([]);
   const [image, setImage] = useState("");
@@ -47,13 +49,15 @@ function Home() {
     setWelcomeMessage(hcWelcomeMessage);
     setImage(hcImage);
 
-    //Testimonios `/testimonials/limit/page`
+    //Testimonios `/testimonials/:limit/:page`
     getPublic(`/testimonials/15/1`)
     .then(({data})=>{
       setTestimonials({...testimonials, data: data.testimonials}); 
      })
     .catch(err => (setTestimonials({...testimonials,error:err})))
     .finally(setTestimonials({...testimonials, loading:false})) 
+    // Staff
+    dispatch(getAllMembers(1,0))
   },[]);
 
   return (
@@ -78,20 +82,8 @@ function Home() {
           </a>
         </header>
         <section className="h-100" >
-          <CardCarousel carouselId={'members-card-carousel'} cardsData={[{name:'dawdawd dawdaw',image:'https://picsum.photos/200'},
-                                    {name:'dawdawd dawdawd dawdawdw',image:'https://picsum.photos/200'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200'},
-                                    {name:'dawdawd',image:'https://picsum.photos/200'}
-                                    ]} 
-          cardsPerSlide={5} CardComponent={HomeMemberCard}></CardCarousel>
+        { members.loading ?<Loader></Loader>: members.members?<CardCarousel carouselId={'members-card-carousel'} cardsData={members.members.members.map((member)=>({...member,ong_role:member.Role_ong.role_ong}))} 
+          cardsPerSlide={5} CardComponent={HomeMemberCard}></CardCarousel>: members.error&& <ErrorSign error={members.error}></ErrorSign> }
         </section>
         <header className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
           <h1 className="">Testimonios</h1>
