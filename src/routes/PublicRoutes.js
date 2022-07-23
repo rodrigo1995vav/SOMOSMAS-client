@@ -18,8 +18,8 @@ const PublicRoutes = () => {
         <>
             <Routes>
                 <Route exact match path='' element={<Home />} />
-                <Route path='novedades' element={<News />} />
-                <Route path='novedades/:id' element={<NewsDetails />} />
+                <Route path='novedades/:page' element={<News />} />
+                <Route path='novedades/:id/novedad' element={<NewsDetails />} />
                 <Route path='testimonios/:page' element={<TestimonialsPage />} />
                 <Route path='contacto' element={<ContactPage />} />
                 <Route path='login' element={<LoginPage />} />
