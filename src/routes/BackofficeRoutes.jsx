@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import MenuByRole from "../pages/backOffice/MenuByRole";
+import MenuByRole from "../pages/Backoffice/MenuByRole";
 import UsersList from "../components/UsersList/UsersList"
-import CategoriesList from "../pages/backOffice/categories/CategoriesList"
-import NewsAdmin from "../pages/backOffice/News/NewsAdmin"
+import CategoriesList from "../pages/Backoffice/categories/CategoriesList"
+import NewsAdmin from "../pages/Backoffice/News/NewsAdmin"
 import { ActivitiesForm } from "../pages/activities/ActivitiesForm";
-import ActivitiesList from "../pages/backOffice/activities/ActivitiesList";
-import Testimonials from "../pages/backOffice/testimonials/Testimonials";
+import ActivitiesList from "../pages/Backoffice/activities/ActivitiesList";
+import Testimonials from "../pages/Backoffice/testimonials/Testimonials";
 
 const BackofficeRoutes = () => {
     return (
