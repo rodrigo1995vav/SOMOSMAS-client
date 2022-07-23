@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
-import { selectUser, setUserLogged } from "../../store/slices/users";
+import { selectUser, setUserLogged, logout } from "../../store/slices/users";
 import EditProfile from './EditProfile'
 import axios from "axios";
-
+import { deletePrivate } from '../../services/apiServices';
+import Alert from '../../services/AlertService'
 const MyProfile = () => {
 
     // TODO: Once we have the endpoint ready to bring the user we can execute this request to list it here
@@ -26,26 +27,25 @@ const MyProfile = () => {
         getUser();
     }, []);*/
     const token = localStorage.getItem("token");
-
-    const handleDelete = (id) => {
-        fetch('/api/user/delete/' + id, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${localStorage.getItem("token")}`
-            }
-        }).then(res => res.text());
-    }
-
+    const navigate = useNavigate()
     const userLogged = useSelector(selectUser);
     const dispatch = useDispatch()
+
+    const handleDelete = (id) => {
+        deletePrivate(`${process.env.REACT_APP_PUBLIC_URL_API}/users/deleteProfile/${id}`).then(() => {
+            navigate('/')
+            dispatch(logout)
+        })
+    }
+
+
     const [file, setFile] = useState();
     const [fileName, setFileName] = useState("");
     const saveFile = (e) => {
         setFile(e.target.files[0]);
         setFileName(e.target.files[0].name);
         console.log(file)
-      };
+    };
     const [show, setShow] = useState(false);
     const [editFormData, setEditFormData] = useState({
         firstName: userLogged.user.firstName,
@@ -85,13 +85,13 @@ const MyProfile = () => {
         formData.append("email", values.email);
         console.log(editedUser)
         axios.put(`${process.env.REACT_APP_PUBLIC_URL_API}/users/updateProfile`, formData, {
-                headers: { Authorization: `Bearer ${token}` }
-            }).then((res) => {
-                console.log(res);
-                /*userLogged.user = editedUser
-                console.log(userLogged)*/
-                dispatch(setUserLogged({ accessToken: token, user: {...editedUser, image: res.data.image}}))
-            })
+            headers: { Authorization: `Bearer ${token}` }
+        }).then((res) => {
+            console.log(res);
+            /*userLogged.user = editedUser
+            console.log(userLogged)*/
+            dispatch(setUserLogged({ accessToken: token, user: { ...editedUser, image: res.data.image } }))
+        })
             .catch(function (error) {
                 console.log(error.response.data.message);
             });
@@ -128,7 +128,13 @@ const MyProfile = () => {
                         }} className="btn btn-primary mb-2 fs-3" style={{ width: 110, borderRadius: 30 }}>Editar</button>
                     </div>
                     <div className="mb-4">
-                        <button onClick={() => handleDelete(userLogged.id)} className="btn btn-dark fs-3" style={{ width: 110, borderRadius: 30 }}>Eliminar</button>
+                        <button onClick={(e) => {
+                            e.preventDefault();
+                            Alert.confirmRequest(
+                                { title: `Seguro deseas eliminar al usuario ${userLogged.user.firstName} ${userLogged.user.lastName}?` },
+                                () => { handleDelete(userLogged.user.id); Alert.success({ title: 'Hasta luego' }) }
+                            );
+                        }} className="btn btn-dark fs-3" style={{ width: 110, borderRadius: 30 }}>Eliminar</button>
                     </div>
                     <div>
                         <small className="text-muted">Última actualización del perfil: {new Date(userLogged.user.updatedAt).toLocaleDateString("en-AU")}</small>

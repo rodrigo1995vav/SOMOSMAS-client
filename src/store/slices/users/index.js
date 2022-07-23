@@ -56,7 +56,7 @@ export const register = (fields , OnSuccess) => {
   return (dispatch) => {
 
     let endpoint = '/auth/register'
-
+    console.log(fields)
    postPublic( endpoint , fields)
       .then(({ data }) => {
         dispatch(setUserLogged(data)); //esto pasa al actions de setUserLogged a la propiedad de payload   
