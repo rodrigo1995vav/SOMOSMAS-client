@@ -23,7 +23,7 @@ export default function Navbar() {
             },
             {
                 text: "Novedades",
-                link: '/novedades'
+                link: '/novedades/1'
             },
             {
                 text: "Testimonios",
