@@ -1,4 +1,6 @@
 
+import { Link } from 'react-router-dom';
+
 import logo from '../assets/logo.png'
 import useSocialNetworks from '../hooks/useSocialNetworks';
 
@@ -40,12 +42,12 @@ function Footer() {
                     <ul className="nav justify-content-center  ">
                         {footerLinks.map((link) => (
                           <li key={`footer/${link.name}`} className="nav-item ">
-                            <a
+                            <Link
                               className="nav-link fs-4 text-black"
-                              href={link.to}
+                              to={link.to}
                             >
                               {link.name}
-                            </a>
+                            </Link>
                           </li>
                         ))}
                       </ul>
