@@ -82,8 +82,8 @@ function Home() {
           </a>
         </header>
         <section className="h-100" >
-        { members.loading ?<Loader></Loader>: members.members?<CardCarousel carouselId={'members-card-carousel'} cardsData={members.members.members.map((member)=>({...member,ong_role:member.Role_ong.role_ong}))} 
-          cardsPerSlide={5} CardComponent={HomeMemberCard}></CardCarousel>: members.error&& <ErrorSign error={members.error}></ErrorSign> }
+        { members.members?<CardCarousel carouselId={'members-card-carousel'} cardsData={members.members.members.map((member)=>({...member,ong_role:member.Role_ong.role_ong}))} 
+          cardsPerSlide={5} CardComponent={HomeMemberCard}></CardCarousel>: members.loading ? <Loader></Loader> : members.error&& <ErrorSign error={members.error}></ErrorSign> }
         </section>
         <header className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
           <h1 className="">Testimonios</h1>
