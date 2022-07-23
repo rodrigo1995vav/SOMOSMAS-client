@@ -10,6 +10,7 @@ export default function Navbar() {
     const navigate = useNavigate()
     const userLogged = useSelector(selectUser);
     const dispatch = useDispatch()
+    console.log(userLogged)
     const menu = {
         route: "",
         menu: [
@@ -78,27 +79,30 @@ export default function Navbar() {
                                 userLogged ?
 
                                     <>
-                                        {" "}
-                                        <button
-                                            className="btn text-dark rounded-pill border border-dark mx-3"
-                                            type="submit"
-                                            style={{ transform: "scale(1.2)" }}
-                                            onClick={() => {
-                                                navigate("/auth/user");
-                                            }}
-                                        >
-                                            Mi Perfil
-                                        </button>
-                                        <button
-                                            className="btn text-dark rounded-pill border border-dark mx-3"
-                                            type="submit"
-                                            style={{ transform: "scale(1.2)" }}
-                                            onClick={() => {
-                                                navigate("/backoffice");
-                                            }}
-                                        >
-                                            Menu de Usuario
-                                        </button>
+                                        {
+                                            userLogged.user.roleId != 1 ? (
+                                                <button
+                                                    className="btn text-dark rounded-pill border border-dark mx-3"
+                                                    type="submit"
+                                                    style={{ transform: "scale(1.2)" }}
+                                                    onClick={() => {
+                                                        navigate("/auth/user");
+                                                    }}
+                                                >
+                                                    Mi Perfil
+                                                </button>) : (
+                                                <button
+                                                    className="btn text-dark rounded-pill border border-dark mx-3"
+                                                    type="submit"
+                                                    style={{ transform: "scale(1.2)" }}
+                                                    onClick={() => {
+                                                        navigate("/backoffice");
+                                                    }}
+                                                >
+                                                    Menu de Administrador
+                                                </button>
+                                            )
+                                        }
                                         <button
                                             className="btn btn-primary mx-3  rounded-pill"
                                             type="submit"
