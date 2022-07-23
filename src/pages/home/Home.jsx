@@ -2,7 +2,7 @@ import Carousel from "../../components/Carousel";
 import { useEffect, useState } from "react";
 import { Loader } from "../../components/Loader";
 import "../../styles/index.scss";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import CardCarousel from "../../components/CardCarousel";
 import TestimonialCard from "../../components/TestimonialCard";
@@ -77,9 +77,9 @@ function Home() {
         </section>
         <header className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
           <h1 className="">Nuestro Staff</h1>
-          <a className="fs-4  text-black button_Expand" href="/nosotros">
+          <Link className="fs-4  text-black button_Expand" to="/nosotros/1">
             Ver todos<i className="bi bi-caret-right-fill "></i>
-          </a>
+          </Link>
         </header>
         <section className="h-100" >
         { members.members?<CardCarousel carouselId={'members-card-carousel'} cardsData={members.members.members.map((member)=>({...member,ong_role:member.Role_ong.role_ong}))} 
@@ -87,9 +87,9 @@ function Home() {
         </section>
         <header className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
           <h1 className="">Testimonios</h1>
-          <a className="fs-4  text-black button_Expand" href="/testimonios">
+          <Link className="fs-4  text-black button_Expand" to="/testimonios/1">
             Ver todos<i className="bi bi-caret-right-fill "></i>
-          </a>
+          </Link>
         </header>
         
         <section className="h-100" >{!testimonials.data?<Loader></Loader>:<CardCarousel carouselId={'testimonial-card-carousel'} cardsData={testimonials.data} 
@@ -98,9 +98,9 @@ function Home() {
         </section>
         <header className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
           <h1 className="">Últimas Novedades</h1>
-          <a className="fs-4  text-black button_Expand" href="/novedades">
+          <Link className="fs-4  text-black button_Expand" to="/novedades/1">
             Ver todas<i className="bi bi-caret-right-fill "></i>
-          </a>
+          </Link>
         </header>
         <section>
           {!arrayImg ? (
