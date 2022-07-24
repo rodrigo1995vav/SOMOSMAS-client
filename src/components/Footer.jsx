@@ -1,4 +1,6 @@
 
+import { Link } from 'react-router-dom';
+
 import logo from '../assets/logo.png'
 import useSocialNetworks from '../hooks/useSocialNetworks';
 
@@ -6,10 +8,11 @@ function Footer() {
 
   const footerLinks = [
     { name: "Inicio", to: "/" },
-    { name: "Novedades", to: "/novedades" },
-    { name: "Nosotros", to: "/nosotros" },
+    { name: "Novedades", to: "/novedades/1" },
+    { name: "Nosotros", to: "/nosotros/1" },
     { name: "Contacto", to: "/contacto" },
     { name: "Contribuye", to: "/contribuye" },
+    { name: "Testimonios", to: "/testimonios/1" },
   ];
 
   const { socialNetworks } = useSocialNetworks();
@@ -39,12 +42,12 @@ function Footer() {
                     <ul className="nav justify-content-center  ">
                         {footerLinks.map((link) => (
                           <li key={`footer/${link.name}`} className="nav-item ">
-                            <a
+                            <Link
                               className="nav-link fs-4 text-black"
-                              href={link.to}
+                              to={link.to}
                             >
                               {link.name}
-                            </a>
+                            </Link>
                           </li>
                         ))}
                       </ul>

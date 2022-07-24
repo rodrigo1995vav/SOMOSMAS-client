@@ -10,6 +10,7 @@ export default function Navbar() {
     const navigate = useNavigate()
     const userLogged = useSelector(selectUser);
     const dispatch = useDispatch()
+    console.log(userLogged)
     const menu = {
         route: "",
         menu: [
@@ -23,7 +24,7 @@ export default function Navbar() {
             },
             {
                 text: "Novedades",
-                link: '/novedades'
+                link: '/novedades/1'
             },
             {
                 text: "Testimonios",
@@ -43,7 +44,7 @@ export default function Navbar() {
         <section className="sticky-top shadow " style={{ backgroundColor: '#EAEBF3' }} >
             <nav className="navbar navbar-expand-lg p-3 ps-5 border-bottom container ">
                 <div className="container-fluid">
-                    <a className="navbar-brand mx-2" href="#">
+                    <a className="navbar-brand mx-2" href="/">
                         <img
                             src={logo}
                             alt="Logo ong"
@@ -78,33 +79,36 @@ export default function Navbar() {
                                 userLogged ?
 
                                     <>
-                                        {" "}
+                                        {
+                                            userLogged.user.roleId != 1 ? (
+                                                <button
+                                                    className="btn text-dark rounded-pill border border-dark mx-3"
+                                                    type="submit"
+                                                    style={{ transform: "scale(1.2)" }}
+                                                    onClick={() => {
+                                                        navigate("/auth/user");
+                                                    }}
+                                                >
+                                                    Mi Perfil
+                                                </button>) : (
+                                                <button
+                                                    className="btn text-dark rounded-pill border border-dark mx-3"
+                                                    type="submit"
+                                                    style={{ transform: "scale(1.2)" }}
+                                                    onClick={() => {
+                                                        navigate("/backoffice");
+                                                    }}
+                                                >
+                                                    Menu de Administrador
+                                                </button>
+                                            )
+                                        }
                                         <button
-                                            className="btn text-dark rounded-pill border border-dark mx-3"
+                                            className="btn btn-primary text-white mx-3  rounded-pill"
                                             type="submit"
                                             style={{ transform: "scale(1.2)" }}
                                             onClick={() => {
-                                                navigate("/auth/user");
-                                            }}
-                                        >
-                                            Mi Perfil
-                                        </button>
-                                        <button
-                                            className="btn text-dark rounded-pill border border-dark mx-3"
-                                            type="submit"
-                                            style={{ transform: "scale(1.2)" }}
-                                            onClick={() => {
-                                                navigate("/backoffice");
-                                            }}
-                                        >
-                                            Menu de Usuario
-                                        </button>
-                                        <button
-                                            className="btn btn-primary mx-3  rounded-pill"
-                                            type="submit"
-                                            style={{ transform: "scale(1.2)" }}
-                                            onClick={() => {
-                                                logout(dispatch);
+                                                logout(dispatch , ()=> navigate('/'));
                                             }}
                                         >
                                             Log Out

@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { useSelector } from "react-redux";
-import { selectUser } from "../../store/slices/users";
-
+import { Link, useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from "react-redux";
+import { selectUser, setUserLogged, logout } from "../../store/slices/users";
+import EditProfile from './EditProfile'
+import axios from "axios";
+import { deletePrivate } from '../../services/apiServices';
+import Alert from '../../services/AlertService'
 const MyProfile = () => {
 
     // TODO: Once we have the endpoint ready to bring the user we can execute this request to list it here
@@ -23,34 +26,90 @@ const MyProfile = () => {
         }
         getUser();
     }, []);*/
+    const token = localStorage.getItem("token");
+    const navigate = useNavigate()
+    const userLogged = useSelector(selectUser);
+    const dispatch = useDispatch()
 
     const handleDelete = (id) => {
-        fetch('/api/user/delete/' + id, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${localStorage.getItem("token")}`
-            }
-        }).then(res => res.text());
+        deletePrivate(`${process.env.REACT_APP_PUBLIC_URL_API}/users/deleteProfile/${id}`).then(() => {
+            navigate('/')
+            dispatch(logout)
+        })
     }
 
-    //Testing variable
-    const user = {
-        id: 1,
-        firstName: "Juan",
-        lastName: "Perez",
-        image: 'https://www.tooltyp.com/wp-content/uploads/2014/10/1900x920-8-beneficios-de-usar-imagenes-en-nuestros-sitios-web.jpg',
-        email: "juanpere@gmail.com",
-        phone: "+54123456789",
-        address: "Calle falsa 123",
-        password: "123456"
-    }
 
-    const userLogged = useSelector(selectUser);
-    console.log(userLogged)
+    const [file, setFile] = useState();
+    const [fileName, setFileName] = useState("");
+    const saveFile = (e) => {
+        setFile(e.target.files[0]);
+        setFileName(e.target.files[0].name);
+        console.log(file)
+    };
+    const [show, setShow] = useState(false);
+    const [editFormData, setEditFormData] = useState({
+        firstName: userLogged.user.firstName,
+        lastName: userLogged.user.lastName,
+        email: userLogged.user.email,
+    });
+    const handleEditUser = (e, user) => {
+        e.preventDefault();
+        const formValues = {
+            id: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            image: file
+        };
+        console.log(formValues);
 
+        setEditFormData(formValues);
+        console.log(editFormData);
+    };
+    console.log(userLogged.user)
+    const handleEditFormSubmit = (values) => {
+        //TODO axios Patch USER!
+        console.log(values);
+        const editedUser = {
+            id: values.id,
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            updatedAt: new Date()
+        };
+        const formData = new FormData();
+        formData.append("image", file);
+        formData.append("id", values.id);
+        formData.append("firstName", values.firstName);
+        formData.append("lastName", values.lastName);
+        formData.append("email", values.email);
+        console.log(editedUser)
+        axios.put(`${process.env.REACT_APP_PUBLIC_URL_API}/users/updateProfile`, formData, {
+            headers: { Authorization: `Bearer ${token}` }
+        }).then((res) => {
+            console.log(res);
+            /*userLogged.user = editedUser
+            console.log(userLogged)*/
+            dispatch(setUserLogged({ accessToken: token, user: { ...editedUser, image: res.data.image } }))
+        })
+            .catch(function (error) {
+                console.log(error.response.data.message);
+            });
+
+        //TODO axios get users
+
+        setShow(false);
+    };
     return (
         <div className="container mt-5" style={{ fontSize: 2 + 'rem', height: 600 }}>
+            {show && (
+                <EditProfile
+                    editFormData={editFormData}
+                    setShow={setShow}
+                    handleEditFormSubmit={handleEditFormSubmit}
+                    saveFile={saveFile}
+                />
+            )}
             <h1 className="title text-center">Panel de administración</h1>
             <div className="row mt-5">
                 <div className="col-12 col-md-4 mt-5">
@@ -63,10 +122,19 @@ const MyProfile = () => {
                     <p className="card-text mb-4">Nombre:  {userLogged.user.firstName}  {userLogged.user.lastName}</p>
                     <p className="card-text mb-4">Email:  {userLogged.user.email}</p>
                     <div className="mb-2">
-                        <Link to={`edit/${user.id}`} className="btn btn-primary mb-2 fs-3" style={{ width: 110, borderRadius: 30 }}>Editar</Link>
+                        <button onClick={(e) => {
+                            handleEditUser(e, userLogged.user);
+                            setShow(true);
+                        }} className="btn btn-primary mb-2 fs-3" style={{ width: 110, borderRadius: 30 }}>Editar</button>
                     </div>
                     <div className="mb-4">
-                        <button onClick={() => handleDelete(user.id)} className="btn btn-dark fs-3" style={{ width: 110, borderRadius: 30 }}>Eliminar</button>
+                        <button onClick={(e) => {
+                            e.preventDefault();
+                            Alert.confirmRequest(
+                                { title: `Seguro deseas eliminar al usuario ${userLogged.user.firstName} ${userLogged.user.lastName}?` },
+                                () => { handleDelete(userLogged.user.id); Alert.success({ title: 'Hasta luego' }) }
+                            );
+                        }} className="btn btn-dark fs-3" style={{ width: 110, borderRadius: 30 }}>Eliminar</button>
                     </div>
                     <div>
                         <small className="text-muted">Última actualización del perfil: {new Date(userLogged.user.updatedAt).toLocaleDateString("en-AU")}</small>

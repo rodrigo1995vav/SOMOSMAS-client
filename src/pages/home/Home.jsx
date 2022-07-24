@@ -2,7 +2,7 @@ import Carousel from "../../components/Carousel";
 import { useEffect, useState } from "react";
 import { Loader } from "../../components/Loader";
 import "../../styles/index.scss";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import CardCarousel from "../../components/CardCarousel";
 import TestimonialCard from "../../components/TestimonialCard";
@@ -10,7 +10,7 @@ import teamWorkImage from '../../img/Login/team-work.jpg'
 import HomeMemberCard from "../../components/HomeMemberCard";
 import { getPublic } from '../../services/apiServices';
 import {getAllMembers }from "../../store/slices/members/getAllMembers";
-import ErrorSign from "../../components/ErrorSign";
+
 
 
 
@@ -76,31 +76,10 @@ function Home() {
           </div>
         </section>
         <header className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
-          <h1 className="">Nuestro Staff</h1>
-          <a className="fs-4  text-black button_Expand" href="/nosotros">
-            Ver todos<i className="bi bi-caret-right-fill "></i>
-          </a>
-        </header>
-        <section className="h-100" >
-        { members.members?<CardCarousel carouselId={'members-card-carousel'} cardsData={members.members.members.map((member)=>({...member,ong_role:member.Role_ong.role_ong}))} 
-          cardsPerSlide={5} CardComponent={HomeMemberCard}></CardCarousel>: members.loading ? <Loader></Loader> : members.error&& <ErrorSign error={members.error}></ErrorSign> }
-        </section>
-        <header className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
-          <h1 className="">Testimonios</h1>
-          <a className="fs-4  text-black button_Expand" href="/testimonios">
-            Ver todos<i className="bi bi-caret-right-fill "></i>
-          </a>
-        </header>
-        
-        <section className="h-100" >{!testimonials.data?<Loader></Loader>:<CardCarousel carouselId={'testimonial-card-carousel'} cardsData={testimonials.data} 
-                                                                                        cardsPerSlide={5} CardComponent={TestimonialCard}>
-                                                                            </CardCarousel>}
-        </section>
-        <header className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
           <h1 className="">Últimas Novedades</h1>
-          <a className="fs-4  text-black button_Expand" href="/novedades">
+          <Link className="fs-4  text-black button_Expand" to="/novedades/1">
             Ver todas<i className="bi bi-caret-right-fill "></i>
-          </a>
+          </Link>
         </header>
         <section>
           {!arrayImg ? (
@@ -109,6 +88,28 @@ function Home() {
             <Carousel imgSlides={news} imgHeight="500px" />
           )}
         </section>
+        <header className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
+          <h1 className="">Nuestro Staff</h1>
+          <Link className="fs-4  text-black button_Expand" to="/nosotros/1">
+            Ver todos<i className="bi bi-caret-right-fill "></i>
+          </Link>
+        </header>
+        <section className="" >
+        { members.members?<CardCarousel carouselId={'members-card-carousel'} cardsData={members.members.members.map((member)=>({...member,ong_role:member.Role_ong.role_ong}))} 
+          cardsPerSlide={5} CardComponent={HomeMemberCard}></CardCarousel>: <Loader className="justify-self-center"></Loader>  }
+        </section>
+        <header className=" my-5 container-fluid d-flex flex-row justify-content-between align-items-center">
+          <h1 className="">Testimonios</h1>
+          <Link className="fs-4  text-black button_Expand" to="/testimonios/1">
+            Ver todos<i className="bi bi-caret-right-fill "></i>
+          </Link>
+        </header>
+        
+        <section className="" >{!testimonials.data?<Loader className="justify-self-center"></Loader>:<CardCarousel carouselId={'testimonial-card-carousel'} cardsData={testimonials.data} 
+                                                                                        cardsPerSlide={5} CardComponent={TestimonialCard}>
+                                                                            </CardCarousel>}
+        </section>
+        
     </div>
   );
 }

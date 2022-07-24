@@ -1,19 +1,23 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import Alert from "../../../services/AlertService";
 import { getPublic, deletePrivate } from "../../../services/apiServices";
 import NewsForm from "../../newsForm/NewsForm";
+import Paginator from "../../Paginator";
 import EditAddNewFormModal from "./EditAddNewFormModal";
 import RowsNew from "./RowsNew";
 
 function TableNew() {
-    const [news, setNews] = useState([]);
+
+    const [news, setNews] = useState({result:[]});
     const [showAMForm, setShowAMForm] = useState(false);
     const [newData, setNewData] = useState({})
-    console.log(news);
-    console.log(newData)
+    const  { page }  = useParams()
+    const  limit = 10
     async function getNews() {
-        const { data } = await getPublic("/news");
+        const { data } = await getPublic(`/news/${limit}/${page}`);
+        console.log('adawdawdawd' + page)
         setNews(data.entries);
     }
 
@@ -23,32 +27,34 @@ function TableNew() {
             () => deletePrivate(`/news/${id}`),
             () => {
                 Alert.success({ title: "La novedad ha sido eliminada" });
-                setNews(news.filter((entry) => entry.id !== id));
+                setNews({...news, result: news.result.filter((entry) => entry.id !== id)});
             }
         );
     };
 
     useEffect(() => {
         getNews();
-    }, []);
+    }, [page]);
     return (
-        <div>
-            {showAMForm && <EditAddNewFormModal newData={newData} setShowAMForm={setShowAMForm} getNews={getNews} />}
+   
+        <div className="h-auto">
+            {showAMForm && <EditAddNewFormModal newData={newData} setShowAMForm={setShowAMForm} />}
             <div className="d-flex gap-5 justify-content-center ">
                 <div className="align-self-center">
                     <h1 className="p-3 ">ABM de novedades</h1>
                 </div>
                 <div className="p-3">
                     <button
-                        className="btn btn-primary p-3"
-                        onClick={async () => { await setNewData(); setShowAMForm(true) }}
+                        className="btn btn-light text-white fs-3 p-3"
+                        style={{borderRadius:'.9rem'}}
+                        onClick={() => { setShowAMForm(true); setNewData({}) }}
                     >
                         Agregar novedad
                     </button>
                 </div>
             </div>
 
-            <table class="table table-dark">
+            <table class="table ">
                 <thead>
                     <tr>
                         <th scope="col" className="text-center h2">
@@ -61,13 +67,13 @@ function TableNew() {
                             Fecha
                         </th>
                         <th scope="col" className="text-center h2">
-                            Opciones
+                            Acciones
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    {news.length > 0 &&
-                        news.map(({ name, image, content, type, id, createdAt }) => (
+                    {news.result.length > 0 &&
+                        news.result.map(({ name, image, content, type, id, createdAt }) => (
                             <RowsNew
                                 key={id}
                                 id={id}
@@ -87,7 +93,10 @@ function TableNew() {
                         ))}
                 </tbody>
             </table>
+            <Paginator currentPage={page} pageCount={news.pages}></Paginator>
         </div>
+        
+     
     );
 }
 
