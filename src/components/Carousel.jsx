@@ -12,6 +12,7 @@
 
 const Carousel = ({ imgSlides, imgHeight }) => {
     const imgStyles = {
+        opacity:'.8',
         objectFit: "cover",
         objectPosition: "centered",
         overflow: "hidden",
@@ -39,7 +40,7 @@ const Carousel = ({ imgSlides, imgHeight }) => {
                     ></button>
                 ))}
             </div>
-            <div className="carousel-inner">
+            <div className="carousel-inner bg-black">
                 {imgSlides.map((img, index) => (
                     <div
                         key={img.text}
@@ -53,7 +54,7 @@ const Carousel = ({ imgSlides, imgHeight }) => {
                         />
                         {img.text && (
                             <div className="carousel-caption  d-md-block">
-                                <h1>{img.text}</h1>
+                                <h1 style={{textShadow: '2px 2px 2px rgba(0, 0, 0, 0.50)'}}>{img.text}</h1>
                             </div>
                         )}
                     </div>

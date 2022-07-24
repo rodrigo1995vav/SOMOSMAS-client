@@ -72,9 +72,10 @@ export const register = (fields , OnSuccess) => {
 
 
 
-export const logout = (dispatch) =>{
+export const logout = (dispatch, onLogout) =>{
   //token name may change in future version, unsafe name.
   localStorage.removeItem("token");
-  return  dispatch(deleteUserLogged())
+  dispatch(deleteUserLogged())
+  return  onLogout()
    
 }

@@ -11,16 +11,16 @@ const HomeMemberCard = ({name, image ,ong_role}) => {
                                 maxWidth:'20rem' }} >
                 <img src={`${image}`} className="" style={{height:'100%',
                                                         width:'100%',
-                                                        opacity:'0.7', 
+                                                        opacity:'.9', 
                                                         objectFit:'cover', 
                                                         objectPosition:'center',
                                                         }} alt={`Miembro de la ong`} />
 
                         <section className=" position-absolute  w-100 text-center" style={{ bottom: '1.5rem' }}>
-                                <h4 className="fs-3 text-white" >
-                                        <strong>{name}</strong>
+                                <h4 className="fs-3 text-white"  >
+                                        <strong style={{textShadow: '2px 2px 2px rgba(0, 0, 0, 0.50)'}}>{name}</strong>
                                 </h4>
-                                <h6 className="fs-4 text-white ">{ong_role}</h6>
+                                <h6 className="fs-4 text-white " style={{textShadow: '2px 2px 2px rgba(0, 0, 0, 0.50)'}}>{ong_role}</h6>
                         </section>
                 </div>
                 <div className="d-flex flex-row gap-4 align-items-center m-1 d-md-none shadow" style={{height:'10rem', width:'90%',borderRadius: '2rem'}}>

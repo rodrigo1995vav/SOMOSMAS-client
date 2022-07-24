@@ -13,7 +13,7 @@ const BackofficeRoutes = () => {
 
         <Routes>
             <Route index element={<MenuByRole />} />
-            <Route exact path="/news" element={<NewsAdmin />} />
+            <Route exact path="/news/:page" element={<NewsAdmin />} />
             <Route exact path="/testimonials/:page" element={<Testimonials />} />
             <Route exact path="/userslist/:page" element={<UsersList />} />
             <Route exact path="/categorias/:page" element={<CategoriesList />} />

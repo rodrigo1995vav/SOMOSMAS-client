@@ -44,7 +44,7 @@ export default function Navbar() {
         <section className="sticky-top shadow " style={{ backgroundColor: '#EAEBF3' }} >
             <nav className="navbar navbar-expand-lg p-3 ps-5 border-bottom container ">
                 <div className="container-fluid">
-                    <a className="navbar-brand mx-2" href="#">
+                    <a className="navbar-brand mx-2" href="/">
                         <img
                             src={logo}
                             alt="Logo ong"
@@ -108,7 +108,7 @@ export default function Navbar() {
                                             type="submit"
                                             style={{ transform: "scale(1.2)" }}
                                             onClick={() => {
-                                                logout(dispatch);
+                                                logout(dispatch , ()=> navigate('/'));
                                             }}
                                         >
                                             Log Out
