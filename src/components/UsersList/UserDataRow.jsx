@@ -5,30 +5,28 @@ const UserDataRow = ({ user, handleEditUser, setShow, handleDelete, setEditFormD
 
   return (
     <tr key={user.id}>
-      <td>{user.id}</td>
-      <td>{user.firstName}</td>
-      <td>{user.lastName}</td>
-      <td>{user.roleId}</td>
-      <td>{user.email}</td>
+      <td className="text-center">{user.id}</td>
+      <td className="text-center">{user.firstName}</td>
+      <td className="text-center">{user.lastName}</td>
+      <td className="text-center">{user.roleId}</td>
+      <td className="text-center">{user.email}</td>
       <td className="text-center">
         <a
           href="#"
-          className="edit"
           title="Editar"
           onClick={(e) => {
-            //Here we should put the userform thats being made by Israeli
             handleEditUser(e, user);
             setShow(true);
             setEditFormData(user)
 
           }}
         >
-          <i className="bi bi-pencil-square mx-2"></i>
+          <i className="bi bi-pencil-square mx-2 text-light "></i>
         </a>
         <a
           href="#"
           title="Borrar"
-          style={{ color: "red" }}
+          style={{ color: "primary" }}
           onClick={(e) => {
             e.preventDefault();
             Alert.confirmRequest(

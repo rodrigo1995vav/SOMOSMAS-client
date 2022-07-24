@@ -158,8 +158,8 @@ function UsersList() {
 
   return (
     <div
-      className="container"
-      style={{ transform: "scale(1)", "font-size": "165%" }}
+      className="mx-5"
+      style={{ "font-size": "162.5%" }}
     >
       {show && (
         <EditFormModal
@@ -168,7 +168,7 @@ function UsersList() {
           handleEditFormSubmit={handleEditFormSubmit}
         />
       )}
-      <div className="crud shadow-lg p-3 mb-5 mt-5 bg-body rounded">
+      <div className="p-3 mb-5 mt-5 bg-body rounded">
         <div className="row ">
           <div className="col-sm mt-5 mb-4 text-gred">
             <div className="search">
@@ -199,25 +199,25 @@ function UsersList() {
         </div>
         <div className="row">
           <div className="table-responsive ">
-            <table className="table table-striped table-hover table-bordered">
+            <table className="table  table-hover ">
               <thead>
                 <tr>
                   <th onClick={() => sortUsers("id")}>
                     <div
-                      className="d-flex justify-content-center"
+                      className="d-flex justify-content-center h2 my-auto"
                       role="button"
                     >
                       ID
                       {sortDirection === "ASC" ? (
-                        <i className="bi bi-sort-numeric-down mx-2"></i>
+                        <i className="bi bi-sort-numeric-down mx-2 my-auto"></i>
                       ) : (
-                        <i className="bi bi-sort-numeric-up mx-2"></i>
+                        <i className="bi bi-sort-numeric-up mx-2 my-auto"></i>
                       )}
                     </div>
                   </th>
                   <th onClick={() => sortUsers("firstName")}>
                     <div
-                      className="d-flex justify-content-center"
+                      className="d-flex justify-content-center h2 my-auto"
                       role="button"
                     >
                       Nombre
@@ -230,7 +230,7 @@ function UsersList() {
                   </th>
                   <th onClick={() => sortUsers("lastName")}>
                     <div
-                      className="d-flex justify-content-center"
+                      className="d-flex justify-content-center h2 my-auto"
                       role="button"
                     >
                       Apellido
@@ -243,7 +243,7 @@ function UsersList() {
                   </th>
                   <th onClick={() => sortUsers("roleId")}>
                     <div
-                      className="d-flex justify-content-center"
+                      className="d-flex justify-content-center h2 my-auto"
                       role="button"
                     >
                       RoleId
@@ -256,7 +256,7 @@ function UsersList() {
                   </th>
                   <th onClick={() => sortUsers("email")}>
                     <div
-                      className="d-flex justify-content-center"
+                      className="d-flex justify-content-center h2 my-auto"
                       role="button"
                     >
                       Email
@@ -267,7 +267,7 @@ function UsersList() {
                       )}
                     </div>
                   </th>
-                  <th>Acciones</th>
+                  <th className="text-center h2">Acciones</th>
                 </tr>
               </thead>
               <tbody>{data[0] && displayUsers}</tbody>
