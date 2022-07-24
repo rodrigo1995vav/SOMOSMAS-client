@@ -44,20 +44,29 @@ export default function TableCategories({ dataCategories }) {
             >
                 <h1 >ABM de Categorias</h1>
                 <button 
-                    className="btn btn-primary text-white px-4 py-2 fs-4"
+                    className="btn btn-light text-white px-4 py-3 fs-4"
+                    style={{ borderRadius: '6px' }}
                     onClick={ () => setInitiateForm({ opened: true, initialValues: null }) }
                 >
                     Agregar categoría
                 </button>
             </div>
             <table 
-                className="table table-dark" 
+                className="table" 
                 style={ { pointerEvents:`${ initiateForm.opened ? 'none': 'unset' }` } }
             >
                 <thead >
                     <tr>
-                        <th scope="col" className="text-center h2">Categoría</th>
-                        <th scope="col" className="text-center h2">Acciones</th>
+                        <th 
+                            scope="col" 
+                            className="text-start h2"
+                            style={{ paddingLeft:'2rem' }}
+                        >Categoría</th>
+                        <th 
+                            scope="col" 
+                            className="text-end h2"
+                            style={{ paddingRight:'2rem' }}
+                        >Acciones</th>
                     </tr>
 
                 </thead>

@@ -15,19 +15,27 @@ export default function RowsCategory({ category, handlerDeleteCategory, setIniti
     //each activity is an activity object with name and id properties
     return (
         <>
-            <tr >
-                <td className="col-3 text-center h4 " style={{ paddingTop: '35px' }}>{category.name}</td>
-                <td className="col-3 text-center h4 " style={{ paddingTop: '35px' }}>
-                    <div className="d-flex d-flex justify-content-center ">
-                        <button 
-                            className="btn btn-primary mx-3 display-1"  
-                            onClick={ handleOpenForm }
-                        >
-                            <i class="bi bi-pencil-square h3" ></i>
-                        </button>
-                        <button className="btn btn-danger mx-3 display-1" onClick={() => handlerDeleteCategory(category.id, category.name)}>
-                            <i class="bi bi-trash3 h3"></i>
-                        </button>
+            <tr>
+                <td 
+                    className="col-3  h4 " 
+                    style={{ paddingTop: '35px', paddingLeft:'2rem' }}
+                >{category.name}</td>
+                <td 
+                    className="col-3  h4 " 
+                    style={{ paddingTop: '35px', paddingRight:'2rem' }}
+                >
+                    <div className="d-flex d-flexm justify-content-end ">
+                        <i 
+                            onClick={ handleOpenForm }   
+                            style={{color:'#0038FF', cursor:'pointer', marginRight: '1rem'}} 
+                            className="bi bi-pencil-square h3" 
+                        ></i>
+
+                        <i 
+                            class="bi bi-trash3 h3"
+                            style={{color:'#ff0000', cursor:'pointer'}}
+                            onClick={() => handlerDeleteCategory(category.id, category.name)}
+                        ></i>
                     </div>
                 </td>
             </tr>
