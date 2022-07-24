@@ -80,7 +80,31 @@ export default function Navbar() {
 
                                     <>
                                         {
-                                            userLogged.user.roleId != 1 ? (
+                                            userLogged.user.roleId == 1 ? (
+                                                <>
+                                                    <button
+                                                        className="btn text-dark rounded-pill border border-dark mx-3"
+                                                        type="submit"
+                                                        style={{ transform: "scale(1.2)" }}
+                                                        onClick={() => {
+                                                            navigate("/auth/user");
+                                                        }}
+                                                    >
+                                                        Mi Perfil
+                                                    </button>
+                                                    <button
+                                                        className="btn text-dark rounded-pill border border-dark mx-3"
+                                                        type="submit"
+                                                        style={{ transform: "scale(1.2)" }}
+                                                        onClick={() => {
+                                                            navigate("/backoffice");
+                                                        }}
+                                                    >
+                                                        Menu de Administrador
+                                                    </button>
+                                                </>
+
+                                            ) : (
                                                 <button
                                                     className="btn text-dark rounded-pill border border-dark mx-3"
                                                     type="submit"
@@ -90,16 +114,6 @@ export default function Navbar() {
                                                     }}
                                                 >
                                                     Mi Perfil
-                                                </button>) : (
-                                                <button
-                                                    className="btn text-dark rounded-pill border border-dark mx-3"
-                                                    type="submit"
-                                                    style={{ transform: "scale(1.2)" }}
-                                                    onClick={() => {
-                                                        navigate("/backoffice");
-                                                    }}
-                                                >
-                                                    Menu de Administrador
                                                 </button>
                                             )
                                         }
@@ -108,7 +122,7 @@ export default function Navbar() {
                                             type="submit"
                                             style={{ transform: "scale(1.2)" }}
                                             onClick={() => {
-                                                logout(dispatch , ()=> navigate('/'));
+                                                logout(dispatch, () => navigate('/'));
                                             }}
                                         >
                                             Log Out
