@@ -23,7 +23,7 @@ export default function TableCategories({ dataCategories }) {
     }
 
     return (
-        <div >
+        <div className="mx-5">
             { 
                 initiateForm.opened && (
                     <CategoriesForm 
@@ -64,7 +64,7 @@ export default function TableCategories({ dataCategories }) {
                         >Categoría</th>
                         <th 
                             scope="col" 
-                            className="text-end h2"
+                            className="text-center h2"
                             style={{ paddingRight:'2rem' }}
                         >Acciones</th>
                     </tr>
