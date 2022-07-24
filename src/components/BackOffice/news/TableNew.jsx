@@ -33,7 +33,7 @@ function TableNew() {
     }, []);
     return (
         <div>
-            {showAMForm && <EditAddNewFormModal newData={newData} setShowAMForm={setShowAMForm} />}
+            {showAMForm && <EditAddNewFormModal newData={newData} setShowAMForm={setShowAMForm} getNews={getNews} />}
             <div className="d-flex gap-5 justify-content-center ">
                 <div className="align-self-center">
                     <h1 className="p-3 ">ABM de novedades</h1>
@@ -41,7 +41,7 @@ function TableNew() {
                 <div className="p-3">
                     <button
                         className="btn btn-primary p-3"
-                        onClick={() => { setShowAMForm(true); setNewData({}) }}
+                        onClick={async () => { await setNewData(); setShowAMForm(true) }}
                     >
                         Agregar novedad
                     </button>

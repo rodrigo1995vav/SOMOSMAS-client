@@ -1,7 +1,7 @@
 import React from "react";
 import NewsForm from "../../newsForm/NewsForm";
 
-const EditAddNewFormModal = ({newData, setShowAMForm}) => {
+const EditAddNewFormModal = ({newData, setShowAMForm, news, setNews, getNews}) => {
   return (
     <div
       class="modal show fade d-block"
@@ -27,7 +27,7 @@ const EditAddNewFormModal = ({newData, setShowAMForm}) => {
             </button>
           </div>
           <div class="">
-            <NewsForm patch={newData} setShowAMForm={setShowAMForm} />
+            <NewsForm patch={newData} setShowAMForm={setShowAMForm} getNews={getNews}/>
           </div>
           {/* <div class="modal-footer">
             <button
