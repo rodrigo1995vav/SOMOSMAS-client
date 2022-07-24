@@ -7,10 +7,7 @@ import Alert from "../../services/AlertService";
 import axios from "axios";
 
 function NewsForm({ patch, setShowAMForm, getNews }) {
-  if (patch) {
-    console.log(patch);
-    var id = patch.id;
-  }
+
 
   const [newsFormData, setNewsFormData] = useState({});
   const [file, setFile] = useState();
@@ -23,7 +20,7 @@ function NewsForm({ patch, setShowAMForm, getNews }) {
   useEffect(() => {
     if (patch) {
       axios
-        .get(`/news/${id}`)
+        .get(`/news/${patch.id}`)
         .then((res) => {
           setNewsFormData(res.data.payload);
         })
@@ -45,8 +42,7 @@ function NewsForm({ patch, setShowAMForm, getNews }) {
     formData.append("name", newName);
     formData.append("content", newsFormData.content);
     if (patch) {
-      axios
-        .put(`/news/${id}`, formData)
+      putPrivate(`/news/${patch.id}`, formData)
         .then((res) => {
           Alert.success({
             title: "Se modificó la novedad:",
