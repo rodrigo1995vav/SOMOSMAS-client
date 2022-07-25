@@ -129,8 +129,8 @@ const MyProfile = () => {
                         <button onClick={(e) => {
                             e.preventDefault();
                             Alert.confirmRequest(
-                                { title: `Seguro deseas eliminar al usuario ${userLogged.user.firstName} ${userLogged.user.lastName}?` },
-                                () => { handleDelete(userLogged.user.id); Alert.success({ title: 'Hasta luego' }) }
+                                { title: `Cuidado!`, message: "¿Seguro de deseas eliminar tu usuario?" },
+                                () => { handleDelete(userLogged.user.id); Alert.success({ title: 'Hasta luego', message: "Gracias por haber formado parte de Somos Más" }) }
                             );
                         }} className="btn btn-dark fs-3" style={{ width: 110, borderRadius: 30 }}>Eliminar</button>
                     </div>
