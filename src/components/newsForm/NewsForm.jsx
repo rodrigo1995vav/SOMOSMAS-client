@@ -42,12 +42,13 @@ function NewsForm({ patch, setShowAMForm, getNews }) {
     formData.append("name", newName);
     formData.append("content", newsFormData.content);
     if (patch) {
-      putPrivate(`/news/${patch.id}`, formData)
+      putPrivate(`/news/`, patch.id, formData)
         .then((res) => {
           Alert.success({
             title: "Se modificó la novedad:",
             message: `${newName}`,
           });
+          console.log(res)
           getNews();
         })
         .then(setShowAMForm(false))

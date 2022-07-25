@@ -17,7 +17,6 @@ function TableNew() {
     const  limit = 10
     async function getNews() {
         const { data } = await getPublic(`/news/${limit}/${page}`);
-        console.log('adawdawdawd' + page)
         setNews(data.entries);
     }
 

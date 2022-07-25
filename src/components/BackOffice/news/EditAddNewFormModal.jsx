@@ -1,7 +1,7 @@
 import React from "react";
 import NewsForm from "../../newsForm/NewsForm";
 
-const EditAddNewFormModal = ({newData, setShowAMForm, news, setNews, getNews}) => {
+const EditAddNewFormModal = ({newData, setShowAMForm, getNews}) => {
   return (
     <div
       class="modal show fade d-block"
