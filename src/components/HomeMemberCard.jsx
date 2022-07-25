@@ -8,8 +8,8 @@ const HomeMemberCard = ({name, image ,ong_role}) => {
                                 borderRadius: '2rem',
                                 overflow:'hidden', 
                                 height:'20rem',
-                                maxWidth:'20rem' }} >
-                <img src={`${image}`} className="" style={{height:'100%',
+                                width:'20rem' }} >
+                <img src={`${process.env.REACT_APP_PUBLIC_URL_API}/activity/image/${image}`} className="" style={{height:'100%',
                                                         width:'100%',
                                                         opacity:'.9', 
                                                         objectFit:'cover', 
@@ -30,7 +30,7 @@ const HomeMemberCard = ({name, image ,ong_role}) => {
                                                            objectFit:'cover', 
                                                            objectPosition:'center',}}>
 
-                                <img src={`${image}`} className=" " style={ { height:'100%',
+                                <img src={`${process.env.REACT_APP_PUBLIC_URL_API}/activity/image/${image}`} className=" " style={ { height:'100%',
                                                         width:'100%',borderRadius: '2rem', opacity:'0.7', objectFit:'cover',objectPosition:'center' }} alt={`Miembro de la ong`} />
                         </div>
                         <section className=" w-100 h-100 text-start p-2" style={{ width:'60%',bottom: '1.5rem' }}>

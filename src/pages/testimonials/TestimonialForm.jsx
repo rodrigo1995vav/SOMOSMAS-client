@@ -6,10 +6,13 @@ import Alert from '../../services/AlertService';
 import { postPrivate, putPrivate } from '../../services/apiServices';
 
 import { CustomTextArea } from '../../components/TextArea';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const TestimonialForm = ({close , userData }) => {  
 
+  const navigate = useNavigate()
 
   // It returns the validation schema object used by Formik
   const yupValidationSchema = () => ({
@@ -24,7 +27,7 @@ const TestimonialForm = ({close , userData }) => {
         values.name = `${userData.firstName} ${userData.firstName} `
         values.userId = userData.id
         console.log(values)
-        postPrivate(`/testimonials`,values).then((res)=> {Alert.success({title:'Testimonio creado/actualizado'}); close() } )
+        postPrivate(`/testimonials`,values).then((res)=> {Alert.success({title:'Testimonio creado/actualizado'}); close() ;navigate('/testimonios/1') } )
                                             .catch(err=>Alert.error({title:err.name, message:err.message }))
   }
 

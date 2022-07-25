@@ -35,15 +35,16 @@ const News = () => {
             <div className="container-fluid h-100  news__container">
                 {
                     data&&data.result.map(news => (
-                        <div key={news.id} className="card news__card" >
+                        <div key={news.id} className=" shadow-lg news__card" >
                             <img  
                                 src={`${process.env.REACT_APP_PUBLIC_URL_API}/activity/image/${news.image}`} 
+                                style = {{objectFit:'cover', objectPosition:'center'}}
                                 className="news__image"
                                 alt="..."
                             />
                             <div className="news__card-body">
                                 <h5 className="card-title fs-3 ">{news.name}</h5>
-                                <Link to={`/novedades/${news.id}/novedad`} style={{ fontSize: '1.2rem' }}>Ver mas</Link>
+                                <Link to={`/novedades/${news.id}/novedad`}> <button className="btn btn-light text-white fs-4 m-1">Ver mas</button></Link> 
                             </div>
                         </div>
                         )

@@ -123,7 +123,7 @@ const MyProfile = () => {
                         <button onClick={(e) => {
                             handleEditUser(e, userLogged.user);
                             setShow(true);
-                        }} className="btn btn-primary mb-2 fs-3" style={{ width: 110, borderRadius: 30 }}>Editar</button>
+                        }} className="btn btn-light text-white mb-2 fs-3" style={{ width: 110, borderRadius: 30 }}>Editar</button>
                     </div>
                     <div className="mb-4">
                         <button onClick={(e) => {
@@ -132,7 +132,7 @@ const MyProfile = () => {
                                 { title: `Cuidado!`, message: "¿Seguro de deseas eliminar tu usuario?" },
                                 () => { handleDelete(userLogged.user.id); Alert.success({ title: 'Hasta luego', message: "Gracias por haber formado parte de Somos Más" }) }
                             );
-                        }} className="btn btn-dark fs-3" style={{ width: 110, borderRadius: 30 }}>Eliminar</button>
+                        }} className="btn btn-primary text-white fs-3" style={{ width: 110, borderRadius: 30 }}>Eliminar</button>
                     </div>
                     <div>
                         <small className="text-muted">Última actualización del perfil: {new Date(userLogged.user.updatedAt).toLocaleDateString("en-AU")}</small>

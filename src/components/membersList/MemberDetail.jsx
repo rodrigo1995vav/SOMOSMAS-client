@@ -18,7 +18,7 @@ export default function MemberDetail({ member, selectMember }) {
                 </section>
 
                 <div className="containerImgMemberDetail">
-                    <img src={currentMember.image} className='renderImgMember' style={{ borderRadius: '2rem' }} alt="image member" />
+                    <img src={`${process.env.REACT_APP_PUBLIC_URL_API}/activity/image/${currentMember.image}`} className='renderImgMember' style={{ borderRadius: '2rem', width:'30rem', height:'30rem', objectFit:'cover',objectPosition:'center' }} alt="image member" />
                 </div>
             </div>
         </div>
