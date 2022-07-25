@@ -57,7 +57,7 @@ export const ContactPage = () => {
                         const onSuccess = ()=>{Alert.success({ title: 'Consulta enviada', message: 'Gracias por contactarte con nosotros' });
                                                 resetForm()}
                         
-                        dispatch(contactUs(values, onSuccess ))
+                        dispatch(contactUs(values,()=>onSuccess ))
                     
                      
                     }}

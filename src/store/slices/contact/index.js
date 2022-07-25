@@ -40,14 +40,16 @@ export const { saveInfoContact } = contactSlice.actions
 export const contactUs = (values,onSuccess) => {
     return (dispatch) => {
         dispatch(saveInfoContact({ loading: true, responseContact: null }))
+        Alert.confirmRequest({title:'Confirmar envío'},()=>
         postPublic(`${process.env.REACT_APP_PUBLIC_URL_API}/contacts`,values)
-            .then(({ data }) => {
-                dispatch(saveInfoContact({ loading: false, responseContact: data }))
-                onSuccess()
+            .then((res) => {
+                dispatch(saveInfoContact({ loading: false, responseContact: res.data }))
+                return res
             }).catch((err) => {
                 console.log(err)
                 dispatch(saveInfoContact({ loading: false, error: { errorState: true, error: err.message } }))
                 Alert.error({title:err.name , message:err.message})
-            });
+            }),onSuccess())
+        
     }
 }  
