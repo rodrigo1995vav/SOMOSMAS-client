@@ -44,14 +44,14 @@ export default function Navbar() {
         <section className="sticky-top shadow " style={{ backgroundColor: '#EAEBF3' }} >
             <nav className="navbar navbar-expand-lg p-3 ps-5 border-bottom container ">
                 <div className="container-fluid">
-                    <a className="navbar-brand mx-2" href="/">
+                    <button className="navbar-brand mx-2 " style={{border: 'none'}} onClick={()=>navigate('/')}>
                         <img
                             src={logo}
                             alt="Logo ong"
                             width={"40px"}
                             style={{ transform: "scale(2.2)" }}
                         />
-                    </a>
+                    </button>
                     <button
                         className="navbar-toggler"
                         type="button"

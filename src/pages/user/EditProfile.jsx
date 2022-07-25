@@ -89,15 +89,15 @@ const EditProfile = ({ editFormData, setShow, handleEditFormSubmit, saveFile }) 
                     <div className="modal-footer">
                       <button
                         type="submit"
-                        className="btn btn-primary"
-                        style={{ "font-size": "100%" }}
+                        className="btn btn-light text-white fs-3"
+                        style={{ borderRadius:'.9rem' }}
                       >
                         Guardar
                       </button>
                       <button
                         type="button"
-                        style={{ "font-size": "100%" }}
-                        className="btn btn-secondary"
+                        className="btn btn-primary text-white fs-3"
+                        style={{ borderRadius:'.9rem' }}
                         onClick={() => setShow(false)}
                       >
                         Cancelar
