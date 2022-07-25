@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import Alert from "../../../services/AlertService";
 import { postPublic } from "../../../services/apiServices";
 
 
@@ -36,15 +37,17 @@ export default contactSlice.reducer
 
 export const { saveInfoContact } = contactSlice.actions
 
-export const contactUs = ({ email, name, message }) => {
+export const contactUs = ({ email, name, message },onSuccess) => {
     return (dispatch) => {
         dispatch(saveInfoContact({ loading: true, responseContact: null }))
         postPublic(`${process.env.REACT_APP_PUBLIC_URL_API}/contacts?email=${email}&name=${name}&message=${message}`)
             .then(({ data }) => {
                 dispatch(saveInfoContact({ loading: false, responseContact: data }))
+                onSuccess()
             }).catch((err) => {
                 console.log(err)
                 dispatch(saveInfoContact({ loading: false, error: { errorState: true, error: err.message } }))
+                Alert.error({title:err.name , message:err.message})
             });
     }
 }  
