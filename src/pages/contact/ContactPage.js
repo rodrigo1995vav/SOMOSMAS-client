@@ -52,7 +52,7 @@ export const ContactPage = () => {
                 </div>
                 <Formik
                     initialValues={{ name: '', email: '', message: '' }}
-                    onSubmit={(values, { resetForm }) => {
+                    onSubmit={(values,  {resetForm }) => {
 
                         const onSuccess = ()=>{Alert.success({ title: 'Consulta enviada', message: 'Gracias por contactarte con nosotros' });
                                                 resetForm()}

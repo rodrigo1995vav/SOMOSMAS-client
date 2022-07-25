@@ -37,10 +37,10 @@ export default contactSlice.reducer
 
 export const { saveInfoContact } = contactSlice.actions
 
-export const contactUs = ({ email, name, message },onSuccess) => {
+export const contactUs = (values,onSuccess) => {
     return (dispatch) => {
         dispatch(saveInfoContact({ loading: true, responseContact: null }))
-        postPublic(`${process.env.REACT_APP_PUBLIC_URL_API}/contacts?email=${email}&name=${name}&message=${message}`)
+        postPublic(`${process.env.REACT_APP_PUBLIC_URL_API}/contacts`,values)
             .then(({ data }) => {
                 dispatch(saveInfoContact({ loading: false, responseContact: data }))
                 onSuccess()

@@ -12,7 +12,7 @@ export default function MemberDetail({ member, selectMember }) {
                     <h3 className="fs-2 "><strong>{currentMember.name}</strong></h3>
                     <h4 className="fs-2 ">{currentMember.Role_ong.role_ong}</h4>
                     <p className="fs-3 ">{currentMember.description}</p>
-                    <button type="button" class="btn btn-primary p-4 py-2 fs-2 mt-3 mb-3 text-white"
+                    <button type="button" className="btn btn-primary p-4 py-2 fs-2 mt-3 mb-3 text-white"
                      onClick={() => navigate('/contacto')}
                      style={{borderRadius:'.9rem'}}>¡Quiero ser parte!</button>
                 </section>
