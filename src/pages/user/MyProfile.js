@@ -88,12 +88,10 @@ const MyProfile = () => {
             headers: { Authorization: `Bearer ${token}` }
         }).then((res) => {
             console.log(res);
-            /*userLogged.user = editedUser
-            console.log(userLogged)*/
-            dispatch(setUserLogged({ accessToken: token, user: { ...editedUser, image: res.data.image } }))
+            dispatch(setUserLogged({ accessToken: token, user: { ...editedUser, image: res.data.image, roleId: userLogged.user.roleId } }))
         })
             .catch(function (error) {
-                console.log(error.response.data.message);
+                console.log(error);
             });
 
         //TODO axios get users
