@@ -1,7 +1,7 @@
 import Carousel from "../../components/Carousel";
 import { useEffect, useState } from "react";
 import { Loader } from "../../components/Loader";
-import "../../styles/index.scss";
+
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import CardCarousel from "../../components/CardCarousel";
@@ -28,7 +28,7 @@ function Home() {
   const [image, setImage] = useState("");
   const [testimonials, setTestimonials] = useState({data:null , loading:true, error: false})
   const navigate = useNavigate()
-  const {user} = useSelector ((state) => state.userLogged);
+
 
   const imgStyles = {
     objectFit:'cover',
@@ -39,12 +39,13 @@ function Home() {
   }
 
   useEffect(() => {
-    getPublic(`/news`).then(data => {
-      const entries = data.data.entries
+    getPublic(`/news/3/1`).then(({data}) => {
+      const entries = data.entries.result
+      
       const array = entries.map(entry => {
         return {imageUrl: entry.image, text: entry.name}
       })
-      setNews(array.slice(array.length - 3).reverse());
+      setNews(array);
     }) 
     setWelcomeMessage(hcWelcomeMessage);
     setImage(hcImage);
