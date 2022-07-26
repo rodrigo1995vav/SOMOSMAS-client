@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import UserDataRow from "./UserDataRow";
 import EditFormModal from "./EditFormModal";
@@ -6,8 +5,7 @@ import Paginator from "../Paginator";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { Loader } from '../Loader';
-
+import { Loader } from "../Loader";
 
 function UsersList() {
   const navigate = useNavigate();
@@ -25,34 +23,35 @@ function UsersList() {
     email: "",
   });
   const [show, setShow] = useState(false);
-  const [loading,setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   const usersPerPage = 10;
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     getData();
-
-    setTimeout(()=>setLoading(false),1000)
+    setLoading(false);
   }, [page, searchTerm, sortDirection]);
 
   const getData = async () => {
     axios
-      .get("http://localhost:3001/users", {
+      .get(`${process.env.REACT_APP_PUBLIC_URL_API}/users`, {
         params: {
           page: page,
           searchTerm: searchTerm,
           sortCol: sortByColumn,
           sortDirection: sortDirection,
         },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log(res);
+        console.log("New user data recived");
         setTotalUsers(res.data.total_users);
         setData(res.data.users);
       })
       .catch(function (error) {
         setData([]);
-        console.log(error.response.data.message);
+        console.log(error.response.data.error);
       });
   };
 
@@ -80,28 +79,45 @@ function UsersList() {
       firstName: values.firstName,
       lastName: values.lastName,
       email: values.email,
+      roleId: values.roleId,
     };
+
+    axios
+      .put(`${process.env.REACT_APP_PUBLIC_URL_API}/users/update`, editedUser, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(function (error) {
+        console.log(error.response.data.message);
+      });
 
     const newUsers = [...data];
 
     const index = data.findIndex((user) => user.id === editContactId);
 
     newUsers[index] = editedUser;
+
     //TODO axios get users
     setData(newUsers);
-
     setEditContactId(null);
     setShow(false);
   };
 
   const handleDelete = (id) => {
-    //TODO axios DELETE USER
     const newUsers = [...data];
 
     const index = data.findIndex((user) => user.id === id);
 
     newUsers.splice(index, 1);
-    //TODO axios get user
+    axios
+      .delete(`${process.env.REACT_APP_PUBLIC_URL_API}/users/delete/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .catch(function (error) {
+        console.log(error.response.data.message);
+      });
 
     setData(newUsers);
   };
@@ -110,16 +126,19 @@ function UsersList() {
     setSortByColumn(col);
     if (sortDirection === "ASC") {
       return setSortDirection("DESC");
-    } else {return setSortDirection("ASC")}
+    } else {
+      return setSortDirection("ASC");
+    }
   };
 
   const displayUsers = data.map((user) => (
     <UserDataRow
+      key={user.id}
       user={user}
       handleEditUser={handleEditUser}
       handleDelete={handleDelete}
       setShow={setShow}
-      editFormData={editFormData}
+      setEditFormData={setEditFormData}
     />
   ));
 
@@ -129,14 +148,19 @@ function UsersList() {
   };
   const pageCount = Math.ceil(totalUsers / usersPerPage);
 
-  if(loading){
-    return   <main className='container-fluid h-100 p-0 d-flex justify-content-center align-items-center bg-white '>
-              <Loader></Loader> 
-             </main>
-}
+  if (loading) {
+    return (
+      <main className="container-fluid h-100 p-0 d-flex justify-content-center align-items-center bg-white ">
+        <Loader></Loader>
+      </main>
+    );
+  }
 
   return (
-    <div className="container ">
+    <div
+      className="mx-5"
+      style={{ "font-size": "162.5%" }}
+    >
       {show && (
         <EditFormModal
           editFormData={editFormData}
@@ -144,13 +168,14 @@ function UsersList() {
           handleEditFormSubmit={handleEditFormSubmit}
         />
       )}
-      <div className="crud shadow-lg p-3 mb-5 mt-5 bg-body rounded">
+      <div className="p-3 mb-5 mt-5 bg-body rounded">
         <div className="row ">
           <div className="col-sm mt-5 mb-4 text-gred">
             <div className="search">
               <form className="form-inline">
                 <input
                   className="form-control mr-sm-2"
+                  style={{ "font-size": "100%" }}
                   type="search"
                   placeholder="Buscar por email"
                   aria-label="Search"
@@ -163,7 +188,7 @@ function UsersList() {
             </div>
           </div>
           <div className="col-sm-6  mt-5 mb-4" style={{ color: "black" }}>
-            <h2 className="text-center">
+            <h2 className="text-center" style={{ "font-size": "165%" }}>
               <b>Detalle de Ususarios</b>
             </h2>
           </div>
@@ -174,25 +199,25 @@ function UsersList() {
         </div>
         <div className="row">
           <div className="table-responsive ">
-            <table className="table table-striped table-hover table-bordered">
+            <table className="table  table-hover ">
               <thead>
                 <tr>
                   <th onClick={() => sortUsers("id")}>
                     <div
-                      className="d-flex justify-content-center"
+                      className="d-flex justify-content-center h2 my-auto"
                       role="button"
                     >
                       ID
                       {sortDirection === "ASC" ? (
-                        <i className="bi bi-sort-numeric-down mx-2"></i>
+                        <i className="bi bi-sort-numeric-down mx-2 my-auto"></i>
                       ) : (
-                        <i className="bi bi-sort-numeric-up mx-2"></i>
+                        <i className="bi bi-sort-numeric-up mx-2 my-auto"></i>
                       )}
                     </div>
                   </th>
                   <th onClick={() => sortUsers("firstName")}>
                     <div
-                      className="d-flex justify-content-center"
+                      className="d-flex justify-content-center h2 my-auto"
                       role="button"
                     >
                       Nombre
@@ -205,7 +230,7 @@ function UsersList() {
                   </th>
                   <th onClick={() => sortUsers("lastName")}>
                     <div
-                      className="d-flex justify-content-center"
+                      className="d-flex justify-content-center h2 my-auto"
                       role="button"
                     >
                       Apellido
@@ -218,7 +243,7 @@ function UsersList() {
                   </th>
                   <th onClick={() => sortUsers("roleId")}>
                     <div
-                      className="d-flex justify-content-center"
+                      className="d-flex justify-content-center h2 my-auto"
                       role="button"
                     >
                       RoleId
@@ -231,7 +256,7 @@ function UsersList() {
                   </th>
                   <th onClick={() => sortUsers("email")}>
                     <div
-                      className="d-flex justify-content-center"
+                      className="d-flex justify-content-center h2 my-auto"
                       role="button"
                     >
                       Email
@@ -242,7 +267,7 @@ function UsersList() {
                       )}
                     </div>
                   </th>
-                  <th>Acciones</th>
+                  <th className="text-center h2">Acciones</th>
                 </tr>
               </thead>
               <tbody>{data[0] && displayUsers}</tbody>

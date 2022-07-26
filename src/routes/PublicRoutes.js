@@ -7,7 +7,9 @@ import { LoginPage } from '../pages/login/LoginPage';
 import NotFound from '../pages/notfound/NotFound';
 import { ContactPage } from '../pages/contact/ContactPage';
 import RegisterPage from '../pages/register/RegisterPage.jsx';
-import MembersList from '../pages/members/MembersList.jsx';
+import MembersList from '../pages/staff/MembersList.jsx';
+import TestimonialsPage from '../pages/testimonials/TestimonialsPage.jsx';
+
 
 
 
@@ -15,14 +17,14 @@ const PublicRoutes = () => {
     return (
         <>
             <Routes>
-                <Route exact match path='' element={<Home />} />
-                <Route path='novedades' element={<News />} />
-                <Route path='novedades/:id' element={<NewsDetails />} />
-                <Route path='testimonios' element={<News />} />
+                <Route exact match path='/' element={<Home />} />
+                <Route path='novedades/:page' element={<News />} />
+                <Route path='novedades/:id/novedad' element={<NewsDetails />} />
+                <Route path='testimonios/:page' element={<TestimonialsPage />} />
                 <Route path='contacto' element={<ContactPage />} />
                 <Route path='login' element={<LoginPage />} />
-                <Route path='registrarse' element={<RegisterPage/>} />
-                <Route path='miembros/:page' element={<MembersList/>} />
+                <Route path='registrarse' element={<RegisterPage />} />
+                <Route path='nosotros/:page' element={<MembersList />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
         </>

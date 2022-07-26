@@ -1,0 +1,31 @@
+
+
+.card-carousel {
+    .carousel-button {
+        position: relative;
+        bottom: -4rem;
+       
+        margin: 1.5rem !important;
+        
+       
+     
+        opacity: .2 !important;
+     
+   
+      
+    background-color: black !important;
+    
+    &.active{
+
+    opacity: .7 !important;
+    background-color:black  !important ;
+  
+    }
+}
+
+
+
+
+
+
+}

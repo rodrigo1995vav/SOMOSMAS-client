@@ -56,7 +56,7 @@ export const register = (fields , OnSuccess) => {
   return (dispatch) => {
 
     let endpoint = '/auth/register'
-
+    console.log(fields)
    postPublic( endpoint , fields)
       .then(({ data }) => {
         dispatch(setUserLogged(data)); //esto pasa al actions de setUserLogged a la propiedad de payload   
@@ -72,9 +72,10 @@ export const register = (fields , OnSuccess) => {
 
 
 
-export const logout = (dispatch) =>{
+export const logout = (dispatch, onLogout) =>{
   //token name may change in future version, unsafe name.
   localStorage.removeItem("token");
-  return  dispatch(deleteUserLogged())
+  dispatch(deleteUserLogged())
+  return  onLogout()
    
 }

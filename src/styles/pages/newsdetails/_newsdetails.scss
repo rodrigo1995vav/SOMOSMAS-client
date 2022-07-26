@@ -14,11 +14,13 @@
     @include responsive($medium){
       width: 55rem;
       margin: 0 auto;
+      margin-bottom: 2rem;
     }
 
     @include responsive($large){
       width: 65rem;
       margin: 0 auto;
+      margin-bottom: 2rem;
     }
 
   }
@@ -26,6 +28,8 @@
   &__image{
     width: 100%;
     max-height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   &__text{
