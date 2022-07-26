@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { CustomTextInput } from "../TextInput";
+import { CustomTextInput } from "../../components/TextInput";
 import Alert from "../../services/AlertService";
 
-const EditFormModal = ({ editFormData, setShow, handleEditFormSubmit }) => {
+const EditProfile = ({ editFormData, setShow, handleEditFormSubmit, saveFile }) => {
   console.log(editFormData);
   const modelStyle = {
     backgroundColor: "rgba(0,0,0,0.3)",
@@ -34,7 +34,7 @@ const EditFormModal = ({ editFormData, setShow, handleEditFormSubmit }) => {
           <div className="modal-content">
             <div className="modal-header">
               <h3 className="modal-title" style={{ "font-size": "100%" }}>
-                Modificar datos de usuario
+                Modificar datos de tu perfil
               </h3>
               <button
                 type="button"
@@ -51,7 +51,6 @@ const EditFormModal = ({ editFormData, setShow, handleEditFormSubmit }) => {
                   firstName: editFormData.firstName,
                   lastName: editFormData.lastName,
                   email: editFormData.email,
-                  roleId: editFormData.roleId,
                 }}
                 validationSchema={validate}
                 onSubmit={(user) => {
@@ -80,27 +79,25 @@ const EditFormModal = ({ editFormData, setShow, handleEditFormSubmit }) => {
                       placeholder="Nuevo Apellido..."
                       name="lastName"
                     />
-                    <Field
-                      name="roleId"
-                      component="select"
-                      className=" form-control form-control-lg text-center mb-4"
+                    <CustomTextInput
                       style={{ "font-size": "100%" }}
-                    >
-                      <option value={1}>Admin privilage user</option>
-                      <option value={2}>Normal user</option>
-                    </Field>
+                      className=" form-control form-control-lg text-center"
+                      placeholder="Nuevo Email..."
+                      name="email"
+                    />
+                    <input type="file" name="image" onChange={(e) => saveFile(e)} />
                     <div className="modal-footer">
                       <button
                         type="submit"
-                        className="btn btn-primary"
-                        style={{ "font-size": "100%" }}
+                        className="btn btn-light text-white fs-3"
+                        style={{ borderRadius:'.9rem' }}
                       >
                         Guardar
                       </button>
                       <button
                         type="button"
-                        style={{ "font-size": "100%" }}
-                        className="btn btn-secondary"
+                        className="btn btn-primary text-white fs-3"
+                        style={{ borderRadius:'.9rem' }}
                         onClick={() => setShow(false)}
                       >
                         Cancelar
@@ -117,4 +114,4 @@ const EditFormModal = ({ editFormData, setShow, handleEditFormSubmit }) => {
   );
 };
 
-export default EditFormModal;
+export default EditProfile;

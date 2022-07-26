@@ -1,0 +1,42 @@
+.categoriesForm{
+
+  &__container{
+    padding: 3rem;
+    padding-top: 1rem;
+    width: 85%;
+    z-index: 4;
+
+    position: absolute;
+    top: 10rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(234, 235, 243);
+
+    @include responsive($medium){
+      width: 65%;
+    }
+
+    @include responsive($large){
+      width: 50%;
+    }
+
+  }
+
+  &__close-button{
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+
+    font-size: 1.6rem;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+  }
+
+  &__title{
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+  }
+
+}
+

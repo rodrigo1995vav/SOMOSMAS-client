@@ -12,9 +12,10 @@ const AppRouter = () => {
 
     return (
         <>
+            <div style={{ display:'flex', minHeight: '100vh', flexDirection:'column' }}>
             <Router>
                 <Navbar></Navbar>
-                <div>
+                <div className="middle_div" style={{ flex: 1, position: "relative" }}>
                     <Routes>
 
                         <Route path="/*" element={<PublicRoutes />} />
@@ -36,6 +37,7 @@ const AppRouter = () => {
                 </div>
                 <Footer></Footer>
             </Router>
+            </div>
         </>
     );
 

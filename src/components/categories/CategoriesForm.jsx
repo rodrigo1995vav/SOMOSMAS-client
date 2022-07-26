@@ -1,17 +1,13 @@
-
 import { Formik, Form } from 'formik';
-import { useParams } from 'react-router-dom';
 import * as Yup from 'yup';
+
 import Alert from '../../services/AlertService';
 import { postPrivate, putPrivate } from '../../services/apiServices';
-
 import { CustomTextArea } from '../TextArea';
 import { CustomTextInput } from '../TextInput';
 
 
-const CategoriesForm = ({ initialValues }) => {
-
-  const { id } = useParams();
+const CategoriesForm = ({ initialValues, selfClose, setCategories }) => {  
 
   // It returns the validation schema object used by Formik
   const yupValidationSchema = () => ({
@@ -28,6 +24,7 @@ const CategoriesForm = ({ initialValues }) => {
     let response, message;
 
     if( initialValues ){
+      const id = initialValues.id
       response = await putPrivate( `/categories/`, id, values );
       message  = "Categoria actualizada exitosamente"
     }else{
@@ -35,11 +32,31 @@ const CategoriesForm = ({ initialValues }) => {
       message  = "Categoria creada exitosamente"
     }
 
-    if( response.data.categoryCreated || response.data === 1 ){
+    if( response.data === 1 ){
+      setCategories( categories =>{
+        const updatedCategories = categories.map( cat => {
+          if( cat.id === values.id ){
+            return values;
+          }
+          return cat
+        } )
+  
+        return updatedCategories;
+      } )
+
       Alert.success({
         title: 'Operación exitosa',
         message 
       })
+    }else if( response.data.categoryCreated ){
+
+      setCategories(categories => ([ ...categories, values ]) )
+
+      Alert.success({
+        title: 'Operación exitosa',
+        message 
+      })
+
     }else{
       Alert.error({
         title: "Error",
@@ -47,43 +64,60 @@ const CategoriesForm = ({ initialValues }) => {
       })
     }
 
+    handleSelfClose();
+
+  }
+
+  const handleSelfClose = () => {
+    selfClose( state => ({
+      ...state,
+      opened: false,
+    }) )
   }
 
   return (
-    <div style={{ padding: '3rem', maxWidth: '90rem' }}>
-       <h1 style={{ fontSize: '2.8rem', marginBottom:'1rem' }}> Categorías </h1>
-       <Formik
-          initialValues={ initialValues || { name:'', description:'' } }
-          onSubmit={ values => handleOnSubmit( values )}
-          validationSchema={ Yup.object(yupValidationSchema()) }
+
+      <div className="categoriesForm__container">
+        <div 
+          className='categoriesForm__close-button'
+          onClick={ handleSelfClose} 
         >
-          {
-            () => (
-              <Form>
-                <CustomTextInput 
-                  placeholder="Nombre" 
-                  name="name" 
-                  className="text-input_324af" 
-                /> 
+          X
+        </div>
+        <h1 className='categoriesForm__title'> Categorías </h1>
+        <Formik
+            initialValues={ initialValues || { name: '', description:'' } }
+            onSubmit={ values => handleOnSubmit( values )}
+            validationSchema={ Yup.object(yupValidationSchema()) }
+          >
+            {
+              () => (
+                <Form>
+                  <CustomTextInput 
+                    placeholder="Nombre" 
+                    name="name" 
+                    className="text-input_324af" 
+                  /> 
 
-                <CustomTextArea 
-                  placeholder="Descripción" 
-                  name="description" 
-                  className="text-area_324af"
-                />
+                  <CustomTextArea 
+                    placeholder="Descripción" 
+                    name="description" 
+                    className="text-area_324af"
+                  />
 
-                <button 
-                  type="submit" 
-                  className="btn btn-primary py-2 px-4 mt-4 text-white fs-3 d-inline-block"
-                  style={ { borderRadius: '6px' } }
-                >
-                  Enviar
-                </button>
-              </Form>
-            )
-          }
-        </Formik>
-    </div>
+                  <button 
+                    type="submit" 
+                    className="btn btn-primary py-2 px-4 mt-4 text-white fs-3 d-inline-block"
+                    style={ { borderRadius: '6px' } }
+                  >
+                    Enviar
+                  </button>
+                </Form>
+              )
+            }
+          </Formik>
+      </div>
+
   )
 }
 

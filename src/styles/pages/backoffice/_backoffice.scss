@@ -1,14 +1,12 @@
-
-.backoffice_card{
-    width: 100%;
-    height: 100%;
+.backoffice_card {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color:transparent;
+    background-color: transparent;
     border-color: transparent;
-    div{
+
+    div {
         width: 200px;
         margin: 20px;
         text-align: center;
@@ -16,17 +14,20 @@
         border-radius: 5px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         padding: 10px;
-        h4{
-            font-size: 1rem;
+
+        h4 {
+            font-size: 1.7rem;
             font-weight: bold;
             color: $light;
         }
-        i{
+
+        i {
             margin-top: 1.5rem;
             font-size: 3rem;
             width: 100%;
         }
-        button{
+
+        button {
             background-color: #369595;
             border-radius: 5px;
             border: none;
@@ -37,5 +38,18 @@
             padding: 4px 8px;
 
         }
-    }    
+    }
+}
+
+@media (min-width: 600px) {
+    .backoffice_card {
+        flex-direction: row;
+        height: 50%;
+    }
+
+    .menu_container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
 }

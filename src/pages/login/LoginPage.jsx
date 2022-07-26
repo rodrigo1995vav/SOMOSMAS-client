@@ -13,8 +13,8 @@ export const LoginPage = () => {
 
 
   return (
-    <main className='d-flex flex-column flex-lg-row justify-content-center align-items-center ' style={{height:'fit-content'}}>
-        <section className="d-flex flex-column  align-items-center justify-content-center   w-100" style={{height:'70vh'}} >
+    <main className='d-flex flex-column flex-lg-row justify-content-center align-items-center w-100' style={{height:'fit-content'}}>
+        <section className="d-flex flex-column  align-items-center justify-content-center w-100" style={{height:'72vh'}} >
                     <div className="w-75 m-auto " >
                         <p className='fs-4'>Bienvenido</p>
                         <h2 className='fs-1'>Inicia sesión en tu cuenta!</h2>
@@ -25,8 +25,8 @@ export const LoginPage = () => {
                         <a href="/registrarse" className="fs-3 ">Registrate</a>
                     </div>
         </section>
-        <section className='w-100' style={{height:'70vh'}}>
-            <img className='img-fluid' style={imgStyles} src={teamWorkImage}  alt="team-work" />
+        <section className='w-100 d-flex flex-column flex-lg-row justify-content-center align-items-center' style={{height:'72vh'}}>
+            <img className='img-fluid w-100' style={imgStyles} src={teamWorkImage}  alt="team-work" />
         </section>
     </main>
   )

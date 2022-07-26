@@ -136,7 +136,7 @@ export default function UpdateUser() {
                             </div>
                         )
                     }
-                    <button type="submit" className='buttonColor'>Moficar información</button>
+                    <button type="submit" className='buttonColor '>Moficar información</button>
                 </Form>
             )}
             </Formik>

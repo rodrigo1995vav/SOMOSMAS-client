@@ -48,17 +48,18 @@ export const ContactPage = () => {
 
             <div style={{ flexBasis: '50%' }} >
                 <div>
-                    {loading && <Loader />}
-
-                    {responseContact && Alert.success({ title: 'Consulta enviada', message: 'Gracias por contactarte con nosotros' })}
-
-                    {error.errorState && <h1>Upss!! Ocurrió un error</h1>}
+         
                 </div>
                 <Formik
                     initialValues={{ name: '', email: '', message: '' }}
-                    onSubmit={(values, { resetForm }) => {
-                        dispatch(contactUs(values))
-                        resetForm()
+                    onSubmit={(values,  {resetForm }) => {
+
+                        const onSuccess = ()=>{Alert.success({ title: 'Consulta enviada', message: 'Gracias por contactarte con nosotros' });
+                                                resetForm()}
+                        
+                        dispatch(contactUs(values,()=>onSuccess ))
+                    
+                     
                     }}
                     validationSchema={Yup.object(yupValidationSchema())}
                 >
@@ -88,7 +89,7 @@ export const ContactPage = () => {
                                     className="btn btn-light py-2 px-4 mt-4 text-white fs-3 d-inline-block"
                                     style={{ borderRadius: '6px' }}
                                 >
-                                    Contribuir
+                                    Contactarse
                                 </button>
                             </Form>
                         )

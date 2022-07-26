@@ -1,9 +1,10 @@
 import { useState , useEffect } from "react"
 import  { useParams } from 'react-router-dom'
-import { getPublic } from "../../services/apiServices"
-import { Loader } from '../../components/Loader'
-import ErrorSign from "../../components/ErrorSign"
-import TestimonialsList from "./TestimonialsList"
+import { getPublic } from "../../../services/apiServices"
+import { Loader } from '../../../components/Loader'
+
+import TestimonialsList from "./TestimonialsList";
+import ErrorSign from "../../../components/ErrorSign"
 
 
 
@@ -20,38 +21,29 @@ const arrayTestimonials = {total_testimonials: 40 ,testimonials:[{name:'somepeop
 const Testimonials = () => {
 
     const { page } = useParams()
+    console.log(page)
 
     //define table rows in request with limit
     const limit = 10
-    const [pageCount, setPageCount] =  useState(null)
     const [data,setData] = useState(null)
     const [loading,setLoading] = useState(true)
     const [error, setError] = useState(false)
 
 
     useEffect(()=>{
-      /* getPublic(`/testimonios/${limit}/${page}`)
-            .then(res=>res.json())
-            .then(res=>setData(res))
+      getPublic(`/testimonials/${limit}/${page}`)
+            .then(res=>{
+              setData(res.data) 
+            })
             .catch(err => setError(err))
-            .finally(setLoading(false)) */
-            setData(arrayTestimonials)
-            if(data){
-              let pagesAmount =  Math.trunc(data.total_testimonials / limit) 
-              data.total_testimonials % limit > 0 && ( pagesAmount += 1 )
-
-              setPageCount(pagesAmount)
-              setLoading(false)
-             }
-        
-
+            .finally(setLoading(false)) 
      },[page])
 
 
 
 
     if(loading){
-        return  <main className="w-100 h-auto p-0  justify-content-center align-items-center bg-white">
+        return  <main className="w-100 h-100 p-0  justify-content-center align-items-center bg-white">
                   <Loader></Loader>
                 </main>
     }
@@ -59,7 +51,7 @@ const Testimonials = () => {
 
     return(
     <main className="w-100 h-auto p-0  justify-content-center align-items-center bg-white">
-        {  data  ? <TestimonialsList testimonials={data.testimonials} pageCount={pageCount} />
+        {  data  ? <TestimonialsList testimonials={data.testimonials} pageCount={data.pageCount} />
           : error && <ErrorSign error={{message:'Show error content'}} />}
     </main>)
 }
