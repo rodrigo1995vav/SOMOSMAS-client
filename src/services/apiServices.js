@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 //TODO here we should put the base url from the server side
-axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = process.env.REACT_APP_PUBLIC_URL_API;
 
 axios.defaults.headers.get["Accept"] = "application/json";
 //axios.defaults.headers.post["Accept"] = "application/json";
