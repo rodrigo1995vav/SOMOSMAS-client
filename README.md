@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 nuevo texto
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-asdasd
+un texto con el readme cambiado
 ## Available Scripts
 
 In the project directory, you can run:
