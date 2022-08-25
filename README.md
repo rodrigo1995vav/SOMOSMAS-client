@@ -1,8 +1,8 @@
-# Server Base - Proyecto ONG
+# CLIENT Base - Proyecto ONG
 
 This is the client side of the WebApp SOMOS MAS 
 
-# Link server
+# Link to server repository
 
 https://github.com/rodrigo1995vav/SOMOSMAS-server
 
